@@ -1,4 +1,5 @@
 const pgp = require('pg-promise')();
+require('dotenv').config();
 
 const herokuDB = {
   host: process.env.HEROKU_HOST,

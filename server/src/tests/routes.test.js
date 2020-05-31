@@ -26,7 +26,6 @@ test('check response data if matches', (t) => {
                 name: "Marwan",
                 email: "gobo@email.com",
                 phone: 551554555,
-                password: "123456",
                 userid: 1,
                 paymentstatus: true,
                 activitystatus: true,
@@ -50,8 +49,6 @@ test('check response data if matches on data.name', (t) => {
                 name: "Marwan",
                 email: "gobo@email.com",
                 phone: 551554555,
-                password: "123456",
-                userid: 1,
                 paymentstatus: true,
                 activitystatus: true,
                 notes: "",
@@ -89,5 +86,28 @@ test('test error message if requesting a non exist customer', (t) => {
         t.same(res.body.message, 'No customer found')
         t.end()
     })
+})
+
+test('test add customer method', (t) => {
+    const newCustomer = {
+        name: "mario",
+        email: "aa@email.com",
+        phone: 0646453333,
+        userid: 1,
+        paymentStatus: false,
+        activityStatus: false,
+        notes: "",
+        balance: 0
+    }
+    request(app)
+    .post('/user/admin/add-customer')
+       .send(newCustomer)
+       .expect(200)
+       .end((err, res) => {
+           t.error(err)
+           t.same(res.body.message, 'customer added successfully')
+           t.end()
+       })
+    
 })
 

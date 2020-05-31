@@ -11,7 +11,7 @@ const herokuDB = {
 const localDB = {
   host: 'localhost',
   port: 5432,
-  database: 'BUMA',
+  database: 'buma',
   user: 'ownerbusiness',
   password: 'password'
 };

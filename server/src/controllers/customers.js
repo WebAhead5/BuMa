@@ -14,6 +14,6 @@ exports.getOneCustomer = (req, res) => {
     .then(customer => res.status(200).json(customer))
     .catch(err => {
         console.error(err)
-        return res.status(500).json({ error: err.code})
+        return res.status(500).json({ error: err.code })
     })
 }

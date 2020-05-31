@@ -13,12 +13,14 @@ CREATE TABLE customers (
   activityStatus BOOLEAN NOT NULL,
   notes VARCHAR,
   balance DECIMAL NOT NULL
-
-
-
 );
 
-
+INSERT INTO customers (name, email, phone, password, userid, paymentStatus, activityStatus, notes, balance)
+VALUES 
+('Marwan', 'gobo@email.com', 0551554555, 123456, 1, true, true, '', 50),
+('Hashem', 'hashem@email.com', 0551534555, 123456, 1, true, true, '', 50),
+('Farid', 'farid@email.com', 0551254555, 123456, 1, true, true, '', 50),
+('Khalid', 'khalid@email.com', 0531554555, 123456, 1, true, true, '', 50);
 
 
 COMMIT;

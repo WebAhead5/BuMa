@@ -10,11 +10,11 @@ const getCustomerById = (customerId) => db.query(`SELECT * FROM customers where 
 
 
 
-const addCustomer = (name, email, phone, password, userid, paymentStatus, activityStatus, notes, balance) =>
+const addCustomer = ({name, email, phone, userid, paymentStatus, activityStatus, notes, balance}) =>
 
   db.query(
-    `INSERT INTO customers (name, email, phone, password, userid, paymentStatus, activityStatus, notes, balance)
-VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`, [name, email, phone, password, userid, paymentStatus, activityStatus, notes, balance]
+    `INSERT INTO customers (name, email, phone, userid, paymentStatus, activityStatus, notes, balance)
+VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`, [name, email, phone, userid, paymentStatus, activityStatus, notes, balance]
 
 
 
@@ -25,21 +25,17 @@ VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`, [name, email, phone, password, userid, pay
 const deleteCustomer = (customerId) => db.query(`DELETE FROM customers where id = $1`, customerId)
 
 
-const editCustomer = (customerId, name, email, phone, password, userid, paymentStatus, activityStatus, notes, balance) =>
+const editCustomer = ({customerId, name, email, phone, paymentStatus, activityStatus, notes, balance}) =>
   db.query(
   `UPDATE customers
-   SET name = $1 ,
-   email = $2 ,
-   phone = $3 ,
-   password = $4 ,
-   userid= $5 ,
-   paymentStatus = $6,
-   activityStatus = $7,
-   notes= $8 ,
-   balance = $9
-   WHERE id = $10 ` , [name, email, phone, password, userid, paymentStatus, activityStatus, notes, balance, customerId]
-
-
+   SET name = $2 ,
+   email = $3 ,
+   phone = $4 ,
+   paymentStatus = $5,
+   activityStatus = $6,
+   notes= $7 ,
+   balance = $8
+   WHERE id = $1 ` , [customerId, name, email, phone, paymentStatus, activityStatus, notes, balance]
   )
 
 

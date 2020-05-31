@@ -30,7 +30,7 @@ let styles = {
     },
     titleSingle: {
         fontSize: '1.0em',
-        color: '#0B8D98',
+        color: 'white',
         fontWeight: 'bold',
         fontFamily: 'gothamBook',
         paddingTop: 20,

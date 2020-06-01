@@ -58,25 +58,24 @@ export function callApi(dispatch, getState, method, path, body, successType, fai
 
   //if (state.token.value) {
   //  headers['Authorization'] = 'Token ' + state.token.value;
- // }
+ // }/
 
   if (body) {
     headers['Content-Type'] = 'application/json';
   }
 
   return fetch(API_HOST + path, {
-    method: method,
-    headers: headers,
+    method,
+    headers,
     body: body ? JSON.stringify(body) : null,
   }).then(response => response.json())
     .then((json) => {
       let code = getCode(json);
       let message = getMessage(json);
-console.log(code);
-      // if ((code !== 200) && (code !== 201)) {
-      //   return fail(dispatch, failureType, message, cb);
-      // }
-      return success(dispatch, successType, json, cb);
+      if ((code !== 200) && (code !== 201)) {
+        return fail(dispatch, failureType, message, cb);
+      }
+      return success(dispatch, successType, json.customers, cb);
     }, (error) => {
       return fail(dispatch, failureType, error, cb);
     });

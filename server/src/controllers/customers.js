@@ -2,7 +2,7 @@ const queries = require('../models/customers')
 
 exports.getAllCustomers = (req, res) => {
     queries.getCustomers()
-        .then(customers => res.status(200).json(customers))
+        .then(customers => res.status(200).json({customers, code: 200}))
         .catch(err => {
             console.error(err)
             return res.status(500).json({ error: err.code })

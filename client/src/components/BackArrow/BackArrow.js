@@ -4,8 +4,8 @@ import {REDIRECT_URL} from '../../constants';
 
 const styles = {
   image: {
-    width: '45%',
-    background: '#455454'
+    width: '80%',
+  
   },
 };
 

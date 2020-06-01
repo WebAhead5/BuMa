@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
+import AddCustomer from "./screens/addCustomer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <AddCustomer />
     </div>
   );
 }

@@ -1,11 +1,14 @@
 import React from 'react';
-import CustomerNav from '../components/addCustomerForm/customerNav';
+import BackButton from '../components/BackArrow';
+import Header from '../components/MenuHeader';
 import CustomerForm from "../components/addCustomerForm/customerForm";
 
 const addCustomer = () => {
+
         return (
             <div>
-                <CustomerNav />
+                <BackButton />
+                <Header title="Add Customer"/>
                 <CustomerForm />
             </div>
         );

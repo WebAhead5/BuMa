@@ -3,6 +3,8 @@ import CustomerName from './customerName';
 import CustomerEmail from './customerEmail';
 import CustomerNote from './customerNote';
 import CustomerPhone from './customerPhone';
+import CustomerPrice from './customerPrice';
+import Payment from './paymentEvery';
 
 class CustomerForm extends Component {
 
@@ -10,7 +12,7 @@ class CustomerForm extends Component {
         name: 'Name',
         email: 'Email',
         phone: 'Phone',
-        price: 'Price per appointment',
+        price: 'Price per appointment $',
         payment: 'Payment every',
         note: 'Note'  
     };
@@ -31,13 +33,45 @@ class CustomerForm extends Component {
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit} className="tc pa3 bg-light-gray">
-            <CustomerName stateId="name" onChange={this.handleChange} placeHolder={this.state.name}/>
-            <CustomerEmail stateId="email" onChange={this.handleChange} placeHolder={this.state.email}/>
-            <CustomerPhone stateId="phone" onChange={this.handleChange} placeHolder={this.state.phone}/>
-            <CustomerNote stateId="note" onChange={this.handleChange} placeHolder={this.state.note}/>
-           
-            <input type="submit" value="Add" className='btn btn-primary ma3 btn-lg' />
+        <form onSubmit={this.handleSubmit} style={{background:'#1F2B30'}}>
+          <div className="tl pa4 vcenter">
+            <CustomerName 
+              stateId="name" 
+              onChange={this.handleChange} 
+              placeHolder={this.state.name}
+            />
+            <CustomerEmail 
+              stateId="email" 
+              onChange={this.handleChange} 
+              placeHolder={this.state.email}
+            />
+            <CustomerPhone 
+              stateId="phone" 
+              onChange={this.handleChange} 
+              placeHolder={this.state.phone}
+            />
+            <CustomerPrice 
+              stateId="price" 
+              onChange={this.handleChange} 
+              placeHolder={this.state.price}
+            />
+            <Payment 
+              stateId="payment" 
+              onChange={this.handleChange} 
+              placeHolder={this.state.payment}
+            />
+            <CustomerNote 
+              stateId="note" 
+              onChange={this.handleChange} 
+              placeHolder={this.state.note}
+            />
+           </div>
+            <input 
+              type="submit" 
+              value="Add" 
+              className='btn btn-submit ma3 btn-lg grow' 
+              style={{background:'#0B8D98',color:"white",width:"100px"}}
+            />
         </form>
       );
     }

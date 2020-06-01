@@ -3,7 +3,7 @@ import React from 'react';
 const paymentEvery = (props) => {
       return (
         <div>
-          <label style={{color:'white'}}>Payment every </label>
+          <label style={{color:'white'}}>Payment number </label>
           <select 
           type="number"
           className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-20"
@@ -13,7 +13,6 @@ const paymentEvery = (props) => {
               <option value="3">3</option>
               <option value="4">4</option>
           </select>
-          <label style={{color:'white'}}>Weeks</label>
         </div>
       );
     }

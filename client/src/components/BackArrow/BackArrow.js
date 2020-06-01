@@ -3,14 +3,10 @@ import { REDIRECT_URL } from '../../constants';
 //import { browserHistory } from 'react-router'
 
 const styles = {
-    image: {
-        position: "fixed",
-        width: '40px',
-        height: '40px',
-        background: '#0B8D98',
-        left:'20px',
-        top:'20px'
-    },
+  image: {
+    width: '80%',
+  
+  },
 };
 
 const BackArrow = (props) => {

@@ -1,4 +1,4 @@
-import {callApi} from '../utils/api'
+import { callApi } from '../utils/api'
 var _ = require('lodash');
 
 export const FETCH_BUTTONS_SUCCESS = 'FETCH_BUTTONS_SUCCESS';
@@ -22,9 +22,9 @@ export const BUTTON_DELETE_FAILURE = 'BUTTON_DELETE_FAILURE';
 
 
 export function fetchCustomers(cb) {
- // return function (dispatch, getState) {
-     callApi(null, null, 'GET', 'customers', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
- // }
+    // return function (dispatch, getState) {
+    callApi(null, null, 'GET', 'customers', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    // }
 }
 
 

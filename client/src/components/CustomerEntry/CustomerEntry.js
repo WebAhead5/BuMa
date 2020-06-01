@@ -16,6 +16,12 @@ const styles = {
     overflowWrap: 'break-word',
   },
 
+  image: {
+    width: 20,
+    height: 20,
+    backgroundColor: '#347575'
+  },
+
   settings: {
     color: '#b9b9b9',
     paddingBottom: '50px',
@@ -34,7 +40,7 @@ const CustomerEntry = (props) => {
     return (
       <div className="col-xs-12 col-sm-6" style={styles.container}>
         <div className="col-xs-4 vcenter">
-          <Image src={props.imageSrc}/>
+          <Image style= {styles.image} src={props.imageSrc}/>
         </div>
         <div className="col-xs-6 vcenter">
           <span style={styles.name}>{customerName} </span>

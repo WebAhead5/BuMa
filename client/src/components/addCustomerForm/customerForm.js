@@ -4,7 +4,8 @@ import CustomerEmail from './customerEmail';
 import CustomerNote from './customerNote';
 import CustomerPhone from './customerPhone';
 import CustomerPrice from './customerPrice';
-import Payment from './paymentEvery';
+import PaymentNumber from './paymentEvery';
+import PaymentPeriod from './paymentPer';
 
 class CustomerForm extends Component {
 
@@ -13,7 +14,8 @@ class CustomerForm extends Component {
         email: 'Email',
         phone: 'Phone',
         price: 'Price per appointment $',
-        payment: 'Payment every',
+        paymentNumber: '1',
+        paymentPeriod: 'week',
         note: 'Note'  
     };
 
@@ -55,10 +57,15 @@ class CustomerForm extends Component {
               onChange={this.handleChange} 
               placeHolder={this.state.price}
             />
-            <Payment 
-              stateId="payment" 
+            <PaymentNumber 
+              stateId="paymentNumber" 
               onChange={this.handleChange} 
-              placeHolder={this.state.payment}
+              placeHolder={this.state.paymentNumber}
+            />
+            <PaymentPeriod
+              stateId="paymentPeriod" 
+              onChange={this.handleChange} 
+              placeHolder={this.state.paymentPeriod}
             />
             <CustomerNote 
               stateId="note" 

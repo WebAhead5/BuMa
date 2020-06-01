@@ -1,5 +1,6 @@
 import React from 'react';
 import { members } from "./teamProfile";
+import MemberCard from "./memberCard";
 
 const teamCards = () => {
     const style={
@@ -14,12 +15,13 @@ const teamCards = () => {
             {
                 members.map((user) => {
                     return(
-                        <div key={user.id} className='tc bg-white dib br3 ma2 pa2 shadow-5'>
-                           <img src={user.src} alt={user.name}></img>
-                           <h5> {user.name} </h5>
-                           <h6> {user.profession} </h6>
-                           <p> {user.desciption} </p>
-                        </div>
+                        <MemberCard 
+                        key={user.id} 
+                        src={user.src} 
+                        name={user.name} 
+                        profession={user.profession} 
+                        desciption={user.desciption}
+                        />
                     );
                 })
             }

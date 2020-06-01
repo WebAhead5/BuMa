@@ -1,12 +1,11 @@
 import React from 'react';
-import BackButton from '../components/BackArrow';
+//import BackButton from '../components/BackArrow';
 import Header from '../components/MenuHeader';
 import TeamCards from "../components/teamMembers";
 
 const aboutUs = () => {
         return (
             <div>
-                <BackButton />
                 <Header title="About Us" />
                 <TeamCards />
             </div>

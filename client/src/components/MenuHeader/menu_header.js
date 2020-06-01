@@ -8,19 +8,23 @@ import BackArrow from '../BackArrow';
 
 let styles = {
     header: {
+        display:'flex',
+        justifyContent:"space-between",
+        alignItems : "center",
+        width : "100%" ,
+        height : "100%",
         fontFamily: 'gothamBook',
         backgroundColor: '#0B8D98',
         color: '#0B8D98',
-        paddingTop: '10px',
-        paddingBottom: '10px',
     },
-    burger: {
-        padding: 0,
-        margin: 0,
-        paddingRight: '5px',
+    backArrow: {
+        display:'flex',
+        justifyContent:'start',
+
     },
-    burgerIcon: {
-        width: '70%',
+    backArrowIcon: {
+
+        display: 'flex',
     },
     title: {
         fontSize: '1.0em',
@@ -29,11 +33,11 @@ let styles = {
         fontFamily: 'gothamBook',
     },
     titleSingle: {
-        fontSize: '1.0em',
+        fontSize: '30px',
         color: 'white',
         fontWeight: 'bold',
         fontFamily: 'gothamBook',
-        paddingTop: 20,
+        
     },
 };
 
@@ -42,8 +46,8 @@ const menu_header = (props) => {
    // styles.header.backgroundColor = props.colorBackground;
     let header = (
         <div className="col-xs-12 navbar-fixed-top" style={styles.header}>
-            <div className="col-xs-1 vcenter" style={styles.burger}>
-                <BurgerIcon style={styles.burgerIcon} />
+            <div className="col-xs-1 vcenter" style={styles.backArrow}>
+                <BackArrow style={styles.backArrowIcon} />
             </div>
 
             <div className="col-xs-8 vcenter" style={styles.titleSingle}>

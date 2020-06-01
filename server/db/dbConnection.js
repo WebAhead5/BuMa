@@ -1,11 +1,13 @@
 const pgp = require('pg-promise')();
 
-const herokuDB = {
-  host: process.env.HEROKU_HOST,
-  user: process.env.HEROKU_USER,
-  password: process.env.HEROKU_PW,
-  database: process.env.HEROKU_DB,
-  ssl: true,
+require('dotenv').config()
+
+const testDB = {
+  host: 'localhost',
+  port: 5432,
+  database: process.env.TEST_DB_NAME,
+  user: process.env.TEST_DB_USER,
+  password: process.env.TEST_DB_PASS
 };
 
 const localDB = {
@@ -16,7 +18,7 @@ const localDB = {
   password: process.env.DB_PASS
 };
 
-const connection = process.env.NODE_ENV === 'production' ? herokuDB : localDB;
+const connection = process.env.NODE_ENV === 'test' ? testDB : localDB;
 
 const db = pgp(connection);
 module.exports = db;

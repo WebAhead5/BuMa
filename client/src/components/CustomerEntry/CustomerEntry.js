@@ -22,22 +22,27 @@ const styles = {
     textAlign: 'right',
   },
   settingsIcon: {
+  },
+  image : {
+    backgroundColor: 'black'
   }
 };
 
 const CustomerEntry = (props) => {
 
     let customerName = props.customer.name || '';
+    let customerEmail = props.customer.email ;
     if (customerName.length > MAX_CUSTOMER_NAME_DISPLAY_LEN) {
       customerName = customerName.slice(0,MAX_CUSTOMER_NAME_DISPLAY_LEN - 3) + '...';
     }
     return (
       <div className="col-xs-12 col-sm-6" style={styles.container}>
         <div className="col-xs-4 vcenter">
-          <Image src={props.imageSrc}/>
+          <Image style ={styles.image}src={props.imageSrc}/>
         </div>
         <div className="col-xs-6 vcenter">
           <span style={styles.name}>{customerName} </span>
+          <span style={styles.name}>{customerEmail} </span>
         </div>
         <div className="col-xs-2 vcenter" style={styles.settings}>
           <i className="fa fa-cog" aria-hidden="true" style={styles.settingsIcon} onClick={() => props.onButtonSettingsClick(props.button.id)}></i>

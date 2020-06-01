@@ -26,7 +26,7 @@ const Customers = (props) => {
 
     const [customers, setCustomers] = React.useState([]);
     const [error, setError] = React.useState('')
-
+    black
     function click() {
         fetchCustomers(handleSetCustomers);
     }
@@ -42,8 +42,8 @@ const Customers = (props) => {
 
     return (
         <ScreenContainer>
-            <MenuHeader icon="burger"
-                title="customers" />
+            <MenuHeader icon="backArrow"
+                title="Customers" />
             <Button onClickButton={click} text="Click" style={styles.page} />
             <CustomerList customers={customers} error={error} />
         </ScreenContainer>

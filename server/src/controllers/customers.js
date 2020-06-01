@@ -26,10 +26,14 @@ exports.addOneCustomer = (req, res) => {
         email: req.body.email,
         phone: req.body.phone,
         userid: req.body.userid,
-        paymentStatus: req.body.paymentStatus,
-        activityStatus: req.body.activityStatus,
+        paymentStatus: false,
+        activityStatus: true,
         notes: req.body.notes,
-        balance: req.body.balance
+        balance: req.body.balance,
+        appointmentPrice : req.body.appointmentPrice,
+        paymentEveryValue : req.body.paymentEveryValue,
+        paymentEveryUnit : req.body.paymentEveryUnit,
+        balanceValidUntil : req.body.balanceValidUntil
     }
     queries.addCustomer(newCustomer)
         .then(() => {
@@ -57,10 +61,15 @@ exports.updateCustomer = (req, res) => {
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
+        userid: req.body.userid,
         paymentStatus: req.body.paymentStatus,
         activityStatus: req.body.activityStatus,
         notes: req.body.notes,
-        balance: req.body.balance
+        balance: req.body.balance,
+        appointmentPrice : req.body.appointmentPrice,
+        paymentEveryValue : req.body.paymentEveryValue,
+        paymentEveryUnit : req.body.paymentEveryUnit,
+        balanceValidUntil : req.body.balanceValidUntil
     }
     queries.editCustomer(updatedCustomer)
     .then(() => res.status(200).json({ message: 'Customer updated successfuly' }))

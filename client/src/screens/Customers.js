@@ -32,8 +32,11 @@ const Customers = (props) => {
     }
 
     const handleSetCustomers = (err, customers_res) => {
-        if (err) setError(err)
-        setCustomers(customers_res)
+        if (err) {
+            setError(err)
+            return;
+        }
+        setCustomers(customers_res.customers)
     };
 
 

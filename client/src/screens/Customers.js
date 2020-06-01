@@ -4,7 +4,7 @@
 import React from 'react';
 import ScreenContainer from '../components/Screen';
 import MenuHeader from '../components/MenuHeader';
-import {fetchCustomers} from '../actions/customers';
+import { fetchCustomers } from '../actions/customers';
 import Button from '../components/Button';
 import CustomerList from '../components/CustomerList';
 
@@ -25,20 +25,24 @@ const styles = {
 const Customers = (props) => {
 
     const [customers, setCustomers] = React.useState([]);
-    
-    function click(){
+    const [error, setError] = React.useState('')
+
+    function click() {
         fetchCustomers(handleSetCustomers);
     }
 
-    const handleSetCustomers  = (err,customers_res) => setCustomers(customers_res);
-    
+    const handleSetCustomers = (err, customers_res) => {
+        if (err) setError(err)
+        setCustomers(customers_res)
+    };
+
 
     return (
         <ScreenContainer>
             <MenuHeader icon="burger"
                 title="customers" />
-            <Button onClickButton= {click} text= "Click" style={styles.page} />
-            <CustomerList customers ={customers} />
+            <Button onClickButton={click} text="Click" style={styles.page} />
+            <CustomerList customers={customers} error={error} />
         </ScreenContainer>
     );
 }

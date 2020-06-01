@@ -12,19 +12,22 @@ const styles = {
 const CustomerList = (props) => {
 
   let customers = [];
+  if (props.error) {
+    return (<div>Could not fetch, try again later</div>)
+  } 
   props.customers.forEach((customer, index) => {
     //let imageSrc = getButtonLogo4Project(button.project);
     let imageSrc = "/img/burger.png";
     customers.push(<CustomerEntry key={'buttonEntry' + index}
-                                 customer={customer}
-                                 imageSrc={imageSrc}
-                                 {...props}/>);
-    });
-    return (
-      <div className="col-xs-12 list-view" style={styles.listView}>
-        {customers}
-      </div>
-    );
+      customer={customer}
+      imageSrc={imageSrc}
+      {...props} />);
+  });
+  return (
+    <div className="col-xs-12 list-view" style={styles.listView}>
+      {customers}
+    </div>
+  );
 
 }
 

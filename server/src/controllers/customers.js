@@ -72,7 +72,7 @@ exports.updateCustomer = (req, res) => {
         balanceValidUntil : req.body.balanceValidUntil
     }
     queries.editCustomer(updatedCustomer)
-    .then(() => res.status(200).json({ message: 'Customer updated successfuly' }))
+    .then((arg) => {console.log(arg); return res.status(200).json({ message: 'Customer updated successfuly' })})
     .catch(err => {
         console.error(err);
         return res.status(500).json({ error: err.code })

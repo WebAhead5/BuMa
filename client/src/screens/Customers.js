@@ -11,8 +11,11 @@ import SearchField from '../components/searchField'
 
 
 const styles = {
-    page: {
-        backgroundColor: '#f1f3f4',
+    btn: {
+        backgroundColor: '#0B8D98',
+        color: 'E4FDFF',
+        width: '50vw',
+        height: '5vh'
     },
     noButtonFoundText: {
         color: '#a9b4bf',
@@ -42,7 +45,7 @@ const Customers = (props) => {
     useEffect(() => {
         // Update the document title using the browser API
         fetchCustomers(handleSetCustomers);
-    });
+    }, []);
 
 
 
@@ -54,8 +57,9 @@ const Customers = (props) => {
             <MenuHeader icon="backArrow"
                 title="Customers" />
             <SearchField />
-            {/* <Button onClickButton={click} text="Click" style={styles.page} /> */}
             <CustomerList customers={customers} error={error} />
+            <Button text="Add new" style={styles.btn} />
+            <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
         </ScreenContainer>
     );
 }

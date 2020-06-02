@@ -52,9 +52,9 @@ const searchField = (props) => {
         <div style={styles.container}>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
-            <form class="example" action="" style={styles.form}>
+            <form className="example" action="" style={styles.form}>
                 <input type="text" placeholder="Search.." name="search" style={styles.inputField} />
-                <button type="submit"><i class=" fa fa-search" style={styles.submitButton}></i></button>
+                <button type="submit"><i className="fa fa-search" style={styles.submitButton}></i></button>
             </form>
 
 

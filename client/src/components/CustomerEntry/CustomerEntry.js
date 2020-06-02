@@ -6,7 +6,7 @@ const styles = {
   container: {
     backgroundColor: '#282c34',
     borderRadius: 9,
-    marginBottom: 10,
+    marginBottom: 0,
     padding: 10,
   },
   name: {

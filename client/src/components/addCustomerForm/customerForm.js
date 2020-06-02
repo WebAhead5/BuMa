@@ -9,37 +9,46 @@ import PaymentPeriod from './paymentPer';
 import {addCustomer} from '../../actions/customers';
 
 class CustomerForm extends Component {
-
+ 
     state = {
         name: 'Name',
         email: 'Email',
         phone: 'Phone',
-        price: 'Price per appointment $',
-        paymentNumber: '1',
-        paymentPeriod: 'week',
-        note: 'Note'  
+        userid: '1',
+        paymentStatus: 'false',
+        activityStatus: 'true',
+        notes: 'Note',
+        balance: '0',
+        appointmentPrice : 'Price per appointment $',
+        paymentEveryValue : '1',
+        paymentEveryUnit : 'Week',
+        balanceValidUntil : '2/2/2000'
     };
+
+    // handleDate = () =>{
+    //   const date= new Date();
+    //   const todaysDate = date.getFullYear()+'/'+(Date.getMonth()+1)+'/'+Date.getDate();
+    //   this.setState({balanceValidUntil : todaysDate});
+    // }
 
     handleChange = (e, id) => {
       console.log(id + ":" + e.target.value)
       if(e.target.value === '')
         this.setState({[id] : id});
+      // else if (id == 'email')
+      //   this.setState({email : e.target.value});
       else
         this.setState({[id] : e.target.value});
       console.log(this.state)
     }
 
-    // //push the state into the customers database
-    // handleAddCustomer = (err, res) =>{
-    //   if (err)
-    //     return 
-    //   else
-    //     this.setState(res)
-    // }
-
     handleSubmit = (event) => {
-      alert('A name was submitted: ' + this.state.name);
-      //addCustomer(this.handleAddCustomer)
+      //onsole.log(this.state.value)
+      const date= new Date();
+      const todaysDate = date.getDate()+'/'+(date.getMonth()+1) +'/'+ date.getFullYear();
+      console.log(todaysDate)
+      this.setState({balanceValidUntil : todaysDate});
+      addCustomer(this.state)
       event.preventDefault();
     }
   
@@ -63,24 +72,24 @@ class CustomerForm extends Component {
               placeHolder={this.state.phone}
             />
             <CustomerPrice 
-              stateId="price" 
+              stateId="appointmentPrice" 
               onChange={this.handleChange} 
-              placeHolder={this.state.price}
+              placeHolder={this.state.appointmentPrice}
             />
             <PaymentNumber 
-              stateId="paymentNumber" 
+              stateId="paymentEveryValue" 
               onChange={this.handleChange} 
-              placeHolder={this.state.paymentNumber}
+              placeHolder={this.state.paymentEveryValue}
             />
             <PaymentPeriod
-              stateId="paymentPeriod" 
+              stateId="paymentEveryUnit" 
               onChange={this.handleChange} 
-              placeHolder={this.state.paymentPeriod}
+              placeHolder={this.state.paymentEveryUnit}
             />
             <CustomerNote 
-              stateId="note" 
+              stateId="notes" 
               onChange={this.handleChange} 
-              placeHolder={this.state.note}
+              placeHolder={this.state.notes}
             />
            </div>
             <input 

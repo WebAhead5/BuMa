@@ -32,15 +32,8 @@ const CustomerList = (props) => {
   });
   return (
     <div className="col-xs-12 list-view" style={styles.listView}>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Payment</th>
-          <th>Amount</th>
-        </tr>
 
-        {customers}
-      </table>
+      {customers}
     </div>
   );
 

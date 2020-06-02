@@ -32,13 +32,6 @@ const styles = {
   image: {
     backgroundColor: 'black'
   },
-
-  table : {
-    color : 'white',
-    display : 'flex',
-    justifyContent:"space-evenly",
-
-  }
 };
 
 const CustomerEntry = (props) => {
@@ -54,32 +47,21 @@ const CustomerEntry = (props) => {
   }
   return (
 
-    <div className="entriesContainer" style= {styles.table}>
-
-
-        <tr>
-          <td>{customerName}</td>
-          <td>{customerPaymentStatus}</td>
-          <td>{customerAppointmentPrice}</td>
-        </tr>
-
-
+    <div className="col-xs-12 col-sm-6" style={styles.container}>
+      <div className="col-xs-4 vcenter">
+        <Image style={styles.image} src={props.imageSrc} />
+      </div>
+      <div className="col-xs-6 vcenter">
+        <span style={styles.name}>Name : {customerName} </span>
+        <br></br>
+        <span style={styles.name}>Payment Status : {customerPaymentStatus} </span>
+        <br></br>
+        <span style={styles.name}>Appointment Price : {customerAppointmentPrice} </span>
+      </div>
+      <div className="col-xs-2 vcenter" style={styles.settings}>
+        <i className="fa fa-cog" aria-hidden="true" style={styles.settingsIcon} onClick={() => props.onButtonSettingsClick(props.button.id)}></i>
+      </div>
     </div>
-    // <div className="col-xs-12 col-sm-6" style={styles.container}>
-    //   <div className="col-xs-4 vcenter">
-    //     <Image style= {styles.image} src={props.imageSrc}/>
-    //   </div>
-    //   <div className="col-xs-6 vcenter">
-    //     <span style={styles.name}>Name : {customerName} </span>
-    //     <br></br>
-    //     <span style={styles.name}>Payment Status : {customerPaymentStatus} </span>
-    //     <br></br>
-    //     <span style={styles.name}>Appointment Price : {customerAppointmentPrice} </span>
-    //   </div>
-    //   <div className="col-xs-2 vcenter" style={styles.settings}>
-    //     <i className="fa fa-cog" aria-hidden="true" style={styles.settingsIcon} onClick={() => props.onButtonSettingsClick(props.button.id)}></i>
-    //   </div>
-    // </div>
   );
 }
 

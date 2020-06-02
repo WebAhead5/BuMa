@@ -7,7 +7,7 @@ const styles = {
   },
 };
 
-const screen = (props) => {
+const Screen = (props) => {
  
     return (
       <div style={styles.container}>
@@ -20,4 +20,4 @@ Screen.propTypes = {};
 
 Screen.defaultProps = {};
 
-export default screen;
+export default Screen;

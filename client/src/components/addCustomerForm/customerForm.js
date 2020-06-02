@@ -29,16 +29,17 @@ class CustomerForm extends Component {
       console.log(this.state)
     }
 
-    handleAddCustomer = (err, res) =>{
-      if (err)
-        return 
-      else
-        this.setState(res)
-    }
+    // //push the state into the customers database
+    // handleAddCustomer = (err, res) =>{
+    //   if (err)
+    //     return 
+    //   else
+    //     this.setState(res)
+    // }
 
     handleSubmit = (event) => {
-      //alert('A name was submitted: ' + this.state.name);
-      addCustomer(this.handleAddCustomer)
+      alert('A name was submitted: ' + this.state.name);
+      //addCustomer(this.handleAddCustomer)
       event.preventDefault();
     }
   

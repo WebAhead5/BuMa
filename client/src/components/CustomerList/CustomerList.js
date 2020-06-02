@@ -6,8 +6,10 @@ var _ = require('lodash');
 
 const styles = {
   listView: {
-
-    backgroundColor : '#282c34'
+    color: 'white',
+    backgroundColor: '#282c34',
+    display: 'flex',
+    flexDirection: 'column'
 
   }
 };
@@ -23,14 +25,22 @@ const CustomerList = (props) => {
     let imageSrc = "/img/burger.png";
     customers.push(<CustomerEntry key={'buttonEntry' + index}
       customer={customer}
-      paymentstatus = {paymentstatus}
+      paymentstatus={paymentstatus}
       appointmentprice={appointmentprice}
       imageSrc={imageSrc}
       {...props} />);
   });
   return (
     <div className="col-xs-12 list-view" style={styles.listView}>
-      {customers}
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Payment</th>
+          <th>Amount</th>
+        </tr>
+
+        {customers}
+      </table>
     </div>
   );
 

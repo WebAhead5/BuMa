@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '../Image';
-import {MAX_CUSTOMER_NAME_DISPLAY_LEN} from '../../constants';
+import { MAX_CUSTOMER_NAME_DISPLAY_LEN } from '../../constants';
 
 const styles = {
   container: {
@@ -29,39 +29,58 @@ const styles = {
   },
   settingsIcon: {
   },
-  image : {
+  image: {
     backgroundColor: 'black'
   },
+
+  table : {
+    color : 'white',
+    display : 'flex',
+    justifyContent:"space-evenly",
+
+  }
 };
 
 const CustomerEntry = (props) => {
 
-    let customerName = props.customer.name || '';
-    let customerPaymentStatus = (props.customer.paymentstatus).toString() ;
-    console.log(customerPaymentStatus);
-    
-    let customerAppointmentPrice =props.customer.appointmentprice;
+  let customerName = props.customer.name || '';
+  let customerPaymentStatus = (props.customer.paymentstatus).toString();
+  console.log(customerPaymentStatus);
 
-    if (customerName.length > MAX_CUSTOMER_NAME_DISPLAY_LEN) {
-      customerName = customerName.slice(0,MAX_CUSTOMER_NAME_DISPLAY_LEN - 3) + '...';
-    }
-    return (
-      <div className="col-xs-12 col-sm-6" style={styles.container}>
-        <div className="col-xs-4 vcenter">
-          <Image style= {styles.image} src={props.imageSrc}/>
-        </div>
-        <div className="col-xs-6 vcenter">
-          <span style={styles.name}>Name : {customerName} </span>
-          <br></br>
-          <span style={styles.name}>Payment Status : {customerPaymentStatus} </span>
-          <br></br>
-          <span style={styles.name}>Appointment Price : {customerAppointmentPrice} </span>
-        </div>
-        <div className="col-xs-2 vcenter" style={styles.settings}>
-          <i className="fa fa-cog" aria-hidden="true" style={styles.settingsIcon} onClick={() => props.onButtonSettingsClick(props.button.id)}></i>
-        </div>
-      </div>
-    );
+  let customerAppointmentPrice = props.customer.appointmentprice;
+
+  if (customerName.length > MAX_CUSTOMER_NAME_DISPLAY_LEN) {
+    customerName = customerName.slice(0, MAX_CUSTOMER_NAME_DISPLAY_LEN - 3) + '...';
   }
+  return (
+
+    <div className="entriesContainer" style= {styles.table}>
+
+
+        <tr>
+          <td>{customerName}</td>
+          <td>{customerPaymentStatus}</td>
+          <td>{customerAppointmentPrice}</td>
+        </tr>
+
+
+    </div>
+    // <div className="col-xs-12 col-sm-6" style={styles.container}>
+    //   <div className="col-xs-4 vcenter">
+    //     <Image style= {styles.image} src={props.imageSrc}/>
+    //   </div>
+    //   <div className="col-xs-6 vcenter">
+    //     <span style={styles.name}>Name : {customerName} </span>
+    //     <br></br>
+    //     <span style={styles.name}>Payment Status : {customerPaymentStatus} </span>
+    //     <br></br>
+    //     <span style={styles.name}>Appointment Price : {customerAppointmentPrice} </span>
+    //   </div>
+    //   <div className="col-xs-2 vcenter" style={styles.settings}>
+    //     <i className="fa fa-cog" aria-hidden="true" style={styles.settingsIcon} onClick={() => props.onButtonSettingsClick(props.button.id)}></i>
+    //   </div>
+    // </div>
+  );
+}
 
 export default CustomerEntry;

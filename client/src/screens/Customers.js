@@ -42,7 +42,7 @@ const Customers = (props) => {
     useEffect(() => {
         // Update the document title using the browser API
         fetchCustomers(handleSetCustomers);
-    });
+    },[]);
 
 
 

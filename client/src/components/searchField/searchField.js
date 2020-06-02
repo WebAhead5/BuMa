@@ -35,9 +35,9 @@ let styles = {
 
     submitButton: {
 
-        width: '15px',
-        height: '15px',
-        padding: '10px',
+        width: '40px',
+        height: '42px',
+        padding: '12px',
         color: 'blue',
         cursor: 'pointer',
 

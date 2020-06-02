@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {REDIRECT_URL} from '../../constants';
+import React from 'react';
+import { REDIRECT_URL } from '../../constants';
 //import { browserHistory } from 'react-router'
 
 const styles = {
@@ -10,16 +10,21 @@ const styles = {
 };
 
 const BackArrow = (props) => {
-  function onClickGoBackArrow() {
-    if (props.entryPoint){
-      window.location = REDIRECT_URL;
-    } else {
-     //browserHistory.goBack();
+    function onClickGoBackArrow() {
+        if (props.entryPoint) {
+            window.location = REDIRECT_URL;
+        } else {
+            //browserHistory.goBack();
+        }
     }
-  }
 
-  return (<img  onClick={() => onClickGoBackArrow()}  role="presentation" style={styles.image} src="/img/arrow-back.png"/>);
-  
+    return ( <img 
+                  className="grow br3 shadow-2"
+                  onClick = { () => onClickGoBackArrow()}
+                  alt = "presentation"
+                  style = { styles.image }
+                  src = "/img/arrow-back.png" /> );
+
 }
 
 // BackArrow.propTypes = {

@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-import BurgerIcon from '../BurgerIcon';
+import React from 'react';
+//import BurgerIcon from '../BurgerIcon';
 import BackArrow from '../BackArrow';
-
-
-
-
 
 let styles = {
     header: {
@@ -50,9 +46,9 @@ const menu_header = (props) => {
                 <BackArrow style={styles.backArrowIcon} />
             </div>
 
-            <div className="col-xs-8 vcenter" style={styles.titleSingle}>
+            <span className="col-xs-8 vcenter" style={styles.titleSingle}>
                 {props.title && <p> {props.title}</p>}
-            </div>
+            </span>
 
             <div className="col-xs-2 vcenter">
             </div>

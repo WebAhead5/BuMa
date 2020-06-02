@@ -6,6 +6,7 @@ import CustomerPhone from './customerPhone';
 import CustomerPrice from './customerPrice';
 import PaymentNumber from './paymentEvery';
 import PaymentPeriod from './paymentPer';
+import {addCustomer} from '../../actions/customers';
 
 class CustomerForm extends Component {
 
@@ -28,8 +29,16 @@ class CustomerForm extends Component {
       console.log(this.state)
     }
 
+    handleAddCustomer = (err, res) =>{
+      if (err)
+        return 
+      else
+        this.setState(res)
+    }
+
     handleSubmit = (event) => {
-      alert('A name was submitted: ' + this.state.name);
+      //alert('A name was submitted: ' + this.state.name);
+      addCustomer(this.handleAddCustomer)
       event.preventDefault();
     }
   

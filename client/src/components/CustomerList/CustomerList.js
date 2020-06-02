@@ -7,6 +7,8 @@ var _ = require('lodash');
 const styles = {
   listView: {
 
+    backgroundColor : '#282c34'
+
   }
 };
 
@@ -16,13 +18,13 @@ const CustomerList = (props) => {
   if (props.error) {
     return (<div>Could not fetch, try again later</div>)
   }
-  props.customers.forEach((customer, email, index) => {
+  props.customers.forEach((customer, paymentstatus, appointmentprice, index) => {
     //let imageSrc = getButtonLogo4Project(button.project);
     let imageSrc = "/img/burger.png";
     customers.push(<CustomerEntry key={'buttonEntry' + index}
       customer={customer}
-      email={email}
-
+      paymentstatus = {paymentstatus}
+      appointmentprice={appointmentprice}
       imageSrc={imageSrc}
       {...props} />);
   });

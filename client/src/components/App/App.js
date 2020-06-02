@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="App">
       <Customers />
-      <header className="App-header">
-      </header>
+      {/* <header className="App-header">
+      </header> */}
     </div>
   );
 }

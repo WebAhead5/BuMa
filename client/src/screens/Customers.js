@@ -30,7 +30,7 @@ const Customers = (props) => {
 
     const [customers, setCustomers] = React.useState([]);
     const [error, setError] = React.useState('')
-    const [value, setValue] = React.useState('')
+    const [searchText, setSearchText] = React.useState('')
     const [filterDisplay, setFilterDisplay] = React.useState(customers)
     // function click() {
     //     fetchCustomers(handleSetCustomers);
@@ -41,43 +41,34 @@ const Customers = (props) => {
             return;
         }
         setCustomers(customers_res.customers)
+        setFilterDisplay(customers_res.customers)
     };
 
 
     useEffect(() => {
         // Update the document title using the browser API
         fetchCustomers(handleSetCustomers);
+        
     }, []);
 
-    useEffect(()=> {
-        setFilterDisplay(customers)
-    }, [customers])
-    
 
     const searchFieldHandleChange = (e) => {
-        e.preventDefault()
-        let oldList = customers.filter(customers => customers)
-        console.log("customers", oldList)
-        if(e.target.value !== "") {
-            let newList = []
-            setValue(e.target.value)
-            newList = oldList.filter(customer => customer.name.toLowerCase().includes(value.toLowerCase()))
+        let input = e.target.value
+        if (input !== '') {
+            setSearchText(input.trim())
+            let newList = customers.filter(({name}) => name.toLowerCase().startsWith(input.toLowerCase()))
             setFilterDisplay(newList);
         } else {
-            setValue('')
+            setSearchText('')
             setFilterDisplay(customers)
         }
-        
     }
-
-
-
 
     return (
         <ScreenContainer>
             <MenuHeader icon="backArrow"
                 title="Customers" />
-            <SearchField value={value} handleChange={searchFieldHandleChange} />
+            <SearchField value={searchText} handleChange={searchFieldHandleChange} />
             <CustomerList customers={filterDisplay} error={error} />
             <Button text="Add new" style={styles.btn} />
             <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />

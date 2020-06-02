@@ -30,6 +30,8 @@ const Customers = (props) => {
 
     const [customers, setCustomers] = React.useState([]);
     const [error, setError] = React.useState('')
+    const [value, setValue] = React.useState('')
+    const [filterDisplay, setFilterDisplay] = React.useState(customers)
     // function click() {
     //     fetchCustomers(handleSetCustomers);
     // }
@@ -47,7 +49,26 @@ const Customers = (props) => {
         fetchCustomers(handleSetCustomers);
     }, []);
 
+    useEffect(()=> {
+        setFilterDisplay(customers)
+    }, [customers])
+    
 
+    const searchFieldHandleChange = (e) => {
+        e.preventDefault()
+        let oldList = customers.filter(customers => customers)
+        console.log("customers", oldList)
+        if(e.target.value !== "") {
+            let newList = []
+            setValue(e.target.value)
+            newList = oldList.filter(customer => customer.name.toLowerCase().includes(value.toLowerCase()))
+            setFilterDisplay(newList);
+        } else {
+            setValue('')
+            setFilterDisplay(customers)
+        }
+        
+    }
 
 
 
@@ -56,8 +77,8 @@ const Customers = (props) => {
         <ScreenContainer>
             <MenuHeader icon="backArrow"
                 title="Customers" />
-            <SearchField />
-            <CustomerList customers={customers} error={error} />
+            <SearchField value={value} handleChange={searchFieldHandleChange} />
+            <CustomerList customers={filterDisplay} error={error} />
             <Button text="Add new" style={styles.btn} />
             <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
         </ScreenContainer>

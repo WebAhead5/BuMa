@@ -27,6 +27,12 @@ export function fetchCustomers(cb) {
     // }
 }
 
+export function addCustomer(cb) {
+    // return function (dispatch, getState) {
+    callApi(null, null, 'POST', 'add-customer', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    // }
+}
+
 
 
 // export function setButtonCache(cb) {

@@ -38,13 +38,11 @@ const Customers = (props) => {
         setCustomers(customers_res.customers)
     };
 
-    
+
     useEffect(() => {
         // Update the document title using the browser API
         fetchCustomers(handleSetCustomers);
     });
-
-
 
 
 

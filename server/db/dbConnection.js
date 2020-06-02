@@ -1,5 +1,4 @@
 const pgp = require('pg-promise')();
-require('dotenv').config();
 
 require('dotenv').config()
 
@@ -19,7 +18,7 @@ const localDB = {
   password: process.env.DB_PASS
 };
 
-const connection = process.env.NODE_ENV === 'test' ? testDB : localDB;
+const connection = process.env.NODE_ENV === 'test' ? localDB : testDB;
 
 const db = pgp(connection);
 module.exports = db;

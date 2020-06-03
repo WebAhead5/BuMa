@@ -108,6 +108,7 @@ tape("Adding new appointment to the database", (t) => {
                 console.error(err)
                 t.end();
             });
+            
         }).catch(err => {
             console.log(err);
             t.fail();

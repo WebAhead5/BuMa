@@ -11,12 +11,6 @@ export function setLoading(loading) {
   };
 }
 
-export function setKwikWiFi(kwikwifi) {
-  return {
-    type: SET_KWIK_WIFI,
-    value: kwikwifi
-  };
-}
 
 export function setHasRightHeaderLogo(hasLogo) {
   return {
@@ -32,9 +26,3 @@ export function setError(error) {
   };
 }
 
-export function setProjectId(projectId){
-  return {
-    type: SET_PROJECT_ID,
-    value: projectId
-  };
-}

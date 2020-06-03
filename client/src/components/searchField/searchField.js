@@ -8,12 +8,13 @@ let styles = {
 
     container: {
 
-        backgroundColor: '#282c34',
+        backgroundColor: '#1F2B30',
         display: 'flex',
         justifyContent: 'center',
         alignContent: 'center',
         width: '100%',
-        paddingTop : '10px'
+        paddingTop : '10px',
+        paddingBottom : '20px'
 
     },
 

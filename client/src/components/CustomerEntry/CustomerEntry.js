@@ -14,8 +14,10 @@ const styles = {
     alignItems: 'center',
     listStyleType: 'none',
     width: '95%',
+    height : '5%',
     marginLeft: '20px',
     borderRadius: '5px'
+    
 
 
 
@@ -34,6 +36,7 @@ const styles = {
     alignItems: 'center',
     listStyleType: 'none',
     width: '95%',
+    height : '5%',
     marginLeft: '20px',
     borderRadius: '5px'
 
@@ -58,10 +61,10 @@ const CustomerEntry = (props) => {
     customerName = customerName.slice(0, MAX_CUSTOMER_NAME_DISPLAY_LEN - 3) + '...';
   }
   return (
-    
+
     <ul style={customerActivityStatus ? styles.activeUser : styles.NotActiveUser}>
 
-      <li><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>
+      <li style={styles.li}><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>
 
       <li>{customerName}</li>
 

@@ -8,12 +8,13 @@ let styles = {
 
     container: {
 
-        backgroundColor: '#282c34',
+        backgroundColor: '#1F2B30',
         display: 'flex',
         justifyContent: 'center',
         alignContent: 'center',
         width: '100%',
-        paddingTop : '10px'
+        paddingTop : '10px',
+        paddingBottom : '10px'
 
     },
 
@@ -35,9 +36,9 @@ let styles = {
 
     submitButton: {
 
-        width: '15px',
-        height: '15px',
-        padding: '10px',
+        width: '40px',
+        height: '42px',
+        padding: '12px',
         color: 'blue',
         cursor: 'pointer',
 
@@ -45,16 +46,16 @@ let styles = {
 }
 
 
-const searchField = (props) => {
+ const SearchField = ({value, handleChange}) => {
 
     return (
 
         <div style={styles.container}>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
-            <form class="example" action="" style={styles.form}>
-                <input type="text" placeholder="Search.." name="search" style={styles.inputField} />
-                <button type="submit"><i class=" fa fa-search" style={styles.submitButton}></i></button>
+            <form className="example" action="" style={styles.form}>
+                <input type="text" value={value} onChange={handleChange} placeholder="Search.." name="search" style={styles.inputField} />
+                <button type="submit"><i className="fa fa-search" style={styles.submitButton}></i></button>
             </form>
 
 
@@ -68,4 +69,4 @@ const searchField = (props) => {
 }
 
 
-export default searchField;
+export default SearchField;

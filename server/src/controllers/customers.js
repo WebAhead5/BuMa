@@ -61,7 +61,6 @@ exports.updateCustomer = (req, res) => {
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
-        userid: req.body.userid,
         paymentStatus: req.body.paymentStatus,
         activityStatus: req.body.activityStatus,
         notes: req.body.notes,

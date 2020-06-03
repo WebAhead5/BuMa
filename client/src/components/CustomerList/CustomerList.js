@@ -5,11 +5,37 @@ import PropTypes from 'prop-types';
 var _ = require('lodash');
 
 const styles = {
-  listView: {
 
-    backgroundColor : '#282c34'
+  container: {
 
+    backgroundColor: '#1F2B30',
+
+  },
+
+  table: {
+    color: 'black',
+    backgroundColor: '#1F2B30',
+    marginLeft: '30px',
+    width: '95vw',
+    height: '100vh',
+
+
+  },
+  thead: {
+    backgroundColor: 'white',
+    
+
+
+  },
+  tr : {
+
+    height : '50px  '
   }
+
+  
+
+
+
 };
 
 const CustomerList = (props) => {
@@ -18,20 +44,46 @@ const CustomerList = (props) => {
   if (props.error) {
     return (<div>Could not fetch, try again later</div>)
   }
-  props.customers.forEach((customer, paymentstatus, appointmentprice, index) => {
-    //let imageSrc = getButtonLogo4Project(button.project);
+  props.customers.forEach((customer, paymentstatus, appointmentprice, activitystatus, index) => {
     let imageSrc = "/img/burger.png";
+    let activitySrc = "/img/green.png";
+    let noActivitySrc = "/img/red.png";
     customers.push(<CustomerEntry key={'buttonEntry' + index}
       customer={customer}
-      paymentstatus = {paymentstatus}
+      paymentstatus={paymentstatus}
       appointmentprice={appointmentprice}
+      activitystatus={activitystatus}
+      activitySrc={activitySrc}
+      noActivitySrc={noActivitySrc}
+
       imageSrc={imageSrc}
+
+
       {...props} />);
   });
   return (
-    <div className="col-xs-12 list-view" style={styles.listView}>
-      {customers}
+    <div style={styles.container}>
+      <table style={styles.table}>
+
+          <tr className='br3' style={styles.thead} >
+            <th >Activity Status</th>
+            <th>Name</th>
+            <th>Payment Status</th>
+            <th>Amount</th>
+          </tr>
+
+
+
+          {customers}
+
+
+
+
+      </table>
+
     </div>
+
+
   );
 
 }

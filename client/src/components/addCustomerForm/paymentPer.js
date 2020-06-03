@@ -8,9 +8,9 @@ const paymentPer = (props) => {
           type="number"
           className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-30"
           onChange={(e, id) => props.onChange(e, props.stateId)}>
-              <option value="appointment">appointment</option>
-              <option value="week">week</option>
-              <option value="month">month</option>
+              <option value="Appointment">Appointment</option>
+              <option value="Week">Week</option>
+              <option value="Month">Month</option>
           </select>
           
         </div>

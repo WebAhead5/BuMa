@@ -1,7 +1,6 @@
 import React from 'react';
 import CustomerEntry from '../CustomerEntry';
 import PropTypes from 'prop-types';
-
 var _ = require('lodash');
 
 const styles = {
@@ -9,31 +8,21 @@ const styles = {
   container: {
 
     backgroundColor: '#1F2B30',
+    height: '800px'
 
   },
 
-  table: {
-    color: 'black',
-    backgroundColor: '#1F2B30',
-    marginLeft: '30px',
-    width: '95vw',
-    height: '100vh',
-
-
-  },
-  thead: {
+  ul: {
     backgroundColor: 'white',
-    
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    listStyleType: 'none',
+    width: '95%',
+    marginLeft: '20px',
+    borderRadius: '5px'
 
-
-  },
-  tr : {
-
-    height : '50px  '
   }
-
-  
-
 
 
 };
@@ -60,26 +49,28 @@ const CustomerList = (props) => {
 
 
       {...props} />);
+
   });
+
   return (
+
     <div style={styles.container}>
-      <table style={styles.table}>
 
-          <tr className='br3' style={styles.thead} >
-            <th >Activity Status</th>
-            <th>Name</th>
-            <th>Payment Status</th>
-            <th>Amount</th>
-          </tr>
+      <ul style={styles.ul}>
 
+        <li>Activity Status </li>
 
+        <li>Name</li>
 
-          {customers}
+        <li>Payment Status </li>
+
+        <li>Amount </li>
 
 
+      </ul>
 
 
-      </table>
+      {customers}
 
     </div>
 

@@ -14,7 +14,7 @@ let styles = {
         alignContent: 'center',
         width: '100%',
         paddingTop : '10px',
-        paddingBottom : '10px'
+        paddingBottom : '20px'
 
     },
 

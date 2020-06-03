@@ -2,12 +2,22 @@ import React from 'react';
 import Image from '../Image';
 import { MAX_CUSTOMER_NAME_DISPLAY_LEN } from '../../constants';
 
+
 const styles = {
 
   activeUser: {
 
     backgroundColor: 'white',
- 
+    color: 'black',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    listStyleType: 'none',
+    width: '95%',
+    marginLeft: '20px',
+    borderRadius: '5px'
+
+
 
 
 
@@ -17,7 +27,16 @@ const styles = {
 
     backgroundColor: 'white',
     opacity: '0.3',
-    color: 'black'
+    color: 'black',
+    color: 'black',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    listStyleType: 'none',
+    width: '95%',
+    marginLeft: '20px',
+    borderRadius: '5px'
+
   },
 
 }
@@ -34,22 +53,26 @@ const CustomerEntry = (props) => {
 
 
 
+
   if (customerName.length > MAX_CUSTOMER_NAME_DISPLAY_LEN) {
     customerName = customerName.slice(0, MAX_CUSTOMER_NAME_DISPLAY_LEN - 3) + '...';
   }
   return (
+    
+    <ul style={customerActivityStatus ? styles.activeUser : styles.NotActiveUser}>
+
+      <li><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>
+
+      <li>{customerName}</li>
+
+      <li>{customerPaymentStatus ? 'Done' : 'Pending ...'} </li>
+
+      <li>{customerAppointmentPrice} </li>
 
 
-    <tr style={customerActivityStatus ? styles.activeUser : styles.NotActiveUser}>
-      <td>
-        <Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /></td>
-      <td>{customerName}</td>
-      <td>{customerPaymentStatus?'Done' : 'Pending ...'}</td>
-      <td>{customerAppointmentPrice}</td>
-    </tr>
 
 
-
+    </ul>
 
 
 

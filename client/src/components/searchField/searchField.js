@@ -50,11 +50,10 @@ let styles = {
     return (
 
         <div style={styles.container}>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+            
 
             <form className="example" action="" style={styles.form}>
                 <input type="text" value={value} onChange={handleChange} placeholder="Search.." name="search" style={styles.inputField} />
-                <button type="submit"><i className="fa fa-search" style={styles.submitButton}></i></button>
             </form>
 
 

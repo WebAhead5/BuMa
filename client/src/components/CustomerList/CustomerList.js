@@ -16,12 +16,11 @@ const styles = {
     backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'space-around',
-    alignItems: 'end',
+    alignItems: 'center',
     listStyleType: 'none',
-    width: '95%',
-    marginLeft: '20px',
+    width: '95vw',
     borderRadius: '6px',
-    height : '5%'
+    height : '5vh'
 
   }
 

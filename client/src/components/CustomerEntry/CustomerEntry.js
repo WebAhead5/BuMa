@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from '../Image';
 import { MAX_CUSTOMER_NAME_DISPLAY_LEN } from '../../constants';
+import { Link } from 'react-router-dom'
 
 
 const styles = {
@@ -13,11 +14,10 @@ const styles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     listStyleType: 'none',
-    width: '95%',
-    height : '5%',
-    marginLeft: '20px',
+    width: '95vw',
+    height: '5vh',
     borderRadius: '5px'
-    
+
 
 
 
@@ -35,10 +35,9 @@ const styles = {
     justifyContent: 'space-around',
     alignItems: 'center',
     listStyleType: 'none',
-    width: '95%',
-    height : '5%',
-    marginLeft: '20px',
-    borderRadius: '5px'
+    width: '95vw',
+    height: '5vh',
+    borderRadius: '5px',
 
   },
 
@@ -62,20 +61,23 @@ const CustomerEntry = (props) => {
   }
   return (
 
-    <ul style={customerActivityStatus ? styles.activeUser : styles.NotActiveUser}>
+    <Link to={`customerCard/${customerName}`}>
+      <ul style={customerActivityStatus ? styles.activeUser : styles.NotActiveUser}>
 
-      <li style={styles.li}><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>
+        <li style={styles.li}><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>
 
-      <li>{customerName}</li>
+        <li>{customerName}</li>
 
-      <li>{customerPaymentStatus ? 'Done' : 'Pending ...'} </li>
+        <li>{customerPaymentStatus ? 'Done' : 'Pending ...'} </li>
 
-      <li>{customerAppointmentPrice} </li>
+        <li>{customerAppointmentPrice} </li>
+
+      </ul>
 
 
+    </Link>
 
 
-    </ul>
 
 
 

@@ -28,7 +28,6 @@ export function fetchCustomers(cb) {
 }
 
 export function addCustomer(customer, cb) {
-    //console.log(customer)
     callApi(null, null, 'POST', 'add-customer', customer, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE);
 }
 

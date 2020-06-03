@@ -22,7 +22,8 @@ const styles = {
     noButtonFoundText: {
         color: '#a9b4bf',
         fontSize: '1.1em',
-    }
+    },
+
 };
 
 
@@ -72,6 +73,8 @@ const Customers = (props) => {
             <MenuHeader icon="backArrow"
                 title="Customers" />
             <SearchField value={searchText} handleChange={searchFieldHandleChange} />
+
+
             <CustomerList customers={filterDisplay} error={error} />
             <Link to={`/addCustomer`}>
 
@@ -80,6 +83,7 @@ const Customers = (props) => {
             </Link>
 
             <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
+
         </ScreenContainer>
     );
 }

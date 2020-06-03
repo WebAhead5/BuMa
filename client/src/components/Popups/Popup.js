@@ -9,7 +9,7 @@ const Popup = (props) => {
 
     // handle errors
     if(buttonsNumber.length !== callbacks.length) {
-        throw new Exception('buttonsNumber length does not match callbacks length')
+        throw new Error('buttonsNumber length does not match callbacks length')
     }
   
     // populate div with buttons according to props.labels length.

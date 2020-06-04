@@ -24,3 +24,9 @@ export function fetchAppointments(cb) {
     callApi(null, null, 'GET', 'appointments', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
     // }
 }
+
+export function getAppointmentData(id,cb) {
+    // return function (dispatch, getState) {
+    callApi(null, null, 'GET', `appointment/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    // }
+}

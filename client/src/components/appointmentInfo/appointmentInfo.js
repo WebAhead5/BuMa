@@ -1,4 +1,6 @@
 import React from 'react'
+//import Note from '../NoteFieldText';
+
 const styles = {
     container: {
         height: '100vh',
@@ -8,7 +10,7 @@ const styles = {
         alignItems: 'center',
     },
 }
-const appointmentInfo = (props) => {
+const AppointmentInfo = (props) => {
     return (
         <div style={styles.container}>
             <input 
@@ -33,4 +35,4 @@ const appointmentInfo = (props) => {
         </div>
     )
 }
-export default appointmentInfo;
+export default AppointmentInfo;

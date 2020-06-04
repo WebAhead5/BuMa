@@ -14,9 +14,6 @@ import { filterDisplay, customers , customersState } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
 
 
-
-
-
 const styles = {
     btn: {
         backgroundColor: '#0B8D98',
@@ -40,9 +37,6 @@ const styles = {
     }
 
 };
-
-
-
 
 const Customers = (props) => {
     const allCustomers =  useRecoilValue(customers);
@@ -79,18 +73,13 @@ const Customers = (props) => {
             <MenuHeader icon="backArrow"
                 title= "Customers" />
             <SearchField value={searchText} handleChange={searchFieldHandleChange} />
-
-
             <CustomerList customers={filteredCustomers} error={error} />
-           
-
             <div style={styles.btnContainer}>
                 <Link to={`/addCustomer`}>
 
                     <Button text="Add new" style={styles.btn} />
 
                 </Link>
-
                 <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
             </div>
         </ScreenContainer>

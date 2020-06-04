@@ -8,18 +8,12 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignItems: 'center',
-
     },
-
-
 }
 
-
 const customerInfo = (props) => {
-
     return (
         <div style={styles.container}>
-
             <input className="input-reset ba b--black-20 pa2 mb2 db br3 w-20" type="text" name="customerName" placeholder={props.namePlaceHolder} />
             <input className="input-reset ba b--black-20 pa2 mb2 db br3 w-20" type="email" name="customerEmail" placeholder={props.emailPlaceHolder} />
             <input className="input-reset ba b--black-20 pa2 mb2 db br3 w-20" type="phone" name="customerPhone" placeholder={props.phonePlaceHolder} />
@@ -32,7 +26,6 @@ const customerInfo = (props) => {
                 rows="4"
                 className="input-reset ba b--black-20 pa2 mb2 br3 db w-50"
                 placeholder={props.notesPlaceHolder} />
-
         </div>
     )
 }

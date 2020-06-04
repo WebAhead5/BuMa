@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 
 
 const styles = {
-
   activeUser: {
-
     backgroundColor: 'white',
     color: 'black',
     display: 'flex',
@@ -17,16 +15,9 @@ const styles = {
     width: '95vw',
     height: '5vh',
     borderRadius: '5px'
-
-
-
-
-
-
   },
 
   NotActiveUser: {
-
     backgroundColor: 'white',
     opacity: '0.3',
     color: 'black',
@@ -53,9 +44,6 @@ const CustomerEntry = (props) => {
   let customerNoActivitySrc = props.noActivitySrc;
 
 
-
-
-
   if (customerName.length > MAX_CUSTOMER_NAME_DISPLAY_LEN) {
     customerName = customerName.slice(0, MAX_CUSTOMER_NAME_DISPLAY_LEN - 3) + '...';
   }
@@ -73,15 +61,7 @@ const CustomerEntry = (props) => {
         <li>{customerAppointmentPrice} </li>
 
       </ul>
-
-
     </Link>
-
-
-
-
-
-
 
     // <div className="col-xs-12 col-sm-6" style={styles.container}>
     //   <div className="col-xs-4 vcenter">

@@ -1,18 +1,66 @@
 import React from 'react';
-import Appointments from '../../screens/Appointments';
-import { appointments } from '../../store/appointments';
+import AppointmentEntry from '../AppointmentEntry'
+
+const styles = {
+
+    container: {
+
+        backgroundColor: '#1F2B30',
+        height: '800px'
+
+    },
+
+    ul: {
+        backgroundColor: 'white',
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        listStyleType: 'none',
+        width: '95vw',
+        borderRadius: '6px',
+        height: '5vh'
+
+    }
+
+
+};
 
 const AppointmentsList = (props) => {
 
     let appointments = props.appointments
-    console.log('Appointments list = ', appointments)
+
+    let allAppointments = []
+    console.log('all = ', allAppointments)
+    appointments.forEach((appointment, index) => {
+        allAppointments.push(<AppointmentEntry key={`Entry ${index}`}
+            appointment={appointment}
+            id={appointment.id}
+            from={appointment.start_at}
+            to={appointment.end_at}
+        />)
+    })
+
+
 
     return (
-        <ul>
-            <li>
-                {appointments.day}
-            </li>
-        </ul>
+        <div style={styles.container}>
+
+            <ul style={styles.ul}>
+
+                <li>Name </li>
+
+                <li>From</li>
+
+                <li>To </li>
+
+
+
+            </ul>
+
+
+            {allAppointments}
+
+        </div>
     )
 }
 

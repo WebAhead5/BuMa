@@ -26,36 +26,27 @@ const styles = {
         width: "150px",
         marginLeft: '15px',
         marginBottom : '15px',
-
+        
     },
 
     deleteBtn: {
-
-        background: '#1F2B30',
         border: 'none',
         marginLeft: '25px',
-    },
-
-    deleteIcon: {
-
         height: '50px',
         width: '50px',
-        
-
-
+        background: 'url(/img/deleteIcon.svg)',
+        backgroundSize: 'cover'
     },
+
     activityBtn: {
 
         background: '#1F2B30',
         border: 'none',
         marginLeft: '20px',
-
-
-    },
-
-    activityIcon: {
         height: '50px',
         width: '50px',
+        background: 'url(/img/activityicon.svg)',
+        backgroundSize: 'cover'
 
     },
 
@@ -84,7 +75,7 @@ const CustomerCard = ({ match }) => {
 
     }, []);
 
-    let deleteIcon = "/img/deleteIcon.png";
+    let deleteIcon = "/img/deleteIcon.svg";
     let activityIcon = "/img/activityicon.svg";
     let currency = '₪';
 
@@ -118,15 +109,13 @@ const CustomerCard = ({ match }) => {
             />
             <div style={styles.container}>
 
-                <button style={styles.deleteBtn}>
-                    <img style={styles.deleteIcon} src={deleteIcon} />
-                </button>
+                <Button style={styles.deleteBtn}>
+                </Button>
 
 
 
-                <button style={styles.activityBtn}>
-                    <img style={styles.activityIcon} src={activityIcon} />
-                </button>
+                <Button style={styles.activityBtn}>
+                </Button>
             </div>
 
         </ScreenContainer >

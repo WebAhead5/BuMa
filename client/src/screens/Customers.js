@@ -16,13 +16,23 @@ const styles = {
     btn: {
         backgroundColor: '#0B8D98',
         color: 'E4FDFF',
-        width: '50vw',
-        height: '5vh'
+        width: '40vw',
+        height: '10vh',
+        marginBottom : '20px',
+        overflow : 'hidden',
     },
     noButtonFoundText: {
         color: '#a9b4bf',
         fontSize: '1.1em',
     },
+
+    btnContainer: {
+
+        display: 'flex',
+        flexWrap : 'nowrap',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+    }
 
 };
 
@@ -76,14 +86,16 @@ const Customers = (props) => {
 
 
             <CustomerList customers={filterDisplay} error={error} />
-            <Link to={`/addCustomer`}>
 
-                <Button text="Add new" style={styles.btn} />
+            <div style={styles.btnContainer}>
+                <Link to={`/addCustomer`}>
 
-            </Link>
+                    <Button text="Add new" style={styles.btn} />
 
-            <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
+                </Link>
 
+                <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
+            </div>
         </ScreenContainer>
     );
 }

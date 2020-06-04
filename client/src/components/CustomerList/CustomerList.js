@@ -20,7 +20,7 @@ const styles = {
     listStyleType: 'none',
     width: '95vw',
     borderRadius: '6px',
-    height : '5vh'
+    height: '5vh'
 
   }
 
@@ -33,17 +33,21 @@ const CustomerList = (props) => {
   if (props.error) {
     return (<div>Could not fetch, try again later</div>)
   }
-  props.customers.forEach((customer, paymentstatus, appointmentprice, activitystatus, index) => {
+  props.customers.forEach((customer, paymentstatus, appointmentprice, activitystatus, customerid) => {
     let imageSrc = "/img/burger.png";
     let activitySrc = "/img/green.png";
     let noActivitySrc = "/img/red.png";
-    customers.push(<CustomerEntry key={'buttonEntry' + index}
+
+
+    customers.push(<CustomerEntry key={`Entry ${customerid}`}
+      customerid={customerid}
       customer={customer}
       paymentstatus={paymentstatus}
       appointmentprice={appointmentprice}
       activitystatus={activitystatus}
       activitySrc={activitySrc}
       noActivitySrc={noActivitySrc}
+
 
       imageSrc={imageSrc}
 

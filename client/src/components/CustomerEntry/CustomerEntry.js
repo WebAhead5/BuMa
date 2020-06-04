@@ -44,6 +44,7 @@ const styles = {
 }
 
 const CustomerEntry = (props) => {
+  let customerId = props.customer.id;
   let customerName = props.customer.name || '';
   let customerPaymentStatus = (props.customer.paymentstatus);
   let customerAppointmentPrice = props.customer.appointmentprice;
@@ -55,13 +56,12 @@ const CustomerEntry = (props) => {
 
 
 
-
   if (customerName.length > MAX_CUSTOMER_NAME_DISPLAY_LEN) {
     customerName = customerName.slice(0, MAX_CUSTOMER_NAME_DISPLAY_LEN - 3) + '...';
   }
   return (
 
-    <Link to={`customerCard/${customerName}`}>
+    <Link to={`customerCard/${customerId}`}>
       <ul style={customerActivityStatus ? styles.activeUser : styles.NotActiveUser}>
 
         <li style={styles.li}><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>

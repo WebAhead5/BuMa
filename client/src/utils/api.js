@@ -76,6 +76,7 @@ export function callApi(dispatch, getState, method, path, body, successType, fai
       if ((code !== 200) && (code !== 201)) {
         return fail(dispatch, failureType, message, cb);
       }
+      console.log("yessss");
       return success(dispatch, successType, json, cb);
     }, (error) => {
       return fail(dispatch, failureType, error, cb);

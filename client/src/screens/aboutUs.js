@@ -1,14 +1,14 @@
 import React from 'react';
-//import BackButton from '../components/BackArrow';
 import Header from '../components/MenuHeader';
 import TeamCards from "../components/teamMembers";
+import ScreenContainer from '../components/Screen';
 
 const aboutUs = () => {
         return (
-            <div>
+            <ScreenContainer>
                 <Header title="About Us" />
                 <TeamCards />
-            </div>
+            </ScreenContainer>
         );
 }
  

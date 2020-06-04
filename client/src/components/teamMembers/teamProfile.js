@@ -1,9 +1,9 @@
 export const members = [{
         id: '1',
-        name: 'BuMa',
+        name: 'BuMa L.T.D',
         profession: 'Business Solution',
         desciption: 'Manage you business',
-        src: '/img/far.png'
+        src: '/img/Logo.png'
 
     },
     {

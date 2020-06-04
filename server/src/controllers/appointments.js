@@ -41,7 +41,7 @@ exports.addOneAppointment = (req, res) => {
 exports.deleteAppointment = (req, res) => {
     const id = req.params.id
     queries.deleteAppointment(id)
-        .then(() => res.status(200).json({ message: 'Appointment Deleted successfully' }))
+        .then(() => res.status(200).json({ message: 'Appointment Deleted successfully', code: 200 }))
         .catch(err => {
             console.error(err);
             return res.status(500).json({ error: err.code })
@@ -57,7 +57,7 @@ exports.updateAppointment = (req, res) => {
         note: req.body.note
     }
     queries.editAppointment(updatedAppointment)
-    .then((arg) => {console.log(arg); return res.status(200).json({ message: 'Appointment updated successfuly' })})
+    .then(() => res.status(200).json({ message: 'Appointment updated successfuly' }))
     .catch(err => {
         console.error(err);
         return res.status(500).json({ error: err.code })

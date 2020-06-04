@@ -30,7 +30,6 @@ const AppointmentsList = (props) => {
     let appointments = props.appointments
 
     let allAppointments = []
-    console.log('all = ', allAppointments)
     appointments.forEach((appointment, index) => {
         allAppointments.push(<AppointmentEntry key={`Entry ${index}`}
             appointment={appointment}

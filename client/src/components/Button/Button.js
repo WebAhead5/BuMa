@@ -27,9 +27,8 @@ const Button = (props) => {
     //   style = _.omit(style, 'display');
     // }
     return (
-    <button type="button"  onClick={() => props.onClickButton} style={props.style}>{props.text} </button>
+    <button type="button"  onClick={props.onClickButton} style={props.style}>{props.text} </button>
     );
-  
 }
 
 export default Button;

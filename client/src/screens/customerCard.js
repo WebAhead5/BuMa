@@ -63,7 +63,6 @@ const CustomerCard = ({ match }) => {
             setError(err)
             return;
         }
-        console.log(customer_res.customer[0])
         setCustomerData(customer_res.customer[0])
 
     };

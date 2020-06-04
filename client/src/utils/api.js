@@ -1,5 +1,5 @@
-import { API_HOST } from '../constants'
-import { setLoading, setError } from '../actions/global';
+import {API_HOST} from '../constants'
+import {setLoading, setError} from '../actions/global';
 
 function getCode(json) {
   return (json.code || (json.header && json.header.code) || 9000);
@@ -24,19 +24,19 @@ function setFailure(failureType, error) {
 }
 
 function fail(dispatch, failureType, message, cb) {
-  // dispatch(setLoading(false));
-  // if (failureType) {
-  //   dispatch(setFailure(failureType, message));
-  // }
-  // dispatch(setError(message));
+  dispatch(setLoading(false));
+  if (failureType) {
+    dispatch(setFailure(failureType, message));
+  }
+  dispatch(setError(message));
   if (cb) {
     cb(message, null);
   }
-  return Promise.resolve({ error: message });
+  return Promise.resolve({error: message});
 }
 
 function success(dispatch, successType, json, cb) {
-  // dispatch(setLoading(false));
+ // dispatch(setLoading(false));
   // if (successType) {
   //   dispatch(setSuccess(successType, json))
   // }
@@ -47,7 +47,7 @@ function success(dispatch, successType, json, cb) {
 }
 
 export function callApi(dispatch, getState, method, path, body, successType, failureType, cb) {
-  //dispatch(setLoading(true));
+ //dispatch(setLoading(true));
   //dispatch(setError(null));
 
   //let state = getState();
@@ -58,15 +58,15 @@ export function callApi(dispatch, getState, method, path, body, successType, fai
 
   //if (state.token.value) {
   //  headers['Authorization'] = 'Token ' + state.token.value;
-  // }/
+ // }
 
   if (body) {
     headers['Content-Type'] = 'application/json';
   }
 
   return fetch(API_HOST + path, {
-    method,
-    headers,
+    method: method,
+    headers: headers,
     body: body ? JSON.stringify(body) : null,
   }).then(response => response.json())
     .then((json) => {
@@ -76,7 +76,6 @@ export function callApi(dispatch, getState, method, path, body, successType, fai
       if ((code !== 200) && (code !== 201)) {
         return fail(dispatch, failureType, message, cb);
       }
-      console.log("yessss");
       return success(dispatch, successType, json, cb);
     }, (error) => {
       return fail(dispatch, failureType, error, cb);

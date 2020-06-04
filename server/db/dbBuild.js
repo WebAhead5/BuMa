@@ -1,17 +1,15 @@
-const { QueryFile } = require('pg-promise');
-const path = require('path');
 const db = require('./dbConnection');
+const fs = require('fs');
+const path = require('path');
 
-const sql = (file) =>
-  new QueryFile(path.join(__dirname, file), { minify: true });
 
 
-const build = sql('./build.sql');
+const sqlPath = path.join(__dirname, 'dbBuild.sql');
+const sql = fs.readFileSync(sqlPath).toString();
 
-db.query(build)
-  .then(() => {
-    console.log('Database built');
 
-    process.exit()
-  })
-  .catch((e) => console.error('error', e));
+
+const runDbBuild = () =>  db.query(sql)
+
+module.exports = runDbBuild
+

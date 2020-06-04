@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
-import CustomerName from '../addCustomerForm/customerName';
-import CustomerEmail from '../addCustomerForm/customerEmail';
-import CustomerPhone from '../addCustomerForm/customerPhone';
-import CustomerPrice from '../addCustomerForm/customerPrice';
-import PaymentNumber from '../addCustomerForm/paymentEvery';
-import PaymentPeriod from '../addCustomerForm/paymentPer';
 import NoteFieldText from '../NoteFieldText';
 import OpenAnotherComponentTextField from '../OpenAnotherComponentTextField';
-import { addCustomer } from '../../actions/customers';
+import { addAppointment } from '../../actions/appointments';
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
@@ -18,45 +12,72 @@ function AppointmentForm() {
   const date = new Date();
   const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
+  const [isRedirectHome, setRedirectHome] = useState(false);
+  
+ 
+  let appointmentDetails = {
+    userid: '1',
+    day: '2012-04-25',
+    start_at: '08:00:00',
+    end_at: '10:00:00',
+    note: '1'
+  };
 
 
-
-  const handleChange = (e, id) => {
-    // setCustomerDetails({ ...customerDetails, [id]: e.target.value });
-    // console.log(customerDetails)
+  const handleChangeNote = (e, id) => {
+    appointmentDetails = { ...appointmentDetails, [id]: e.target.value };
   }
 
+  const handleChangeStartAt = (e, id) => {
+    appointmentDetails = { ...appointmentDetails, ['start_at']: e.target.value };
+    
+  }
 
-  const handleClick = (event) => {
+  const handleChangeEndAt = (e, id) => {
+    appointmentDetails = { ...appointmentDetails, ['end_at']: e.target.value };
+  }
+
+  const handleChangeDay = (e, id) => {
+    appointmentDetails = { ...appointmentDetails, ['day']: e.target.value };
+  }
+
+  const handleSelectCustomersClick = (event) => {
     setRedirect(true);
   }
 
-  return (
+  const handleSave = (event) => {
+    addAppointment(appointmentDetails);
+    setRedirectHome(true);
+  }
 
-    <form style={{ background: '#1F2B30' }}>
+
+
+  return (
+    <form onSubmit={handleSave} style={{ background: '#1F2B30' }}>
       <div className="tl pa4 vcenter">
         <Link to={`addAppointment`}>
           <OpenAnotherComponentTextField
             stateId="names..."
-            click={handleClick}
+            click={handleSelectCustomersClick}
             placeHolder="names..."
           />
         </Link>
-        <form  noValidate>
+        <form noValidate>
           <TextField
-            id="datetime-local"
+            id="start_at"
             label="Start time"
             type="time"
+            onChange={handleChangeStartAt}
             defaultValue="10:30"
             InputLabelProps={{
               shrink: true,
             }}
           />
-
           <TextField
-            id="datetime-local"
+            id="end_at"
             label="End time"
             type="time"
+            onChange={handleChangeEndAt}
             defaultValue="10:30"
             InputLabelProps={{
               shrink: true,
@@ -64,11 +85,12 @@ function AppointmentForm() {
           />
         </form>
 
-        <form  noValidate>
+        <form noValidate>
           <TextField
-            id="datetime-local"
+            id="day"
             label="Date"
             type="date"
+            onChange={handleChangeDay}
             defaultValue="2017-05-24"
             InputLabelProps={{
               shrink: true,
@@ -76,11 +98,10 @@ function AppointmentForm() {
           />
         </form>
         <NoteFieldText
-          stateId="notes"
-          onChange={handleChange}
+          stateId="note"
+          onChange={handleChangeNote}
           placeHolder="Notes"
         />
-
         <input
           type="submit"
           value="Add"
@@ -89,9 +110,11 @@ function AppointmentForm() {
         />
 
       </div>
-
       {isRedirect && (
         <Redirect to={'/customers'} />
+      )}
+      {isRedirectHome && (
+        <Redirect to={'/home'} />
       )}
     </form>
   );

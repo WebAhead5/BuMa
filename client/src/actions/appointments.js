@@ -20,7 +20,9 @@ export const BUTTON_DELETE_SUCCESS = 'BUTTON_DELETE_SUCCESS';
 export const BUTTON_DELETE_FAILURE = 'BUTTON_DELETE_FAILURE';
 
 export function fetchAppointments(cb) {
-    // return function (dispatch, getState) {
     callApi(null, null, 'GET', 'appointments', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
-    // }
+}
+
+export function addAppointment(appointment, cb) {
+    callApi(null, null, 'POST', 'add-appointment', appointment, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE);
 }

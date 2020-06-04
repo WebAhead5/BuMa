@@ -62,7 +62,7 @@ const Customers = (props) => {
             setFilterItems(allCustomers);
         }
     }
-    console.log(filteredCustomers);
+
     return (
         <ScreenContainer>
             <MenuHeader icon="backArrow"

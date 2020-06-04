@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import CustomerName from './customerName';
 import CustomerEmail from './customerEmail';
-import CustomerNote from './customerNote';
 import CustomerPhone from './customerPhone';
 import CustomerPrice from './customerPrice';
 import PaymentNumber from './paymentEvery';
 import PaymentPeriod from './paymentPer';
+import NoteFieldText from '../NoteFieldText';
 import { addCustomer } from '../../actions/customers';
 import { Redirect } from 'react-router'
 
@@ -82,7 +82,7 @@ function CustomerForm() {
             placeHolder={customerDetails.paymentEveryUnit}
           />
         </div>
-        <CustomerNote
+        <NoteFieldText
           stateId="notes"
           onChange={handleChange}
           placeHolder={customerDetails.notes}

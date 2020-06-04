@@ -32,6 +32,14 @@ export function addCustomer(customer, cb) {
 }
 
 
+export function getCustomerData(id,cb) {
+    // return function (dispatch, getState) {
+    callApi(null, null, 'GET', `customer/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    // }
+}
+
+
+
 
 // export function setButtonCache(cb) {
 //   return function (dispatch, getState) {

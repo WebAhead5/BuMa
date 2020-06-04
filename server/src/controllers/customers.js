@@ -13,7 +13,7 @@ exports.getOneCustomer = (req, res) => {
     queries.getCustomerById(req.params.id)
         .then(customer =>
             customer.length < 1 ? res.status(404).json({ message: 'No customer found' }) :
-                res.status(200).json(customer))
+                res.status(200).json({customer,code: 200}))
         .catch(err => {
             console.error(err)
             return res.status(500).json({ error: err.code })

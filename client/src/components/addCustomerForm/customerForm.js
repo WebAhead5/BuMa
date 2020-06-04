@@ -39,7 +39,8 @@ function CustomerForm() {
   const handleSubmit = (event) => {
     console.log(customerDetails);
 
-    addCustomer(customerDetails);
+    addCustomer(customerDetails)
+
     setRedirect(true);
     event.preventDefault();
   }
@@ -68,22 +69,24 @@ function CustomerForm() {
           onChange={handleChange}
           placeHolder={customerDetails.appointmentPrice}
         />
-        <PaymentNumber
-          stateId="paymentEveryValue"
-          onChange={handleChange}
-          placeHolder={customerDetails.paymentEveryValue}
-        />
-        <PaymentPeriod
-          stateId="paymentEveryUnit"
-          onChange={handleChange}
-          placeHolder={customerDetails.paymentEveryUnit}
-        />
+        <div style={{display:'flex', flexWrap: 'nowarp', justifyContent:'space-evenly'}} className="shadow-5 ma3 w-80 tl">
+          <PaymentNumber
+            stateId="paymentEveryValue"
+            onChange={handleChange}
+            placeHolder={customerDetails.paymentEveryValue}
+          />
+          
+          <PaymentPeriod
+            stateId="paymentEveryUnit"
+            onChange={handleChange}
+            placeHolder={customerDetails.paymentEveryUnit}
+          />
+        </div>
         <CustomerNote
           stateId="notes"
           onChange={handleChange}
           placeHolder={customerDetails.notes}
         />
-
         <input
           type="submit"
           value="Add"

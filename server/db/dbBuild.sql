@@ -2,6 +2,7 @@ BEGIN;
 
 DROP TABLE IF EXISTS customers CASCADE;
 DROP TABLE IF EXISTS appointments CASCADE;
+DROP TABLE IF EXISTS appointments_customers;
 DROP TYPE IF EXISTS payment_unit CASCADE;
 DROP TABLE IF EXISTS appointments_customers;
 

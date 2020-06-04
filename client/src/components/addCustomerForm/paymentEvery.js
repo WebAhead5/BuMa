@@ -6,7 +6,7 @@ const paymentEvery = (props) => {
           <label style={{color:'white'}}>Payment number </label>
           <select 
           type="number"
-          className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-20"
+          className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-60"
           onChange={(e, id) => props.onChange(e, props.stateId)}>
               <option value="1">1</option>
               <option value="2">2</option>

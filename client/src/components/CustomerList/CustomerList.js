@@ -1,6 +1,5 @@
 import React from 'react';
 import CustomerEntry from '../CustomerEntry';
-import PropTypes from 'prop-types';
 var _ = require('lodash');
 
 const styles = {

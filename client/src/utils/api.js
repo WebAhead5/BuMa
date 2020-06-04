@@ -70,7 +70,6 @@ export function callApi(dispatch, getState, method, path, body, successType, fai
     body: body ? JSON.stringify(body) : null,
   }).then(response => response.json())
     .then((json) => {
-      console.log("json = " , json);
       let code = getCode(json);
       let message = getMessage(json);
       if ((code !== 200) && (code !== 201)) {

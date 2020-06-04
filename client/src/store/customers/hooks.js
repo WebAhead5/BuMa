@@ -5,14 +5,14 @@ import { filterDisplay } from './atoms';
 
 export const useSetCustomers = () => {
   const [items, setItems] = useRecoilState(customers);
-  return (err, products) => {
-      setItems(products.customers);
+  return (err, data) => {
+      setItems(data.customers);
   };
 };
 
 export const useSetfilterDisplay = () => {
     const [items, setItems] = useRecoilState(filterDisplay);
-    return (products) => {
-        setItems(products);
+    return (data) => {
+        setItems(data);
     };
   };

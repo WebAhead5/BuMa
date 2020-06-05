@@ -3,6 +3,8 @@ import Button from '../Button';
 import { Link } from 'react-router-dom'
 import { deleteAppointment } from '../../actions/appointments'
 import { useRemoveAppointment } from '../../store/appointments'
+import Popup from '../Popups'
+
 
 const styles = {
 
@@ -28,6 +30,13 @@ const styles = {
 }
 
 const AppointmentEntry = (props) => {
+
+    const [show, setShow] = React.useState(false)
+
+    const handleNoOpt = () => {
+        setShow(false)
+    }
+
     let id = props.appointment.id
     let fromHour = props.appointment.start_at
     let toHour = props.appointment.end_at
@@ -39,6 +48,11 @@ const AppointmentEntry = (props) => {
             removeAppointment(clickId)
             return
         })
+    }
+
+    const handleYesOpt = () => { 
+        handleDeleteButton(id) 
+        setShow(false)
     }
 
     return (
@@ -53,7 +67,8 @@ const AppointmentEntry = (props) => {
 
             <li>{toHour} </li>
 
-            <li><Button style={styles.deleteBtn} onClickButton={() => handleDeleteButton(id)} /></li>
+            <li><Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
+                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]}></Popup> </li>
         </ul>
 
     )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const customerNote = (props) => {
+const NoteFieldText = (props) => {
       return (
         <div>
           <textarea 
@@ -13,4 +13,4 @@ const customerNote = (props) => {
       );
     }
  
-export default customerNote;
+export default NoteFieldText;

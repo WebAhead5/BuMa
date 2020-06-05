@@ -74,8 +74,7 @@ const CustomerCard = ({ match }) => {
 
     }, []);
 
-    let deleteIcon = "/img/deleteIcon.svg";
-    let activityIcon = "/img/activityicon.svg";
+
     let currency = '₪';
 
     return (

@@ -7,6 +7,7 @@ import { appointments, useSetAppointments } from '../store/appointments'
 import AppointmentsList from '../components/AppointmentsList';
 import Button from '../components/Button'
 import { Link } from 'react-router-dom'
+import Date from '../components/DateClicked'
 
 const style = {
     date: {
@@ -39,7 +40,7 @@ const Appointments = (props) => {
                 title="Appointments">
             </MenuHeader>
             {/* TODO: change change value to be sent from the calendar */}
-            <p style={style.date}>date: 10/06/2020</p>
+            <p style={style.date}><Date/></p>
             <AppointmentsList appointments={allAppointments} />
             <Link to={'/addappointment'}>
                 <Button style={style.addBtn}></Button>

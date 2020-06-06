@@ -42,7 +42,6 @@ const AppointmentCard = ({match}) => {
 
     return (
         <ScreenContainer>
-            sd
             <MenuHeader icon="backArrow" title="Appointment Details" />
             <AppointmentInfo
                 // namePlaceHolder={appointment.id}

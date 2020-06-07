@@ -51,15 +51,12 @@ function AppointmentForm() {
   }
 
   const handleSave = (event) => {
-    console.log("selectedCustomersItems: ", selectedCustomersItems);
-
     if (selectedCustomersItems.size > 0) {
       //Geting sellected customers ids to send it to create appointment 
       let customerIds = [];
       selectedCustomersItems.forEach((customer) => {
         customerIds.push(customer.id);
       });
-      console.log(customerIds)
       appointmentDetails = { ...appointmentDetails, ['customerIds']: customerIds };
       addAppointment(appointmentDetails);
       setRedirectHome(true);

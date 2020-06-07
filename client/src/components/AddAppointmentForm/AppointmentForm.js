@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NoteFieldText from '../NoteFieldText';
 import OpenAnotherComponentTextField from '../OpenAnotherComponentTextField';
 import { addAppointment } from '../../actions/appointments';
@@ -16,6 +16,19 @@ function AppointmentForm() {
   const [isRedirect, setRedirect] = useState(false);
   const [isRedirectHome, setRedirectHome] = useState(false);
   const selectedCustomersItems = useRecoilValue(selectedCustomers);
+  const [selectedCustomersNames,setSelectedCustomersNames] = useState();
+
+
+  useEffect(()=>{
+    let namesArry="names...";
+    if(selectedCustomersItems.size > 0){
+      namesArry = "";
+      selectedCustomersItems.forEach((customer) => {
+        namesArry+= customer.name+ " ";
+      })
+    }
+    setSelectedCustomersNames(namesArry);
+  },selectedCustomersItems)
 
 
   let appointmentDetails = {
@@ -64,16 +77,13 @@ function AppointmentForm() {
     }
   }
 
-
-
   return (
     <form onSubmit={handleSave} style={{ background: '#1F2B30' }}>
       <div className="tl pa4 vcenter">
         <Link to={`addAppointment`}>
           <OpenAnotherComponentTextField
-            stateId="names..."
             click={handleSelectCustomersClick}
-            placeHolder="names..."
+            placeHolder={selectedCustomersNames}
           />
         </Link>
         <form noValidate>

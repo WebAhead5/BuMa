@@ -29,7 +29,6 @@ const Button = (props) => {
     return (
     <button type="button"  onClick={props.onClickButton} style={props.style}>{props.text} </button>
     );
-  
 }
 
 export default Button;

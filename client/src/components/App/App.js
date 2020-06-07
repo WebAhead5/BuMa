@@ -27,6 +27,7 @@ function App() {
             <Route path='/aboutus' exact component={AboutUs} />
             <Route path='/addappointment' exact component={AddAppointment} />
             <Route path='/appointments' exact component={Appointments}/>
+            <Route path="/customercard/:id" exact component={CustomerCard} />
           </Switch>
         </div>
       </Router>

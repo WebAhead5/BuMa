@@ -2,6 +2,7 @@ import React from 'react';
 import CustomerEntry from '../CustomerEntry';
 var _ = require('lodash');
 
+// TODO: change the list on a general component instead of making 2 similar lists
 const styles = {
 
   container: {

@@ -21,6 +21,11 @@ export const BUTTON_DELETE_FAILURE = 'BUTTON_DELETE_FAILURE';
 
 export function fetchAppointments(cb) {
     callApi(null, null, 'GET', 'appointments', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    // }
+}
+
+export function deleteAppointment(id ,cb) {
+    callApi(null, null, 'DELETE', `delete-appointment/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb)
 }
 
 export function addAppointment(appointment, cb) {

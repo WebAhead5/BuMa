@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 const styles = {
 
   activeUser: {
-
     backgroundColor: 'white',
     color: 'black',
     display: 'flex',
@@ -17,16 +16,9 @@ const styles = {
     width: '95vw',
     height: '5vh',
     borderRadius: '5px'
-
-
-
-
-
-
   },
 
   NotActiveUser: {
-
     backgroundColor: 'white',
     opacity: '0.3',
     color: 'black',
@@ -38,9 +30,7 @@ const styles = {
     width: '95vw',
     height: '5vh',
     borderRadius: '5px',
-
   },
-
 }
 
 const CustomerEntry = (props) => {

@@ -27,11 +27,17 @@ export function fetchCustomers(cb) {
     // }
 }
 
-export function addCustomer(cb) {
+export function addCustomer(customer, cb) {
+    callApi(null, null, 'POST', 'add-customer', customer, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE);
+}
+
+
+export function getCustomerData(id,cb) {
     // return function (dispatch, getState) {
-    callApi(null, null, 'POST', 'add-customer', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    callApi(null, null, 'GET', `customer/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
     // }
 }
+
 
 
 

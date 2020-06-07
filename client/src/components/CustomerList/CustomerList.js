@@ -1,15 +1,30 @@
 import React from 'react';
 import CustomerEntry from '../CustomerEntry';
-import PropTypes from 'prop-types';
-
 var _ = require('lodash');
 
+// TODO: change the list on a general component instead of making 2 similar lists
 const styles = {
-  listView: {
 
-    backgroundColor : '#282c34'
+  container: {
+
+    backgroundColor: '#1F2B30',
+    height: '800px'
+
+  },
+
+  ul: {
+    backgroundColor: 'white',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    listStyleType: 'none',
+    width: '95vw',
+    borderRadius: '6px',
+    height: '5vh'
 
   }
+
+
 };
 
 const CustomerList = (props) => {
@@ -18,20 +33,52 @@ const CustomerList = (props) => {
   if (props.error) {
     return (<div>Could not fetch, try again later</div>)
   }
-  props.customers.forEach((customer, paymentstatus, appointmentprice, index) => {
-    //let imageSrc = getButtonLogo4Project(button.project);
+  props.customers.forEach((customer, paymentstatus, appointmentprice, activitystatus, customerid) => {
     let imageSrc = "/img/burger.png";
-    customers.push(<CustomerEntry key={'buttonEntry' + index}
+    let activitySrc = "/img/green.png";
+    let noActivitySrc = "/img/red.png";
+
+
+    customers.push(<CustomerEntry key={`Entry ${customerid}`}
+      customerid={customerid}
       customer={customer}
-      paymentstatus = {paymentstatus}
+      paymentstatus={paymentstatus}
       appointmentprice={appointmentprice}
+      activitystatus={activitystatus}
+      activitySrc={activitySrc}
+      noActivitySrc={noActivitySrc}
+
+
       imageSrc={imageSrc}
+
+
       {...props} />);
+
   });
+
   return (
-    <div className="col-xs-12 list-view" style={styles.listView}>
+
+    <div style={styles.container}>
+
+      <ul style={styles.ul}>
+
+        <li>Activity Status </li>
+
+        <li>Name</li>
+
+        <li>Payment Status </li>
+
+        <li>Amount </li>
+
+
+      </ul>
+
+
       {customers}
+
     </div>
+
+
   );
 
 }

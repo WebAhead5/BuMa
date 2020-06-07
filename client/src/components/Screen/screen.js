@@ -3,11 +3,12 @@ import React from 'react';
 const styles = {
   container: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    backgroundColor : '#1F2B30'
   },
 };
 
-const screen = (props) => {
+const Screen = (props) => {
  
     return (
       <div style={styles.container}>
@@ -20,4 +21,4 @@ Screen.propTypes = {};
 
 Screen.defaultProps = {};
 
-export default screen;
+export default Screen;

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server.js",
-    "test": "NODE_ENV=test nodemon src/tests/dataBase.test.js | tap-spec"
+    "test": "NODE_ENV=test nodemon src/tests/dataBase.test.js | tap-spec",
+    "test_modules" : "NODE_ENV=test nodemon src/tests/appointments_modules.test.js | tap-spec"
   },
   "keywords": [],
   "author": "",

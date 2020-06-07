@@ -27,4 +27,19 @@ export const useSetfilterDisplay = () => {
     };
   };
 
+  export const useAddCustomerToSelectedCustomers = () => {
+    const [items, setItems] = useRecoilState(selectedCustomers);
+    return (customer) => {
+        setItems(items.add(customer));
+    };
+  };
+
+  export const useDeleteCustomerFromSelectedCustomers = () => {
+    const [items, setItems] = useRecoilState(selectedCustomers);
+    return (customer) => {
+      items.delete(customer);
+      setItems(items);
+    };
+  };
+
 

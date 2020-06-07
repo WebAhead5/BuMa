@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import CustomerSelectionEntry from '../customerSelectionEntry';
 import { useRecoilValue } from 'recoil';
-import { selectedCustomers, useSetSelectedCustomers } from '../../store/customers';
+import { selectedCustomers, useAddCustomerSelectedCustomers,useDeleteCustomerFromSelectedCustomers, useAddCustomerToSelectedCustomers } from '../../store/customers';
 
 
 
@@ -34,28 +34,19 @@ const CustomerSelectionList = (props) => {
 
     const checkedCustomers = useRecoilValue(selectedCustomers);
 
-    const setCustomers = useSetSelectedCustomers();
-    // const [selectedCustomers, setSelectedCustomers] = useState(new Set())
+    const addCustomers = useAddCustomerToSelectedCustomers();
+    const removeCustomer = useDeleteCustomerFromSelectedCustomers();
 
-    const handleChangeSelectedCustomers = (item) => {
+    // const handleChangeSelectedCustomers = (item) => {
 
-        if (item.startsWith('--')) {
-
-            checkedCustomers.delete(item.substr(2))
-            setCustomers(checkedCustomers)
-
-        } else {
-
-            setCustomers(checkedCustomers.add(item))
-
-        }
-
-        console.log(checkedCustomers)
-
-    }
-
-
-
+    //     if (item.startsWith('--')) {
+    //         checkedCustomers.delete(item.substr(2))
+    //         setCustomers(checkedCustomers)
+    //     } else {
+    //         setCustomers(checkedCustomers.add(item))
+    //     }
+    //     console.log(checkedCustomers)
+    // }
     let customers = [];
 
     if (props.error) {
@@ -66,7 +57,8 @@ const CustomerSelectionList = (props) => {
 
         customers.push(<CustomerSelectionEntry key={`Entry + ${index} `}
             customer={customer}
-            handleChangeSelectedCustomer={handleChangeSelectedCustomers}
+            handleAddCustomer={addCustomers}
+            handleDeleteCustomer={removeCustomer}
             selectedCustomers={selectedCustomers}
 
             {...props}

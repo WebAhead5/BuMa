@@ -28,7 +28,14 @@ const styles = {
     deleteIcon: {
         height: '50px',
         width: '50px',
+        border: 'none',
+        marginLeft: '25px',
+        height: '50px',
+        width: '50px',
+        background: 'url(/img/deleteIcon.svg)',
+        backgroundSize: 'cover'
     },
+
     activityBtn: {
         background: '#1F2B30',
         border: 'none',
@@ -37,6 +44,8 @@ const styles = {
     activityIcon: {
         height: '50px',
         width: '50px',
+        background: 'url(/img/activityicon.svg)',
+        backgroundSize: 'cover'
 
     },
 }
@@ -50,7 +59,6 @@ const CustomerCard = ({ match }) => {
             setError(err)
             return;
         }
-        console.log(customer_res.customer[0])
         setCustomerData(customer_res.customer[0])
     };
 
@@ -60,8 +68,7 @@ const CustomerCard = ({ match }) => {
 
     }, []);
 
-    let deleteIcon = "/img/deleteIcon.png";
-    let activityIcon = "/img/activityicon.svg";
+
     let currency = '₪';
 
     return (
@@ -85,10 +92,10 @@ const CustomerCard = ({ match }) => {
             />
             <div style={styles.container}>
                 <button style={styles.deleteBtn}>
-                    <img style={styles.deleteIcon} src={deleteIcon} />
+                    {/* <img style={styles.deleteIcon} src={deleteIcon} /> */}
                 </button>
                 <button style={styles.activityBtn}>
-                    <img style={styles.activityIcon} src={activityIcon} />
+                    {/* <img style={styles.activityIcon} src={activityIcon} /> */}
                 </button>
             </div>
         </ScreenContainer >

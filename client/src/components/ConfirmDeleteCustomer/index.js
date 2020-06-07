@@ -1,7 +1,5 @@
-
-import ConfirmDeleteAppointment from './ConfirmDeleteAppointment';
-
+import ConfirmDeleteCustomer from './ConfirmDeleteCustomer';
 
 
-export default ConfirmDeleteAppointment;
 
+export default ConfirmDeleteCustomer;

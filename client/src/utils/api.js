@@ -24,11 +24,11 @@ function setFailure(failureType, error) {
 }
 
 function fail(dispatch, failureType, message, cb) {
-  dispatch(setLoading(false));
-  if (failureType) {
-    dispatch(setFailure(failureType, message));
-  }
-  dispatch(setError(message));
+  // dispatch(setLoading(false));
+  // if (failureType) {
+  //   dispatch(setFailure(failureType, message));
+  // }
+  // dispatch(setError(message));
   if (cb) {
     cb(message, null);
   }
@@ -72,11 +72,11 @@ export function callApi(dispatch, getState, method, path, body, successType, fai
     .then((json) => {
       let code = getCode(json);
       let message = getMessage(json);
-      if ((code !== 200) && (code !== 201)) {
-        return fail(dispatch, failureType, message, cb);
-      }
-      return success(dispatch, successType, json, cb);
-    }, (error) => {
-      return fail(dispatch, failureType, error, cb);
+    //   if ((code !== 200) && (code !== 201)) {
+    //     return fail(dispatch, failureType, message, cb);
+    //   }
+    //   return success(dispatch, successType, json, cb);
+    // }, (error) => {
+    //   return fail(dispatch, failureType, error, cb);
     });
 }

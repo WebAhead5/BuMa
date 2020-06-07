@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ConfirmDeleteCustomer = (props) => {
     return (
@@ -9,4 +9,4 @@ const ConfirmDeleteCustomer = (props) => {
     )
 }
 
-export default ConfirmDeleteCustomer
+export default ConfirmDeleteCustomer;

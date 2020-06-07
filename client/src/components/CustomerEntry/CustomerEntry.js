@@ -29,9 +29,7 @@ const styles = {
     width: '95vw',
     height: '5vh',
     borderRadius: '5px',
-
   },
-
 }
 
 const CustomerEntry = (props) => {

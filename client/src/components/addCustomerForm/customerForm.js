@@ -33,11 +33,9 @@ function CustomerForm() {
 
   const handleChange = (e, id) => {
     setCustomerDetails({ ...customerDetails, [id]: e.target.value });
-    console.log(customerDetails)
   }
 
   const handleSubmit = (event) => {
-    console.log(customerDetails);
 
     addCustomer(customerDetails)
 

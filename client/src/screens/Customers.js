@@ -61,7 +61,6 @@ const Customers = (props) => {
            setSearchText(input.trim())
            let newList = allCustomers.filter(({ name }) => name.toLowerCase().startsWith(input.toLowerCase()))
            setFilterItems(newList);
-           
         } else {
             setSearchText('')
             setFilterItems(allCustomers);

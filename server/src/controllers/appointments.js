@@ -30,7 +30,7 @@ exports.addOneAppointment = (req, res) => {
     }
     queries.addAppointment(newAppointment)
         .then(() => {
-            res.status(200).json({ message: 'appointment added successfully' })
+            res.status(200).json({ message: 'appointment added successfully',code: 200 })
         })
         .catch(err => {
             console.error(err)
@@ -41,7 +41,7 @@ exports.addOneAppointment = (req, res) => {
 exports.deleteAppointment = (req, res) => {
     const id = req.params.id
     queries.deleteAppointment(id)
-        .then(() => res.status(200).json({ message: 'Appointment Deleted successfully' }))
+        .then(() => res.status(200).json({ message: 'Appointment Deleted successfully', code: 200 }))
         .catch(err => {
             console.error(err);
             return res.status(500).json({ error: err.code })

@@ -6,7 +6,7 @@ import Button from '../components/Button';
 //import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
 import { getAppointmentData } from '../actions/appointments';
-import { useSetAppointments, appointments } from '../store/appointments';
+import { useSetAppointments, appointments, appointmentsState } from '../store/appointments';
 
 
 const styles = {
@@ -25,34 +25,27 @@ const styles = {
     },
 }
 
-const AppointmentCard = ({match}) => {
-    const appointmentsList = useRecoilValue(appointments);
-    console.log(appointmentsList)
-    //appointmentsList.filter(rec => match.params.id!=appointmentsList.id)
-    const setItems = useSetAppointments();
+const AppointmentCard = (props, {match}) => {
+    const appointmentsCard = useRecoilValue(appointmentsState);
+    const appointmentDetails = appointmentsCard.filter(appointment => match.params.id===appointment.id)
     
-    useEffect(() => {
-        // Update the document title using the browser API
-        getAppointmentData(match.params.id, setItems);
-    }, []);
+    // //const setItems = useSetAppointments();
+    // useEffect(() => {
+    //     // Update the document title using the browser API
+    //     getAppointmentData(match.params.id, setItems);
+    // }, []);
 
     // const HandleChange = (e) => {
+        //onchange setItems=useSetAppointments({id: e.target.value})
+        //onsubmit potAppointmentData
     //         getAppointmentData(setItem);
     // }
-
+   
     return (
         <ScreenContainer>
             <MenuHeader icon="backArrow" title="Appointment Details" />
-            <AppointmentInfo
-                // namePlaceHolder={appointment.id}
-                // timePlaceHolder={appointment.start_at}
-                // datePlaceHolder={appointment.day}
-                // notePlaceHolder={appointment.note}
-            />
-            <Button
-                text="Save"
-                onClickButton={() => console.log('post new state to db')}
-                style={styles.saveBtn}
+            <AppointmentInfo 
+            appointment={appointmentDetails}
             />
         </ScreenContainer >
     );

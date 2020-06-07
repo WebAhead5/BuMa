@@ -13,7 +13,6 @@ import { useRecoilValue } from 'recoil';
 
 function AppointmentForm() {
   const date = new Date();
-  const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
   const [isRedirectHome, setRedirectHome] = useState(false);
   const selectedCustomersItems = useRecoilValue(selectedCustomers);

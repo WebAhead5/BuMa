@@ -89,14 +89,15 @@ tape("Checking getting specific appointment from the database", (t) => {
 
 
 tape("Adding new appointment to the database", (t) => {
-
+    
     t.plan(1);
     const newAppointment = {
         userid: 1,
         day: new Date(new Date('2012-04-25').setHours(0, 0, 0, 0)),
         start_at: '08:00:00',
         end_at: '10:00:00',
-        note: 'Note 5'
+        note: 'Note 5',
+        customerIds: [1,3]
     }
 
     runDbBuild().then(() => {

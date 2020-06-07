@@ -111,7 +111,7 @@ function AppointmentForm() {
 
       </div>
       {isRedirect && (
-        <Redirect to={'/customers'} />
+        <Redirect to={'/selectcustomer'} />
       )}
       {isRedirectHome && (
         <Redirect to={'/home'} />

@@ -74,8 +74,9 @@ const CustomerCard = ({ match }) => {
 
     }, []);
 
-
-    let currency = '₪';
+    let deleteIcon = "/img/deleteIcon.png";
+    let activityIcon = "/img/activityicon.svg";
+    // let currency = '₪';
 
     return (
         <ScreenContainer>
@@ -85,9 +86,9 @@ const CustomerCard = ({ match }) => {
                 namePlaceHolder={customerData.name}
                 emailPlaceHolder={customerData.email}
                 phonePlaceHolder={customerData.phone}
-                appointmentPricePlaceHolder={customerData.appointmentprice + currency}
+                appointmentPricePlaceHolder={customerData.appointmentprice }
                 appointmentEveryValPlaceHolder={customerData.paymenteveryvalue}
-                appointmentEveryUnitPlaceHolder={customerData.paymenteveryunit}
+                appointmentEveryPeriodPlaceHolder={customerData.paymenteveryunit}
                 notesPlaceHolder={customerData.notes}
             />
 

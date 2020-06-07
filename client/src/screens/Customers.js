@@ -84,7 +84,7 @@ const Customers = (props) => {
            
 
             <div style={styles.btnContainer}>
-                <Link to={`/addCustomer`}>
+                <Link to={`/addcustomer`}>
 
                     <Button text="Add new" style={styles.btn} />
 

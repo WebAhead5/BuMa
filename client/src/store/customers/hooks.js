@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import { customers } from "./atoms";
 import { filterDisplay } from './atoms';
+import { selectedCustomers } from './atoms';
 
 
 export const useSetCustomers = () => {
@@ -16,3 +17,14 @@ export const useSetfilterDisplay = () => {
         setItems(data);
     };
   };
+
+
+
+  export const useSetSelectedCustomers = () => {
+    const [items, setItems] = useRecoilState(selectedCustomers);
+    return (data) => {
+        setItems(data);
+    };
+  };
+
+

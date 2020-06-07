@@ -47,8 +47,10 @@ const AppointmentEntry = (props) => {
     let fromHour = props.appointment.start_at
     let toHour = props.appointment.end_at
     
+    // Recoil Hook
     const removeAppointment = useRemoveAppointment()
 
+    // What happens after confirming delete!
     const handleDeleteButton = (clickId) => {
         deleteAppointment(clickId, (err, msg) => {
             //TODO: handle error properly
@@ -58,6 +60,7 @@ const AppointmentEntry = (props) => {
         })
     }
 
+    // handles confirmation on delete popup
     const handleYesOpt = () => {
         handleDeleteButton(id)
         setShow(false)

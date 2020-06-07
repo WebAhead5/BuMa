@@ -5,6 +5,9 @@ import { addAppointment } from '../../actions/appointments';
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
+import { selectedCustomers } from '../../store/customers';
+import { RecoilRoot } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 
 
@@ -13,14 +16,16 @@ function AppointmentForm() {
   const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
   const [isRedirectHome, setRedirectHome] = useState(false);
-  
- 
+  const selectedCustomersItems = useRecoilValue(selectedCustomers);
+
+
   let appointmentDetails = {
     userid: '1',
     day: '2012-04-25',
     start_at: '08:00:00',
     end_at: '10:00:00',
-    note: '1'
+    note: '1',
+    customerIds: []
   };
 
 
@@ -30,7 +35,7 @@ function AppointmentForm() {
 
   const handleChangeStartAt = (e, id) => {
     appointmentDetails = { ...appointmentDetails, ['start_at']: e.target.value };
-    
+
   }
 
   const handleChangeEndAt = (e, id) => {
@@ -46,8 +51,21 @@ function AppointmentForm() {
   }
 
   const handleSave = (event) => {
-    addAppointment(appointmentDetails);
-    setRedirectHome(true);
+    console.log("selectedCustomersItems: ", selectedCustomersItems);
+
+    if (selectedCustomersItems.size > 0) {
+      //Geting sellected customers ids to send it to create appointment 
+      let customerIds = [];
+      selectedCustomersItems.forEach((customer) => {
+        customerIds.push(customer.id);
+      });
+      console.log(customerIds)
+      appointmentDetails = { ...appointmentDetails, ['customerIds']: customerIds };
+      addAppointment(appointmentDetails);
+      setRedirectHome(true);
+    }else{
+      //If no user was selected should show error message.
+    }
   }
 
 

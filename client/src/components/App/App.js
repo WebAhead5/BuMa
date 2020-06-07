@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { RecoilRoot } from 'recoil';
 import AddAppointment from '../../screens/addAppointment';
 import Appointments from '../../screens/Appointments';
+import AppointmentCard from '../../screens/appointmentCard';
 
 
 function App() {
@@ -28,12 +29,14 @@ function App() {
             <Route path='/addappointment' exact component={AddAppointment} />
             <Route path='/appointments' exact component={Appointments}/>
             <Route path="/customercard/:id" exact component={CustomerCard} />
+            <Route path="/appointmentcard/:id" exact component={AppointmentCard} />
           </Switch>
         </div>
       </Router>
     </RecoilRoot>
   );
 }
+
 
 export default App;
 

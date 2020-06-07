@@ -66,28 +66,6 @@ const CustomerEntry = (props) => {
 
 
     </Link>
-
-
-
-
-
-
-
-    // <div className="col-xs-12 col-sm-6" style={styles.container}>
-    //   <div className="col-xs-4 vcenter">
-    //     <Image style={styles.image} src={props.imageSrc} />
-    //   </div>
-    //   <div className="col-xs-6 vcenter">
-    //     <span style={styles.name}>Name : {customerName} </span>
-    //     <br></br>
-    //     <span style={styles.name}>Payment Status : {customerPaymentStatus} </span>
-    //     <br></br>
-    //     <span style={styles.name}>Appointment Price : {customerAppointmentPrice} </span>
-    //   </div>
-    //   <div className="var _ = require('lodash');col-xs-2 vcenter" style={styles.settings}>
-    //     <i className="fa fa-cog" aria-hidden="true" style={styles.settingsIcon} onClick={() => props.onButtonSettingsClick(props.button.id)}></i>
-    //   </div>
-    // </div>
   );
 }
 

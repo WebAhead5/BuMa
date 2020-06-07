@@ -8,6 +8,8 @@ import SelectCustomer from '../../screens/selectCustomer'
 import Home from '../../screens/home'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { RecoilRoot } from 'recoil';
+import AddAppointment from '../../screens/addAppointment';
+import Appointments from '../../screens/Appointments';
 
 
 function App() {
@@ -18,11 +20,13 @@ function App() {
 
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/addCustomer' exact component={AddCustomer} />
-            <Route path='/customerCard/:id' exact component={CustomerCard} />
-            <Route path='/selectCustomer' exact component={SelectCustomer} />
+            <Route path='/addcustomer' exact component={AddCustomer} />
+            <Route path='/customercard/:id' exact component={CustomerCard} />
+            <Route path='/selectcustomer' exact component={SelectCustomer} />
             <Route path='/customers' exact component={Customers} />
             <Route path='/aboutus' exact component={AboutUs} />
+            <Route path='/addappointment' exact component={AddAppointment} />
+            <Route path='/appointments' exact component={Appointments}/>
           </Switch>
         </div>
       </Router>

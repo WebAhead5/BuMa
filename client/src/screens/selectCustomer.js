@@ -26,6 +26,7 @@ const styles = {
 
 
 const SelectCustomer = () => {
+    let history = useHistory();
     const allCustomers = useRecoilValue(allCustomersDetailsState);
     const filteredCustomers = useRecoilValue(filterCustomerState)
 
@@ -60,9 +61,12 @@ const SelectCustomer = () => {
 
 
 
-    function onClickGoBack() {
-        let history = useHistory();
-        history.goBack();
+    const onClickGoBack = () => {
+
+        console.log('clicked')
+
+            history.goBack();
+        
     }
 
 
@@ -85,6 +89,7 @@ const SelectCustomer = () => {
             <div style={styles.btnContainer}>
 
                 <Button text="Done" onClickButton={() => onClickGoBack()} style={styles.btn} />
+                {/* <button onClick={() => onClickGoBack()} style={styles.btn}> Done </button> */}
 
 
                 <Link to={`/addCustomer`}>

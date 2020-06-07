@@ -10,7 +10,7 @@ import CustomerList from '../components/CustomerList';
 import SearchField from '../components/searchField'
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
-import { filterDisplay, customers , customresState } from '../store/customers';
+import { filterDisplay, customers , customersState } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
 
 
@@ -85,7 +85,7 @@ const Customers = (props) => {
            
 
             <div style={styles.btnContainer}>
-                <Link to={`/addCustomer`}>
+                <Link to={`/addcustomer`}>
 
                     <Button text="Add new" style={styles.btn} />
 

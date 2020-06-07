@@ -30,7 +30,7 @@ exports.addOneAppointment = (req, res) => {
     }
     queries.addAppointment(newAppointment)
         .then(() => {
-            res.status(200).json({ message: 'appointment added successfully' })
+            res.status(200).json({ message: 'appointment added successfully',code: 200 })
         })
         .catch(err => {
             console.error(err)

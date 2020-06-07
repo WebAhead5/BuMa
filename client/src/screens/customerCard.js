@@ -76,7 +76,6 @@ const CustomerCard = ({ match }) => {
 
     let deleteIcon = "/img/deleteIcon.png";
     let activityIcon = "/img/activityicon.svg";
-    // let currency = '₪';
 
     return (
         <ScreenContainer>

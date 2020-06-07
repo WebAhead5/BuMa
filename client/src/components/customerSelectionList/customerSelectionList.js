@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import CustomerSelectionEntry from '../customerSelectionEntry';
 import { useRecoilValue } from 'recoil';
-import { selectedCustomers, useAddCustomerSelectedCustomers,useDeleteCustomerFromSelectedCustomers, useAddCustomerToSelectedCustomers } from '../../store/customers';
+import { selectedCustomers, useAddCustomerSelectedCustomers, useDeleteCustomerFromSelectedCustomers, useAddCustomerToSelectedCustomers } from '../../store/customers';
 
 
 
@@ -37,16 +37,6 @@ const CustomerSelectionList = (props) => {
     const addCustomers = useAddCustomerToSelectedCustomers();
     const removeCustomer = useDeleteCustomerFromSelectedCustomers();
 
-    // const handleChangeSelectedCustomers = (item) => {
-
-    //     if (item.startsWith('--')) {
-    //         checkedCustomers.delete(item.substr(2))
-    //         setCustomers(checkedCustomers)
-    //     } else {
-    //         setCustomers(checkedCustomers.add(item))
-    //     }
-    //     console.log(checkedCustomers)
-    // }
     let customers = [];
 
     if (props.error) {

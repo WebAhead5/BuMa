@@ -26,7 +26,23 @@ const styles = {
         border: 'none',
         background: 'url(/img/deleteIcon.svg)',
         backgroundSize: 'cover',
+        outline: 'none'
+    }, 
+    YesNoBtns: {
+        backgroundColor: '#0B8D98',
+        color: '#E4FDFF',
+        borderRadius: '5px',
+        height: '35px',
+        width: '70px',
+        fontSize: '20px',
+        textDecoration: 'none',
+        textAlign: 'center',
+        border: 'none'
     },
+    h4: {
+        color: '#E4FDFF',
+    }
+    
 }
 
 const AppointmentEntry = (props) => {
@@ -50,8 +66,8 @@ const AppointmentEntry = (props) => {
         })
     }
 
-    const handleYesOpt = () => { 
-        handleDeleteButton(id) 
+    const handleYesOpt = () => {
+        handleDeleteButton(id)
         setShow(false)
     }
 
@@ -68,7 +84,8 @@ const AppointmentEntry = (props) => {
             <li>{toHour} </li>
 
             <li><Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
-                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]}></Popup> </li>
+                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]} style={styles.YesNoBtns}>
+                    <h4 style={styles.h4}>Are You sure you want to delete Appointment?</h4></Popup> </li>
         </ul>
 
     )

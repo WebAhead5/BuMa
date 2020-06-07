@@ -48,7 +48,7 @@ exports.addOneCustomer = (req, res) => {
 exports.deleteCustomer = (req, res) => {
     const id = req.params.id
     queries.deleteCustomer(id)
-        .then(() => res.status(200).json({ message: 'Customer Deleted successfully' }))
+        .then(() => res.status(200).json({ message: 'Customer Deleted successfully', code: 200 }))
         .catch(err => {
             console.error(err);
             return res.status(500).json({ error: err.code })

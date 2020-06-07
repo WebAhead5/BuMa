@@ -38,6 +38,9 @@ export function getCustomerData(id,cb) {
     // }
 }
 
+export function deleteCustomer(id ,cb) {
+    callApi(null, null, 'DELETE', `delete-customer/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb)
+}
 
 
 

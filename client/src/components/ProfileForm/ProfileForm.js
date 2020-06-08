@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //import { getUserById, editUserById } from '../../actions/businesses';
 import { Redirect } from 'react-router';
 //import {Link} from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
 
 function ProfileForm() {
   const [isRedirect, setRedirect] = useState(false);
@@ -26,14 +27,13 @@ const style={
         margin:"5px"
     },
     img:{
-        width:'320px',
-        marginTop:'-40px'
+        width:'350px',
+        height:'350px',
+        marginTop:'-50px'
     }
 }
 
   const handleChange = (e) => {
-    // if(e.target.value==='')
-    // setUserDetails({ ...userDetails, [e.target.id]: e.target.placeHolder });
     setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
     console.log(userDetails);
   }
@@ -48,47 +48,65 @@ const style={
   return (
 
     <form onSubmit={handleSubmit} style={{ background: '#1F2B30' }}>
-      <div className="tl pa4 vcenter">
-      <table border="1" style={style.table}>
+      <div className="tc pa4 vcenter">
+      <table border="0" style={style.table}>
         <tr ><td style={{textAlign:"center"}}>
+            <div className="tc shadow-4 pa3 br3">
             <img src={userDetails.logoSrc} style={style.img}></img>
             <br></br>
-            <h1 style={{marginBottom: '40px'}}>BuMa L.T.D</h1>
+            <h1 style={{marginBottom: '40px', marginTop:'-100px', color:'#0B8D98'}}>BuMa L.T.D</h1>
+            </div>
         </td></tr>
         <tr ><td style={{color:'white'}}>
-        <label>Business name</label>
+        {/* <label>Business name</label>
         <input
           id="businessName"
           type="text"
           onChange={handleChange}
           style={{width:"90%",margin:"10px", height:"35px"}}
           placeHolder={userDetails.businessName}
-        />
+        /> */}
+        <TextField
+            id="businessName"
+            label="Business name"
+            type="text"
+            onChange={handleChange}
+            style={{width:"90%",height:"70px",background:"white",padding:'10px',margin:'10px'}}
+            defaultValue={userDetails.businessName}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
          </td></tr>
          <tr><td>
-         <label>CRN</label>
-         <input
+            <TextField
             id="CRN"
+            label="CRN"
             type="number"
             onChange={handleChange}
-            style={{width:"90%",margin:"10px", height:"35px"}}
-            placeHolder={userDetails.CRN}
+            style={{width:"90%",height:"70px",background:"white",padding:'10px',margin:'10px'}}
+            defaultValue={userDetails.CRN}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           </td></tr>
           <tr><td>
-          <label>Address</label>
-          <input
+          <TextField
             id="address"
-            type="mixed"
+            label="Address"
             onChange={handleChange}
-            style={{width:"90%",margin:"10px", height:"35px"}}
-            placeHolder={userDetails.address}
+            style={{width:"90%",height:"70px",background:"white",padding:'10px',margin:'10px'}}
+            defaultValue={userDetails.address}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           </td></tr>
           <tr ><td style={{textAlign:"center"}}>
             <input
             type="submit"
-            value="Registration"
+            value="Save"
             className='btn btn-submit ma3 btn-lg grow'
             style={{ background: '#0B8D98', color: "white", width: "80%", marginTop:"50px"}}
             />

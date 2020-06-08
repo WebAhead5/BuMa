@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const customers = require('./customers')
 const appointments = require('./appointments')
+const login = require('./login');
+const error = require('./error');
+const middlewares = require('../middlewares');
+
+
+router.get('/login', login.checkUserLogin);
+ 
 
 router.get('/user/admin/customers', customers.getAllCustomers)
 router.get('/user/admin/customer/:id', customers.getOneCustomer)

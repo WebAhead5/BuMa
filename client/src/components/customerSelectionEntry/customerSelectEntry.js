@@ -31,9 +31,9 @@ const styles = {
         height: '5vh',
         borderRadius: '5px',
     },
-    li : {
+    li: {
 
-        color : 'black',
+        color: 'black',
     }
 }
 
@@ -45,45 +45,23 @@ const CustomerSelectEntry = (props) => {
     const [isChecked, setChecking] = useState(false)
 
 
-    const handleCheckBoxChange = (e) => {
-
+    const handleCheckBoxChange = (customer) => {
         setChecking(!isChecked)
-
-
-        if (e.target.checked) {
-
-            console.log('You checked the box')
-
-
-            props.handleChangeSelectedCustomer(e.target.value)
-
-
-
+        //Checking the opposite value of isChecked because the the call setChecking(!isChecked) is
+        //Async call and it will not make the change immediately 
+        if (!isChecked) {
+            props.handleAddCustomer(customer)
         } else {
-
-            console.log('You unchecked the box')
-
-            props.handleChangeSelectedCustomer('--' + e.target.value)
-
-
-
+            props.handleDeleteCustomer(customer)
         }
-
-
-
     }
 
     return (
 
         <ul style={isChecked ? styles.checked : styles.unchecked}>
-
             <li style={styles.li}>{props.customer.name}</li>
-
             <input id={props.customer.id} type="checkbox" checked={isChecked}
-                onChange={handleCheckBoxChange} name="checkBox" value={props.customer.name} />
-
-
-
+                onChange={() => handleCheckBoxChange(props.customer)} name="checkBox" value={props.customer.name} />
         </ul>
 
 

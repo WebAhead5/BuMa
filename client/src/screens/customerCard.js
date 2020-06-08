@@ -3,8 +3,11 @@ import ScreenContainer from '../components/Screen';
 import MenuHeader from '../components/MenuHeader';
 import CustomerInfo from '../components/customerInfo/customerInfo'
 import Button from '../components/Button';
-import { Link } from 'react-router-dom'
 import { getCustomerData } from '../actions/customers';
+import { deleteCustomer } from '../actions/customers'
+import { useRemoveCustomer } from '../store/customers'
+import Popup from '../components/Popups'
+import { useHistory } from 'react-router-dom'
 
 
 
@@ -49,6 +52,9 @@ const styles = {
         backgroundSize: 'cover'
 
     },
+    h4: {
+        color: '#E4FDFF',
+    }
 
 }
 
@@ -57,6 +63,9 @@ const CustomerCard = ({ match }) => {
 
     const [customerData, setCustomerData] = useState({});
     const [error, setError] = React.useState('');
+    const [show, setShow] = React.useState(false)
+
+    const removeCustomer = useRemoveCustomer()
 
     const handlegetCustomerData = (err, customer_res) => {
         if (err) {
@@ -68,14 +77,34 @@ const CustomerCard = ({ match }) => {
     };
 
 
+
+    const handleDeleteButton = (clickId) => {
+        deleteCustomer(clickId, (err, msg) => {
+            //TODO: handle error properly
+            if (err) console.log(err)
+            removeCustomer(clickId)
+            return
+        })
+    }
+
+    const handleNoOpt = () => {
+        setShow(false)
+    }
+
+    let history = useHistory();
+
+    const handleYesOpt = () => {
+        handleDeleteButton(match.params.id)
+        history.goBack();
+    }
+
+
     useEffect(() => {
         // Update the document title using the browser API
         getCustomerData(match.params.id, handlegetCustomerData);
 
     }, []);
 
-    let deleteIcon = "/img/deleteIcon.png";
-    let activityIcon = "/img/activityicon.svg";
     // let currency = '₪';
 
     return (
@@ -108,8 +137,9 @@ const CustomerCard = ({ match }) => {
             />
             <div style={styles.container}>
 
-                <Button style={styles.deleteBtn}>
-                </Button>
+            <Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
+                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]} style={styles.YesNoBtns}>
+                    <h4 style={styles.h4}>Are You sure you want to delete Customer?</h4></Popup>
 
 
 

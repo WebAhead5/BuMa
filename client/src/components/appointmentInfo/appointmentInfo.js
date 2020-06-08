@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 
 function AppointmentInfo(props) {
   
-
   const [isRedirect, setRedirect] = useState(false);
   
   let appointmentDetails = props.appointment[0];
@@ -20,19 +19,17 @@ function AppointmentInfo(props) {
   if (month<10)
     month="0"+month;
   const appointmentDate = year + "-" + month + "-" + day;
+  appointmentDetails = { ...appointmentDetails, note: appointmentDetails.note };
 
-  console.log(appointmentDate)
-  const handleChange = (e, id) => {
-    appointmentDetails = { ...appointmentDetails, [id]: e.target.value };
-  }
-
-  const handleSelectCustomersClick = (event) => {
-    setRedirect(true);
+  const handleChange = (e) => {
+    appointmentDetails = { ...appointmentDetails, [e.target.id]: e.target.value };
   }
 
   const handleSave = (event) => {
-      //fix update function api/actions
-   // updateAppointment(appointmentDetails.id, appointmentDetails);
+    //fix update function api/actions
+    // updateAppointment(appointmentDetails.id, appointmentDetails);
+
+    setRedirect(true);
   }
 
   return (
@@ -44,6 +41,7 @@ function AppointmentInfo(props) {
             label="Appointment with:"
             type="text"
             onChange={handleChange}
+            style={{height:"50px"}}
             value={appointmentDetails.userid}
             InputLabelProps={{
               shrink: true,

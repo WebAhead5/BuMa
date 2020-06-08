@@ -39,8 +39,6 @@ let styles = {
 };
 
 const menu_header = (props) => {
-
-    // styles.header.backgroundColor = props.colorBackground;
     let header = (
         <div className="col-xs-12 navbar-fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>

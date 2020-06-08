@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import NoteFieldText from '../NoteFieldText';
-import OpenAnotherComponentTextField from '../OpenAnotherComponentTextField';
 import { updateAppointment } from '../../actions/appointments';
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';

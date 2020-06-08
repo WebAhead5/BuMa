@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import ScreenContainer from '../components/Screen';
-import {localeDate, useSetDate} from '../store/date'
+import { localeDate, useSetDate } from '../store/date'
 import { useRecoilValue } from 'recoil';
 import MenuHeader from '../components/MenuHeader'
 
@@ -16,7 +16,7 @@ const Home = () => {
 
     const dateToday = useRecoilValue(localeDate)
     const setDate = useSetDate()
-    
+
     const onChange = date => {
 
         setDate(date);
@@ -24,13 +24,13 @@ const Home = () => {
 
     return (
         <ScreenContainer>
-            <MenuHeader title="Home"></MenuHeader>
+            <MenuHeader title="Home" icon='burger'></MenuHeader>
             <Calendar formatLongDate={(locale, date) => date} onChange={onChange}
                 value={dateToday}
-                 />
-                 <div style={styles.date}>
-                     {dateToday.toLocaleDateString()}
-                 </div>
+            />
+            <div style={styles.date}>
+                {dateToday.toLocaleDateString()}
+            </div>
         </ScreenContainer>
     )
 }

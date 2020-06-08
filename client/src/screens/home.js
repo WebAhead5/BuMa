@@ -23,7 +23,7 @@ const Home = () => {
     const setItems = useSetAppointments();
 
 
-   //fetch appointments data
+    //fetch appointments data
 
     useEffect(() => {
         fetchAppointments(setItems)
@@ -37,27 +37,31 @@ const Home = () => {
     const dateToday = useRecoilValue(localeDate)
     const setDate = useSetDate()
 
-    const onChange = date => {
 
-        setDate(date);
+    const onClickDayHandler = (e) => {
+        window.location.href = `/appointments?date=${e}`
     }
 
 
     return (
         <ScreenContainer>
             <MenuHeader title="Home" icon='burger'></MenuHeader>
-            <Calendar formatLongDate={(locale, date) => date} onChange={onChange}
-                value={dateToday}
-                tileContent={({ activeStartDate, date, view }) => {
-                    //compare our date value with calendar values, and show highlighted days that have appointments
-                    return view === 'month' && appointmentsDays.some(appointments => appointments.getDate() === date.getDate()
-                        && appointments.getMonth() === date.getMonth() && appointments.getFullYear() === date.getFullYear()) ?
-                        <div className='Calendar-appointment-mark'></div> : null
-                }
-                }
-            />
+            <div className="Calendar-container">
+                <Calendar 
+                   
+                    onClickDay={(e) => onClickDayHandler(e.toLocaleDateString())}
+                    value={dateToday}
+                    tileContent={({ activeStartDate, date, view }) => {
+                        //compare our date value with calendar values, and show highlighted days that have appointments
+                        return view === 'month' && appointmentsDays.some(appointments => appointments.getDate() === date.getDate()
+                            && appointments.getMonth() === date.getMonth() && appointments.getFullYear() === date.getFullYear()) ?
+                            <div className='Calendar-appointment-mark'></div> : null
+                    }
+                    }
+                />
+            </div>
             <div style={styles.date}>
-                {dateToday.toLocaleDateString()}
+                {dateToday? dateToday : new Date().toLocaleDateString()}
             </div>
         </ScreenContainer>
     )

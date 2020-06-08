@@ -3,12 +3,16 @@ import {localeDate} from '../../store/date'
 import {useRecoilValue} from 'recoil'
 
 
-const Date = (props) => {
+const DateClicked = (props) => {
 
     const dateClicked = useRecoilValue(localeDate)
+    console.log(dateClicked);
+    
+    
+    
     return (
-        <p style={props.style}>Date: {dateClicked.toLocaleDateString()} </p>
+        <p style={props.style}>Date: {dateClicked? dateClicked : new Date().toLocaleDateString() }</p>
     )
 }
 
-export default Date
+export default DateClicked

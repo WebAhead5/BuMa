@@ -31,15 +31,10 @@ const AppointmentCard = ({match}) => {
     console.log(match)
     const appointmentDetails = appointmentsCard.filter(appointment => match.params.id==appointment.id)
     console.log(appointmentDetails)
-    // useEffect(() => {
-    //     // Update the document title using the browser API
-    //     getAppointmentData(appointmentDetails);
-    // }, []);
 
     return (
         <ScreenContainer>
             <MenuHeader icon="backArrow" title="Appointment Details" />
-            awdsd
             <AppointmentInfo 
             appointment={appointmentDetails}
             />

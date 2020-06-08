@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-//import { addBusiness } from '../../actions/businesses';
+//import { addUser } from '../../actions/users';
 import { Redirect } from 'react-router';
 //import { Input } from '@material-ui/core';
-
-
 
 function RegistrationForm() {
   const date = new Date();
@@ -38,6 +36,7 @@ const style={
 
   const handleSubmit = (event) => {
     // add new business(user) to the database
+    //password confirm password are identical
    // addBusiness(businessDetails)
 
    // setRedirect(true);

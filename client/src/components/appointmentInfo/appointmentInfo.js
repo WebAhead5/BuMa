@@ -19,7 +19,6 @@ function AppointmentInfo(props) {
   if (month<10)
     month="0"+month;
   const appointmentDate = year + "-" + month + "-" + day;
-  appointmentDetails = { ...appointmentDetails, note: appointmentDetails.note };
 
   const handleChange = (e) => {
     appointmentDetails = { ...appointmentDetails, [e.target.id]: e.target.value };
@@ -28,6 +27,7 @@ function AppointmentInfo(props) {
   const handleSave = (event) => {
     //fix update function api/actions
     // updateAppointment(appointmentDetails.id, appointmentDetails);
+    //check note value if not null
 
     setRedirect(true);
   }
@@ -83,6 +83,7 @@ function AppointmentInfo(props) {
           stateId="note"
           onChange={handleChange}
           placeHolder={appointmentDetails.note}
+          required={false}
         />
         <input
           type="submit"

@@ -7,6 +7,7 @@ DROP TYPE IF EXISTS payment_unit CASCADE;
 DROP TYPE IF EXISTS curreny_code CASCADE;
 DROP TABLE IF EXISTS appointments_customers;
 DROP TABLE IF EXISTS payment_settings;
+DROP TABLE IF EXISTS users;
 
 
 CREATE TYPE payment_unit AS ENUM ('Week','Appointment','Month');
@@ -52,6 +53,21 @@ CREATE TABLE payment_settings(
   request_payment_very_unit payment_unit
 );
 
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  email VARCHAR(30) UNIQUE NOT NULL,
+  username VARCHAR(20) NOT NULL,
+  password VARCHAR(12) NOT NULL,
+  phone VARCHAR(20),
+  business_name VARCHAR(30) NOT NULL,
+  business_logo VARCHAR(100),
+  crn VARCHAR(20) NOT NULL,
+  business_address VARCHAR(100)
+);
+
+
 INSERT INTO customers (name, email, phone, userid, paymentStatus, activityStatus,
   notes, 
   balance,
@@ -87,6 +103,14 @@ VALUES
 (1, 'EUR', 6,'Month'),
 (1, 'CNY', 1,'Appointment');
 
+
+INSERT INTO users (first_name, last_name, email, username, password, phone, business_name,
+  business_logo,
+  crn,
+  business_address)
+VALUES 
+('Morad', 'Abed','moraabed@email.com', 'morad', '111', '0500500506', 'Microsoft','http://morad_logo.jpg', '1234','1, Akko, Is'),
+('Amir', 'Fahoum','amirfahoum@email.com', 'amir', '222', '0544444444', 'Google','http://amir_logo.jpg', '444','1, Akko, Is');
 
 COMMIT;
 

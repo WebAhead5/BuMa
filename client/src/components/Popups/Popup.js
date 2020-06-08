@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 const styles = {
     closeBtn: {
-        border: 'none',
+        border: 'none', 
         backgroundColor: '#0B8D98',
         textDecoration: 'none',
         textAlign: 'center',
@@ -41,6 +41,7 @@ const Popup = (props) => {
     return (
         <Modal ariaHideApp={false} isOpen={props.isOpen} style={props.style} className='Modal' overlayClassName={buttonsNumber.length > 1 ? 'Overlay-no-close-button' : "Overlay"} >
             <div className="Modal-container">
+                {/* check the length of the labels sent from father component and send a different design according to that */}
                 {buttonsNumber.length <= 1 && <div className="Modal-exit-button">
                     <button style={styles.closeBtn} onClick={() => props.setShow(false)}>X</button>
                 </div>}

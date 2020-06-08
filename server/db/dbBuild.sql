@@ -4,10 +4,13 @@ DROP TABLE IF EXISTS customers CASCADE;
 DROP TABLE IF EXISTS appointments CASCADE;
 DROP TABLE IF EXISTS appointments_customers;
 DROP TYPE IF EXISTS payment_unit CASCADE;
+DROP TYPE IF EXISTS curreny_code CASCADE;
 DROP TABLE IF EXISTS appointments_customers;
+DROP TABLE IF EXISTS payment_settings;
 
 
 CREATE TYPE payment_unit AS ENUM ('Week','Appointment','Month');
+CREATE TYPE curreny_code AS ENUM ('ILS','USD', 'EUR', 'CNY');
 
 
 CREATE TABLE customers (
@@ -41,6 +44,14 @@ CREATE TABLE appointments_customers (
   appintmentid INT NOT NULL
 );
 
+CREATE TABLE payment_settings(
+  id SERIAL PRIMARY KEY,
+  userid INT NOT NULL,
+  curreny curreny_code DEFAULT 'ILS',
+  request_payment_every_value INT,
+  request_payment_very_unit payment_unit
+);
+
 INSERT INTO customers (name, email, phone, userid, paymentStatus, activityStatus,
   notes, 
   balance,
@@ -68,6 +79,14 @@ VALUES
 ( 2, 2),
 ( 3, 3),
 ( 4, 3);
+
+INSERT INTO payment_settings (userid, curreny,request_payment_every_value,request_payment_very_unit)
+VALUES 
+(1, null , 2,'Month'),
+(1, 'ILS', 5,'Week'),
+(1, 'EUR', 6,'Month'),
+(1, 'CNY', 1,'Appointment');
+
 
 COMMIT;
 

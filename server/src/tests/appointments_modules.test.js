@@ -14,7 +14,7 @@ tape("Checking getting all appointments from the database", (t) => {
         {
             id: 1,
             userid: 1,
-            day: new Date(new Date('2012-04-25').setHours(0, 0, 0, 0)),
+            day: new Date(new Date('2020-06-02').setHours(0, 0, 0, 0)),
             start_at: '08:00:00',
             end_at: '10:00:00',
             note: 'Note 1'
@@ -22,7 +22,7 @@ tape("Checking getting all appointments from the database", (t) => {
         {
             id: 2,
             userid: 1,
-            day: new Date(new Date('2012-04-25').setHours(0, 0, 0, 0)),
+            day: new Date(new Date('2020-06-20').setHours(0, 0, 0, 0)),
             start_at: '09:00:00',
             end_at: '11:00:00',
             note: 'Note 2'
@@ -30,7 +30,7 @@ tape("Checking getting all appointments from the database", (t) => {
         {
             id: 3,
             userid: 1,
-            day: new Date(new Date('2012-04-25').setHours(0, 0, 0, 0)),
+            day: new Date(new Date('2020-05-28').setHours(0, 0, 0, 0)),
             start_at: '12:00:00',
             end_at: '14:00:00',
             note: 'Note 3'
@@ -38,7 +38,7 @@ tape("Checking getting all appointments from the database", (t) => {
         {
             id: 4,
             userid: 1,
-            day: new Date(new Date('2012-04-25').setHours(0, 0, 0, 0)),
+            day: new Date(new Date('2020-05-25').setHours(0, 0, 0, 0)),
             start_at: '20:00:00',
             end_at: '21:00:00',
             note: 'Note 4'
@@ -67,7 +67,7 @@ tape("Checking getting specific appointment from the database", (t) => {
         {
             id: 1,
             userid: 1,
-            day: new Date(new Date('2012-04-25').setHours(0, 0, 0, 0)),
+            day: new Date(new Date('2020-06-02').setHours(0, 0, 0, 0)),
             start_at: '08:00:00',
             end_at: '10:00:00',
             note: 'Note 1'

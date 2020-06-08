@@ -109,3 +109,8 @@ body {
   outline: 'none';
 }
 
+.Calendar-appointment-mark {
+  width: auto;
+  height: 2px;
+  background-color: #0B8D98;
+}

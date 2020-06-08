@@ -5,7 +5,7 @@ import CustomerInfo from '../components/customerInfo/customerInfo'
 import Button from '../components/Button';
 import { getCustomerData } from '../actions/customers';
 import { deleteCustomer } from '../actions/customers'
-import { useRemoveCustomer } from '../store/customers'
+import { useDeleteCustomerFromSelectedCustomers } from '../store/customers'
 import Popup from '../components/Popups'
 import { useHistory } from 'react-router-dom'
 
@@ -81,7 +81,7 @@ const CustomerCard = ({ match }) => {
     console.log(customerActivity)
     console.log(customerData)
 
-    const removeCustomer = useRemoveCustomer()
+    const removeCustomer = useDeleteCustomerFromSelectedCustomers()
 
     const handlegetCustomerData = (err, customer_res) => {
         if (err) {

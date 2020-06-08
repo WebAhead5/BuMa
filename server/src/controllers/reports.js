@@ -14,10 +14,9 @@ exports.getAllReports = (req, res) => {
 exports.getSingleReport = (req, res) => {
     queries.getReportById(req.params.id)
         .then(report =>
-            report.length < 1 ? res.status(404).json({ message: 'No customer found' }) :
+            report.length < 1 ? res.status(404).json({ message: 'No report Found' }) :
                 res.status(200).json({ report, code: 200 }))
         .catch(err => {
-            console.error(err)
             return res.status(500).json({ error: err.code })
         })
 }
@@ -35,7 +34,6 @@ exports.addSingleReport = (req, res) => {
             res.status(200).json({ message: 'report added successfully', code : 200})
         })
         .catch(err => {
-            console.error(err)
             return res.status(500).json({ error: err.code })
         });
 }
@@ -47,7 +45,6 @@ exports.deleteReport = (req, res) => {
     queries.deleteReport(id)
         .then(() => res.status(200).json({ message: 'Report Deleted successfully', code: 200 }))
         .catch(err => {
-            console.error(err);
             return res.status(500).json({ error: err.code })
         })
 }

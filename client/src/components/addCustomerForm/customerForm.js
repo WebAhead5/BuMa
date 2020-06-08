@@ -31,8 +31,8 @@ function CustomerForm() {
   });
 
 
-  const handleChange = (e, id) => {
-    setCustomerDetails({ ...customerDetails, [id]: e.target.value });
+  const handleChange = (e) => {
+    setCustomerDetails({ ...customerDetails, [e.target.id]: e.target.value });
   }
 
   const handleSubmit = (event) => {

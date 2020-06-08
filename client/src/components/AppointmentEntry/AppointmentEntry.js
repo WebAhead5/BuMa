@@ -68,21 +68,22 @@ const AppointmentEntry = (props) => {
 
     return (
         //TODO: link to the page that khalid is working on - Appointment page.
-
-
+    
+        <Link to={`/appointmentCard/${id}`}>
         <ul style={styles.appointment}>
-
-            <li key="id">{id}</li>
+       
+            <li>{id}</li>
 
             <li key="fromhour">{fromHour} </li>
 
-            <li key="tohour">{toHour} </li>
-
-            <li key="button"><Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
-                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]} style={styles.YesNoBtns}>
-                    <h4 style={styles.h4}>Are You sure you want to delete Appointment?</h4></Popup> </li>
+            <li>{toHour} </li>
+       
+            <li><Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
+                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]}></Popup> </li>
         </ul>
-
+        </Link>
+        
+     
     )
 }
 

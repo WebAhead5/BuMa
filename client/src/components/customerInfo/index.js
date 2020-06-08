@@ -1,3 +1,3 @@
-import customerInfo from './customerInfo';
+import CustomerInfo from './customerInfo';
 
-export default customerInfo;
+export default CustomerInfo;

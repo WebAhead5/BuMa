@@ -8,7 +8,7 @@ const NoteFieldText = (props) => {
           className="input-reset ba b--black-20 pa2 mb2 br3 db w-90"
           onChange={(e, id) => props.onChange(e, props.stateId)}
           placeholder={props.placeHolder}
-          required/>
+          required={props.required}/>
         </div>
       );
     }

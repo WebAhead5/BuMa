@@ -48,7 +48,7 @@ exports.addOneCustomer = (req, res) => {
 exports.deleteCustomer = (req, res) => {
     const id = req.params.id
     queries.deleteCustomer(id)
-        .then(() => res.status(200).json({ message: 'Customer Deleted successfully' }))
+        .then(() => res.status(200).json({ message: 'Customer Deleted successfully', code: 200 }))
         .catch(err => {
             console.error(err);
             return res.status(500).json({ error: err.code })
@@ -61,17 +61,17 @@ exports.updateCustomer = (req, res) => {
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
-        paymentStatus: req.body.paymentStatus,
-        activityStatus: req.body.activityStatus,
+        paymentstatus: req.body.paymentstatus,
+        activitystatus: req.body.activitystatus,
         notes: req.body.notes,
         balance: req.body.balance,
-        appointmentPrice : req.body.appointmentPrice,
-        paymentEveryValue : req.body.paymentEveryValue,
-        paymentEveryUnit : req.body.paymentEveryUnit,
-        balanceValidUntil : req.body.balanceValidUntil
+        appointmentprice : req.body.appointmentprice,
+        paymenteveryvalue : req.body.paymenteveryvalue,
+        paymenteveryunit : req.body.paymenteveryunit,
+        balancevaliduntil : req.body.balancevaliduntil
     }
     queries.editCustomer(updatedCustomer)
-    .then(() => res.status(200).json({ message: 'Customer updated successfuly' }))
+    .then(() => res.status(200).json({ message: 'Customer updated successfuly' ,code:200}))
     .catch(err => {
         console.error(err);
         return res.status(500).json({ error: err.code })

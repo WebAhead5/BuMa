@@ -7,7 +7,18 @@ const styles = {
         backgroundColor: '#0B8D98',
         textDecoration: 'none',
         textAlign: 'center',
-    }
+    },
+    YesNoBtns: {
+        backgroundColor: '#0B8D98',
+        color: '#E4FDFF',
+        borderRadius: '5px',
+        height: '35px',
+        width: '70px',
+        fontSize: '20px',
+        textDecoration: 'none',
+        textAlign: 'center',
+        border: 'none'
+    },
 }
 
 const Popup = (props) => {
@@ -23,17 +34,17 @@ const Popup = (props) => {
 
     // populate div with buttons according to props.labels length.
     const buttons = buttonsNumber.map((button, index) => (
-        <button style={props.style} onClick={callbacks[index]}>{button}</button>
+        <button style={buttonsNumber.length > 1 ? styles.YesNoBtns : props.style} onClick={callbacks[index]}>{button}</button>
     ))
 
     // return the Components to be used on other components
     return (
-        <Modal isOpen={props.isOpen} style={props.style} className='Modal' overlayClassName={buttonsNumber.length > 1? 'Overlay-no-close-button' :"Overlay"} >
+        <Modal ariaHideApp={false} isOpen={props.isOpen} style={props.style} className='Modal' overlayClassName={buttonsNumber.length > 1 ? 'Overlay-no-close-button' : "Overlay"} >
             <div className="Modal-container">
                 {buttonsNumber.length <= 1 && <div className="Modal-exit-button">
                     <button style={styles.closeBtn} onClick={() => props.setShow(false)}>X</button>
                 </div>}
-                
+
                 {props.children}
                 <div className="Modal-buttons">
                     {buttons}

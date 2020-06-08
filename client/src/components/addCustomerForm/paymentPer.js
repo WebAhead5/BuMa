@@ -47,11 +47,11 @@ const PaymentPer = (props) => {
         <label style={{color:'white'}}>Every</label>
             <select
             type="number"
-            className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-30"
+            className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-80"
             onChange={(e, id) => props.onChange(e, props.stateId)}>
-            <option value="Appointment">Appointment</option>
-            <option value="Week">Week</option>
-            <option value="Month">Month</option>
+            <option value="Appointment" selected={props.Value=== "Appointment"}>Appointment</option>
+            <option value="Week" selected={props.Value=== "Week"}>Week</option>
+            <option value="Month" selected={props.Value=== "Month"}>Month</option>
           </select>
         
       {/* </Popup> */}

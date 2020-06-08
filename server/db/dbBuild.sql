@@ -16,10 +16,10 @@ CREATE TABLE customers (
   email VARCHAR(100) UNIQUE NOT NULL,
   phone VARCHAR(20) UNIQUE NOT NULL,
   userid INT NOT NULL,
-  paymentStatus BOOLEAN NOT NULL,
-  activityStatus BOOLEAN NOT NULL,
+  paymentStatus BOOLEAN DEFAULT false,
+  activityStatus BOOLEAN DEFAULT true,
   notes VARCHAR,
-  balance DECIMAL NOT NULL ,
+  balance DECIMAL DEFAULT 0 ,
   appointmentPrice NUMERIC,
   paymentEveryValue NUMERIC,
   paymentEveryUnit payment_unit,
@@ -49,10 +49,10 @@ INSERT INTO customers (name, email, phone, userid, paymentStatus, activityStatus
   paymentEveryUnit,
   balanceValidUntil)
 VALUES 
-('Marwan', 'gobo@email.com', 0551554555, 1, true, true, '', 50,40,2,'Week','2012-04-25'),
-('Hashem', 'hashem@email.com', 0551534555, 1, true, false, '',50,100,2,'Appointment','2012-04-25'),
-('Farid', 'farid@email.com', 0551254555, 1, true, false, '',50,25,1,'Month',null),
-('Khalid', 'khalid@email.com', 0531554555, 1, true, true, '',90,40,2,'Week','2012-04-25');
+('Marwan', 'gobo@email.com', 0551554555, 1, true, true, 'Marwan Note', 50,40,2,'Week','2012-04-25'),
+('Hashem', 'hashem@email.com', 0551534555, 1, true, false, 'Note',50,100,2,'Appointment','2012-04-25'),
+('Farid', 'farid@email.com', 0551254555, 1, true, false, 'Note',50,25,1,'Month',null),
+('Khalid', 'khalid@email.com', 0531554555, 1, true, true, 'Note',90,40,2,'Week','2012-04-25');
 
 
 INSERT INTO appointments (userid, day, start_at, end_at, note)

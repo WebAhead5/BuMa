@@ -8,9 +8,11 @@ const customerEmail = (props) => {
           type="email"
           onChange={(e, id) => props.onChange(e, props.stateId)}
           placeholder={props.placeHolder}
-          required/>
+          value = {props.Value}
+          required={props.required}/>
         </div>
       );
     }
  
 export default customerEmail;
+

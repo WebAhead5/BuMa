@@ -38,6 +38,14 @@ export function getCustomerData(id,cb) {
     // }
 }
 
+export function deleteCustomer(id ,cb) {
+    callApi(null, null, 'DELETE', `delete-customer/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb)
+}
+
+
+export function updateCustomer(id ,customer,cb) {
+    callApi(null, null, 'PUT', `edit-customer/${id}`, customer, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb)
+}
 
 
 
@@ -98,10 +106,7 @@ export function getCustomerData(id,cb) {
 //         queryText += (queryText === '') ? '?' : '&';
 //         queryText += key + '=' + query[key];
 //       }
-//     }
-//   }
-//   return function (dispatch, getState) {
-//     return callApi(dispatch, getState, 'GET', 'button' + queryText, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+//     }  // console.log(customerData)ate, 'GET', 'button' + queryText, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
 //   }
 // }
 

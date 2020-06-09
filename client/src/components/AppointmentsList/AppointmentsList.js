@@ -46,11 +46,11 @@ const AppointmentsList = (props) => {
 
             <ul style={styles.ul}>
 
-                <li>Name </li>
+                <li key="name">Name </li>
 
-                <li>From</li>
+                <li key="from">From</li>
 
-                <li>To </li>
+                <li key="to">To </li>
 
 
 

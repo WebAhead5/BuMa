@@ -28,9 +28,7 @@ const styles = {
 const AppointmentCard = ({match}) => {
     const appointmentsCard = useRecoilValue(appointmentsState);
     console.log(appointmentsCard)
-    console.log(match)
     const appointmentDetails = appointmentsCard.filter(appointment => match.params.id==appointment.id)
-    console.log(appointmentDetails)
 
     return (
         <ScreenContainer>

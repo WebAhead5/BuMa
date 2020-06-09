@@ -8,7 +8,8 @@ const customerName = (props) => {
           className="input-reset ba b--black-20 pa2 mb2 db br3 w-90"
           onChange={(e, id) => props.onChange(e, props.stateId)}
           placeholder={props.placeHolder}
-          required/>
+          value = {props.Value}
+          required={props.required}/>
         </div>
       );
     }

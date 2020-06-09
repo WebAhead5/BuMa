@@ -26,7 +26,8 @@ exports.addOneAppointment = (req, res) => {
         day : req.body.day,
         start_at : req.body.start_at,
         end_at : req.body.end_at,
-        note: req.body.note
+        note: req.body.note,
+        customerIds : req.body.customerIds
     }
     queries.addAppointment(newAppointment)
         .then(() => {

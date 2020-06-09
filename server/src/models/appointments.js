@@ -14,10 +14,21 @@ const getAppointmentById = (appointmentId) => {
 
 
 
-const addAppointment = ({ userid, day, start_at, end_at, note }) => {
-    return db.query(
-        `INSERT INTO appointments (userid, day, start_at, end_at, note)
-         VALUES ($1,$2,$3,$4,$5)`, [userid, day, start_at, end_at, note]
+const addAppointment = ({ userid, day, start_at, end_at, note, customerIds }) => {
+    //Adding appointment details to appointments table and customer ids to
+    //appointments_customers table. Because the relation between these two 
+    //tables is many to many relation
+    let queryString = `
+    WITH name AS (INSERT INTO appointments(userid, day, start_at, end_at, note)
+    VALUES ($1,$2,$3,$4,$5) RETURNING id) 
+    INSERT INTO appointments_customers (appintmentid,customerid) VALUES`;
+
+    customerIds.forEach((elemnt) => {
+        queryString += ` ((SELECT *  FROM name),${elemnt}) ,`;
+    })
+
+    queryString = queryString.substring(0, queryString.length - 1);
+    return db.query(queryString, [userid, day, start_at, end_at, note]
     );
 }
 
@@ -27,15 +38,15 @@ const deleteAppointment = (appointmentId) => {
 
 
 const editAppointment = (appointment) =>
-   db.query(
-    `UPDATE appointments
+    db.query(
+        `UPDATE appointments
    SET userid = $2,
    day = $3,
    start_at = $4,
    end_at = $5,
    note = $6
-   WHERE id = $1` , [appointment.id,appointment.userid, appointment.day, appointment.start_at, appointment.end_at, appointment.note]
-  );
+   WHERE id = $1` , [appointment.id, appointment.userid, appointment.day, appointment.start_at, appointment.end_at, appointment.note]
+    );
 
 module.exports = {
     getAppointments,

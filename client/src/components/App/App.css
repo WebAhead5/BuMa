@@ -43,3 +43,74 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.Modal {
+  position: absolute;
+  border-radius: 5px;
+  background-color: #1A4452;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  outline: 'none';
+
+}
+
+.Overlay {
+  border-radius: 5px;
+  position: fixed;
+  width: 70vw;
+  height: 22vh;
+  align-self: center;
+  top: 50vmin;
+  left: 15vw;
+  right: 0;
+  bottom: 0;
+  background-color: #1A4452;
+  outline: 'none';
+
+}
+
+.Overlay-no-close-button {
+  border-radius: 5px;
+  position: fixed;
+  width: 70vw;
+  height: 17vh;
+  align-self: center;
+  top: 50vmin;
+  left: 15vw;
+  right: 0;
+  bottom: 0;
+  background-color: #1A4452;
+  outline: 'none';
+
+}
+
+.ReactModalPortal {
+  display: flex;
+  justify-content: center;
+  outline: 'none';
+}
+
+.Modal-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Modal-exit-button {
+  margin-left: auto;
+  margin-bottom: auto;
+  width: 35px;
+  height: 35px;
+}
+
+.Modal-container {
+  margin: 15px;
+  text-align: center;
+  outline: 'none';
+}
+
+.Calendar-appointment-mark {
+  width: auto;
+  height: 2px;
+  background-color: #0B8D98;
+}

@@ -26,7 +26,13 @@ const styles = {
         border: 'none',
         background: 'url(/img/deleteIcon.svg)',
         backgroundSize: 'cover',
-    },
+        outline: 'none'
+    }, 
+    
+    h4: {
+        color: '#E4FDFF',
+    }
+    
 }
 
 const AppointmentEntry = (props) => {
@@ -40,7 +46,11 @@ const AppointmentEntry = (props) => {
     let id = props.appointment.id
     let fromHour = props.appointment.start_at
     let toHour = props.appointment.end_at
+    
+    // Recoil Hook
     const removeAppointment = useRemoveAppointment()
+
+    // What happens after confirming delete!
     const handleDeleteButton = (clickId) => {
         deleteAppointment(clickId, (err, msg) => {
             //TODO: handle error properly
@@ -50,8 +60,9 @@ const AppointmentEntry = (props) => {
         })
     }
 
-    const handleYesOpt = () => { 
-        handleDeleteButton(id) 
+    // handles confirmation on delete popup
+    const handleYesOpt = () => {
+        handleDeleteButton(id)
         setShow(false)
     }
 
@@ -63,7 +74,7 @@ const AppointmentEntry = (props) => {
        
             <li>{id}</li>
 
-            <li>{fromHour} </li>
+            <li key="fromhour">{fromHour} </li>
 
             <li>{toHour} </li>
        

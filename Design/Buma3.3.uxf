@@ -1,0 +1,365 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text></help_text><element><id>Text</id><coordinates><x>690</x><y>470</y><w>100</w><h>80</h></coordinates><panel_attributes>customelement=
+// Text Elemnt
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(0,(height+0.5)/5,width,(height)*3/5-1) fg=#929292 bg=#222222 //Parameters (x, y, width, height)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*1/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*2/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>0</y><w>180</w><h>240</h></coordinates><panel_attributes>halign=center
+Front end - React.js
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>0</y><w>290</w><h>330</h></coordinates><panel_attributes>halign=center
+Express api server
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>320</y><w>110</w><h>170</h></coordinates><panel_attributes>lt=&lt;.&gt;
+Sql queries
+</panel_attributes><additional_attributes>10;10;50;150</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>110</y><w>350</w><h>40</h></coordinates><panel_attributes>lt=&lt;.&gt;
+api calls</panel_attributes><additional_attributes>10;20;330;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>580</y><w>170</w><h>240</h></coordinates><panel_attributes>// Class Element
+
+Customers
+--
+- ID: unique
+--
+- Name
+--
+- Email 
+--
+- Phone 
+--
+- User-ID
+--
+- Payment-amount
+--
+- Activity-status
+--
+- Payment-status
+--
+- Notes
+--
+- Balance
+
+
+customelement=
+// DB Symbol
+drawArc(5,5,26,8,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,5,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(5,9,26,15) lw=0.1 bg=#222222 //Parameters (x, y, width, height)
+drawLine(5,9,5,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(31,9,31,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(5,10,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,15,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,20,26,8,180,180,true)fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>640</y><w>170</w><h>160</h></coordinates><panel_attributes>// Class Element
+
+Appointments
+--
+- ID 
+--
+- User-ID
+--
+- Date
+--
+- Start-time
+--
+- End-time
+--
+- Note
+
+
+customelement=
+// DB Symbol
+drawArc(5,5,26,8,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,5,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(5,9,26,15) lw=0.1 bg=#222222 //Parameters (x, y, width, height)
+drawLine(5,9,5,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(31,9,31,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(5,10,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,15,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,20,26,8,180,180,true)fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>531</y><w>260</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;110;240;10</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>511</y><w>280</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>260;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>30</y><w>290</w><h>300</h></coordinates><panel_attributes>--
+/login (GET)
+--
+/register (POST)
+--
+/edit-user (PUT)
+--
+/logout (GET)
+--
+/customers (GET all customers)
+--
+/customers/{id} (GET customer)
+--
+/add-customer (POST)
+--
+/delete-customer(DELETE)
+--
+/edit-customer(PUT)
+--
+/appointments (GET all appointments)
+--
+/appointments/{id} (GET appointment)
+--
+/add-appointment(POST)
+--
+/delete-appointment(DELETE)
+--
+/edit-appointment(PUT)
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>30</y><w>180</w><h>210</h></coordinates><panel_attributes>--
+Main screen
+--
+Customers screen
+--
+Add Customer screen
+--
+Customer Card screen
+--
+Select Customer screen
+--
+Add Appointment screen
+--
+All Appointments screen
+--
+Appointment details screen
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>280</y><w>180</w><h>190</h></coordinates><panel_attributes>Basic components
+--
+header
+  * back_button
+--
+text_input
+--
+confirm_button
+--
+Add button(+)
+--
+Search bar
+--
+Add new button
+--
+Lists?
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>280</y><w>180</w><h>130</h></coordinates><panel_attributes>Main screen Components
+--
+Header
+--
+Calender
+--
+Add button
+--
+Burger button
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>490</y><w>180</w><h>140</h></coordinates><panel_attributes>Customers screen Components
+--
+Header
+--
+Search bar
+--
+List
+--
+Button
+      -Add button
+      -Public Announcment button
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>650</y><w>210</w><h>130</h></coordinates><panel_attributes>Select Customers screen Components
+--
+Header
+--
+Search Bar
+--
+List
+--
+Buttons
+     *Add button
+     *Done
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>430</y><w>200</w><h>120</h></coordinates><panel_attributes>Add Customers screen Components
+--
+Header
+--
+text input
+--
+Add button
+--
+Notes Field
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>810</y><w>270</w><h>130</h></coordinates><panel_attributes>--
+Add appointment screen Components
+--
+Header
+--
+Inputs
+     *Select Customers
+           * Navigate to Select Customers Screen
+     *Date input
+     *Notes input
+--
+List
+--
+Buttons
+     *Add button
+     *Done
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>960</y><w>210</w><h>100</h></coordinates><panel_attributes>All Appointments screen Components
+--
+Header
+--
+List
+--
+Add button
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>960</y><w>220</w><h>100</h></coordinates><panel_attributes>Appointment Details screen Components
+--
+Header
+--
+Editable inputs
+--
+Save button
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>690</y><w>180</w><h>100</h></coordinates><panel_attributes>// Class Element
+
+Appointments-Customers
+--
+- ID: unique
+--
+- Appointment-ID
+--
+- Customer-ID
+
+
+
+
+customelement=
+// DB Symbol
+drawArc(5,5,26,8,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,5,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(5,9,26,15) lw=0.1 bg=#222222 //Parameters (x, y, width, height)
+drawLine(5,9,5,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(31,9,31,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(5,10,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,15,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,20,26,8,180,180,true)fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>551</y><w>140</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;140;120;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>1150</y><w>170</w><h>160</h></coordinates><panel_attributes>// Class Element
+
+Payments
+--
+- ID 
+--
+- Customer-ID
+--
+- Date
+--
+- Price
+--
+- Vat
+--
+- Total
+
+
+customelement=
+// DB Symbol
+drawArc(5,5,26,8,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,5,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(5,9,26,15) lw=0.1 bg=#222222 //Parameters (x, y, width, height)
+drawLine(5,9,5,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(31,9,31,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(5,10,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,15,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,20,26,8,180,180,true)fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>541</y><w>30</w><h>630</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;610;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>840</y><w>170</w><h>270</h></coordinates><panel_attributes>// Class Element
+
+Users
+--
+- ID: unique
+--
+- First name
+--
+- Last name
+--
+- Email 
+--
+- Username
+--
+- Password
+--
+- Phone 
+--
+- Business name 
+--
+- Business logo
+--
+- CRN
+--
+- Business address
+
+customelement=
+// DB Symbol
+drawArc(5,5,26,8,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,5,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(5,9,26,15) lw=0.1 bg=#222222 //Parameters (x, y, width, height)
+drawLine(5,9,5,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(31,9,31,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(5,10,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,15,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,20,26,8,180,180,true)fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>531</y><w>230</w><h>330</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>210;310;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>840</y><w>170</w><h>140</h></coordinates><panel_attributes>// Class Element
+
+Payments settings
+--
+- ID: unique
+--
+- Userid
+--
+- Currency
+--
+- RequestPaymentEveryValue 
+--
+- RequestPaymentEveryUnit
+
+
+
+
+customelement=
+// DB Symbol
+drawArc(5,5,26,8,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,5,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(5,9,26,15) lw=0.1 bg=#222222 //Parameters (x, y, width, height)
+drawLine(5,9,5,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(31,9,31,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(5,10,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,15,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,20,26,8,180,180,true)fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>541</y><w>110</w><h>310</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;290;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>920</y><w>170</w><h>130</h></coordinates><panel_attributes>// Class Element
+
+Reports
+--
+- ID 
+--
+- Userid
+--
+- CreatingDate
+--
+- Pdf file
+
+
+
+customelement=
+// DB Symbol
+drawArc(5,5,26,8,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,5,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(5,9,26,15) lw=0.1 bg=#222222 //Parameters (x, y, width, height)
+drawLine(5,9,5,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(31,9,31,24)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(5,10,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,15,26,8,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(5,20,26,8,180,180,true)fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>551</y><w>50</w><h>390</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;370;30;10</additional_attributes></element></diagram>

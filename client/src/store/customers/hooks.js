@@ -42,4 +42,10 @@ export const useSetfilterDisplay = () => {
     };
   };
 
+  export const useRemoveCustomer = () => {
+    const [items, setItems] = useRecoilState(customers)
+    return (id) => {
+        setItems(items.filter(item => item.id !== id))
+    }
+}
 

@@ -24,11 +24,11 @@ function setFailure(failureType, error) {
 }
 
 function fail(dispatch, failureType, message, cb) {
-  dispatch(setLoading(false));
-  if (failureType) {
-    dispatch(setFailure(failureType, message));
-  }
-  dispatch(setError(message));
+  // dispatch(setLoading(false));
+  // if (failureType) {
+  //   dispatch(setFailure(failureType, message));
+  // }
+  // dispatch(setError(message));
   if (cb) {
     cb(message, null);
   }

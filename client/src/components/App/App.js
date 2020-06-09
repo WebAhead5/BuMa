@@ -10,6 +10,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { RecoilRoot } from 'recoil';
 import AddAppointment from '../../screens/addAppointment';
 import Appointments from '../../screens/Appointments';
+import Settings from '../../screens/settings'
+import PaymentSettings from '../../screens/paymentSettings'
+import AppointmentCard from '../../screens/appointmentCard';
+import Registration from '../../screens/registration';
+import Profile from '../../screens/profile';
 
 
 function App() {
@@ -28,12 +33,18 @@ function App() {
             <Route path='/addappointment' exact component={AddAppointment} />
             <Route path='/appointments' exact component={Appointments}/>
             <Route path="/customercard/:id" exact component={CustomerCard} />
+            <Route path="/settings" exact component={Settings} />
+            <Route path="/payment-settings" exact component={PaymentSettings} />
+            <Route path="/appointmentcard/:id" exact component={AppointmentCard} />
+            <Route path="/registration" exact component={Registration} />
+            <Route path="/profile" exact component={Profile} />
           </Switch>
         </div>
       </Router>
     </RecoilRoot>
   );
 }
+
 
 export default App;
 

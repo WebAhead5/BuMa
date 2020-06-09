@@ -43,6 +43,11 @@ export function deleteCustomer(id ,cb) {
 }
 
 
+export function updateCustomer(id ,customer,cb) {
+    callApi(null, null, 'PUT', `edit-customer/${id}`, customer, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb)
+}
+
+
 
 // export function setButtonCache(cb) {
 //   return function (dispatch, getState) {
@@ -101,10 +106,7 @@ export function deleteCustomer(id ,cb) {
 //         queryText += (queryText === '') ? '?' : '&';
 //         queryText += key + '=' + query[key];
 //       }
-//     }
-//   }
-//   return function (dispatch, getState) {
-//     return callApi(dispatch, getState, 'GET', 'button' + queryText, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+//     }  // console.log(customerData)ate, 'GET', 'button' + queryText, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
 //   }
 // }
 

@@ -27,10 +27,19 @@ export const useSetfilterDisplay = () => {
     };
   };
 
-  export const useRemoveCustomer = () => {
-    const [items, setItems] = useRecoilState(customers)
-    return (id) => {
-        setItems(items.filter(item => item.id !== id))
-    }
-}
+  export const useAddCustomerToSelectedCustomers = () => {
+    const [items, setItems] = useRecoilState(selectedCustomers);
+    return (customer) => {
+        setItems(items.add(customer));
+    };
+  };
+
+  export const useDeleteCustomerFromSelectedCustomers = () => {
+    const [items, setItems] = useRecoilState(selectedCustomers);
+    return (customer) => {
+      items.delete(customer);
+      setItems(items);
+    };
+  };
+
 

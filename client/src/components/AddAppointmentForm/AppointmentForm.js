@@ -1,26 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NoteFieldText from '../NoteFieldText';
 import OpenAnotherComponentTextField from '../OpenAnotherComponentTextField';
 import { addAppointment } from '../../actions/appointments';
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
+import { selectedCustomers } from '../../store/customers';
+import { RecoilRoot } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 
 
 function AppointmentForm() {
   const date = new Date();
-  const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
   const [isRedirectHome, setRedirectHome] = useState(false);
-  
- 
+  const selectedCustomersItems = useRecoilValue(selectedCustomers);
+  const [selectedCustomersNames,setSelectedCustomersNames] = useState();
+
+
+  useEffect(()=>{
+    let namesArry="names...";
+    if(selectedCustomersItems.size > 0){
+      namesArry = "";
+      selectedCustomersItems.forEach((customer) => {
+        namesArry+= customer.name+ " ";
+      })
+    }
+    setSelectedCustomersNames(namesArry);
+  },selectedCustomersItems)
+
+
   let appointmentDetails = {
     userid: '1',
     day: '2012-04-25',
     start_at: '08:00:00',
     end_at: '10:00:00',
-    note: '1'
+    note: '1',
+    customerIds: []
   };
 
 
@@ -30,7 +47,7 @@ function AppointmentForm() {
 
   const handleChangeStartAt = (e, id) => {
     appointmentDetails = { ...appointmentDetails, ['start_at']: e.target.value };
-    
+
   }
 
   const handleChangeEndAt = (e, id) => {
@@ -46,20 +63,27 @@ function AppointmentForm() {
   }
 
   const handleSave = (event) => {
-    addAppointment(appointmentDetails);
-    setRedirectHome(true);
+    if (selectedCustomersItems.size > 0) {
+      //Geting sellected customers ids to send it to create appointment 
+      let customerIds = [];
+      selectedCustomersItems.forEach((customer) => {
+        customerIds.push(customer.id);
+      });
+      appointmentDetails = { ...appointmentDetails, ['customerIds']: customerIds };
+      addAppointment(appointmentDetails);
+      setRedirectHome(true);
+    }else{
+      //If no user was selected should show error message.
+    }
   }
-
-
 
   return (
     <form onSubmit={handleSave} style={{ background: '#1F2B30' }}>
       <div className="tl pa4 vcenter">
         <Link to={`addAppointment`}>
           <OpenAnotherComponentTextField
-            stateId="names..."
             click={handleSelectCustomersClick}
-            placeHolder="names..."
+            placeHolder={selectedCustomersNames}
           />
         </Link>
         <form noValidate>

@@ -5,7 +5,7 @@ import CustomerInfo from '../components/customerInfo/customerInfo'
 import Button from '../components/Button';
 import { getCustomerData } from '../actions/customers';
 import { deleteCustomer } from '../actions/customers'
-import { useRemoveCustomer } from '../store/customers'
+import { useDeleteCustomerFromSelectedCustomers } from '../store/customers'
 import Popup from '../components/Popups'
 import { useHistory } from 'react-router-dom'
 
@@ -28,8 +28,8 @@ const styles = {
         color: "white",
         width: "150px",
         marginLeft: '15px',
-        marginBottom : '15px',
-        
+        marginBottom: '15px',
+
     },
 
     deleteBtn: {
@@ -41,7 +41,20 @@ const styles = {
         backgroundSize: 'cover'
     },
 
-    activityBtn: {
+    activeUser: {
+
+        background: '#1F2B30',
+        border: 'none',
+        marginLeft: '20px',
+        height: '50px',
+        width: '50px',
+        background: 'url(/img/activityicon.svg)',
+        backgroundSize: 'cover',
+        transform: 'rotate(180deg)'
+
+    },
+
+    notActiveUser: {
 
         background: '#1F2B30',
         border: 'none',
@@ -62,10 +75,13 @@ const styles = {
 const CustomerCard = ({ match }) => {
 
     const [customerData, setCustomerData] = useState({});
+    const [customerActivity, setCustomerActivity] = useState(null)
     const [error, setError] = React.useState('');
     const [show, setShow] = React.useState(false)
+    console.log(customerActivity)
+    console.log(customerData)
 
-    const removeCustomer = useRemoveCustomer()
+    const removeCustomer = useDeleteCustomerFromSelectedCustomers()
 
     const handlegetCustomerData = (err, customer_res) => {
         if (err) {
@@ -73,7 +89,8 @@ const CustomerCard = ({ match }) => {
             return;
         }
         setCustomerData(customer_res.customer[0])
-
+        setCustomerActivity(customer_res.customer[0].activitystatus)
+        
     };
 
 
@@ -105,45 +122,40 @@ const CustomerCard = ({ match }) => {
 
     }, []);
 
-    // let currency = '₪';
+
+
+    const handleActivityStatus = () => {
+
+        setCustomerActivity(!customerActivity)
+        setCustomerData({ ...customerData, ['activitystatus']: !customerActivity});
+    } 
+
+    
 
     return (
         <ScreenContainer>
             <MenuHeader title="Customer Card" />
 
             <CustomerInfo
-                namePlaceHolder={customerData.name}
-                emailPlaceHolder={customerData.email}
-                phonePlaceHolder={customerData.phone}
-                appointmentPricePlaceHolder={customerData.appointmentprice }
-                appointmentEveryValPlaceHolder={customerData.paymenteveryvalue}
-                appointmentEveryPeriodPlaceHolder={customerData.paymenteveryunit}
-                notesPlaceHolder={customerData.notes}
+                customerData = {customerData}
+                activity = {customerActivity}
+                
             />
 
 
 
-            <Button
-
-                text="Save"
-
-                onClickButton={() => console.log('clicked')}
-
-
-                style={styles.saveBtn}
-
-
-
-            />
             <div style={styles.container}>
-
-            <Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
+                <Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
                 <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]} style={styles.YesNoBtns}>
                     <h4 style={styles.h4}>Are You sure you want to delete Customer?</h4></Popup>
 
+                <Button
+
+                    style={customerActivity ? styles.activeUser : styles.notActiveUser}
+                    onClickButton={() => handleActivityStatus()}
+>
 
 
-                <Button style={styles.activityBtn}>
                 </Button>
             </div>
 

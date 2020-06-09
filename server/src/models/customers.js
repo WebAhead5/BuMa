@@ -47,12 +47,12 @@ const editCustomer = (customer) =>
    paymentEveryValue = $10,
    paymentEveryUnit = $11,
    balanceValidUntil = $12
-   WHERE id = $1` , [customer.id, customer.name, customer.email, customer.phone, customer.paymentStatus, 
-    customer.activityStatus, customer.notes, customer.balance,
-    customer.appointmentPrice,
-    customer.paymentEveryValue,
-    customer.paymentEveryUnit,
-    customer.balanceValidUntil]
+   WHERE id = $1` , [customer.id, customer.name, customer.email, customer.phone, customer.paymentstatus, 
+    customer.activitystatus, customer.notes, customer.balance,
+    customer.appointmentprice,
+    customer.paymenteveryvalue,
+    customer.paymenteveryunit,
+    customer.balancevaliduntil]
   );
 
 

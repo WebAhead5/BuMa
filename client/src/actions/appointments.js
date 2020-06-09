@@ -24,10 +24,14 @@ export function fetchAppointments(cb) {
     // }
 }
 
-export function deleteAppointment(id ,cb) {
+export function deleteAppointment(id, cb) {
     callApi(null, null, 'DELETE', `delete-appointment/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb)
 }
 
 export function addAppointment(appointment, cb) {
-    callApi(null, null, 'POST', 'add-appointment', appointment, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE);
+    callApi(null, null, 'POST', 'add-appointment', appointment, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE, cb);
+}
+
+export function updateAppointment(id, appointment, cb) {
+    callApi(null, null, 'PUT', `edit-appointment/${id}`, appointment, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE, cb);
 }

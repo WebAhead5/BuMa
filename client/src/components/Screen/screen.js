@@ -2,9 +2,11 @@ import React from 'react';
 
 const styles = {
   container: {
-    width: '100%',
-    height: '100%',
-    backgroundColor : '#1F2B30'
+    height: '100vmax',
+    backgroundColor : '#1F2B30',
+    zIndex: '0',
+    display: 'inline-block',
+    width: '100%'
   },
 };
 

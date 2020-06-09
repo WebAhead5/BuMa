@@ -20,7 +20,9 @@ const style = {
         backgroundSize: 'cover',
         width: '50px',
         height: '50px',
-        border: 'none'
+        border: 'none',
+        position: 'absolute',
+        right: '20px'
     }
 }
 

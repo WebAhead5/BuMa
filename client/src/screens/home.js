@@ -8,11 +8,14 @@ import MenuHeader from '../components/MenuHeader'
 import { fetchAppointments } from '../actions/appointments'
 import { appointments, useSetAppointments } from '../store/appointments'
 import { slide as Menu } from 'react-burger-menu'
+import Button from '../components/Button'
+import { Link } from 'react-router-dom'
+
 
 
 var styles = {
     date: {
-        color: "#E4FDFF"
+        color: "#E4FDFF",
     },
     bmBurgerButton: {
       position: 'fixed',
@@ -55,7 +58,23 @@ var styles = {
     },
     bmOverlay: {
       background: 'rgba(0, 0, 0, 0.3)'
-    }
+    },
+    addBtn: {
+      background: 'url(/img/addAppointment.svg)',
+      backgroundSize: 'cover',
+      width: '50px',
+      height: '50px',
+      border: 'none',
+      position: 'absolute',
+      right: '20px'
+
+  },
+  footer: {
+    bottom: '5px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center'
+  }
   }
 
 
@@ -118,8 +137,13 @@ const Home = () => {
                     }
                 />
             </div>
+            <div style={styles.footer}>
+            <Link to={'/addappointment'}>
+                <Button style={styles.addBtn}></Button>
+            </Link>
             <div style={styles.date}>
                 {dateToday? dateToday : new Date().toLocaleDateString()}
+            </div>
             </div>
         </ScreenContainer>
     )

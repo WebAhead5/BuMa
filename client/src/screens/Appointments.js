@@ -61,7 +61,6 @@ const Appointments = (props) => {
             <MenuHeader icon="backArrow"
                 title="Appointments">
             </MenuHeader>
-            {/* TODO: change change value to be sent from the calendar */}
             <h1 style={style.date}><DateClicked /></h1>
             <AppointmentsList appointments={appointmentsDays} />
             <Link to={'/addappointment'}>

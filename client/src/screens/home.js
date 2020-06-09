@@ -48,7 +48,6 @@ const Home = () => {
             <MenuHeader title="Home" icon='burger'></MenuHeader>
             <div className="Calendar-container">
                 <Calendar 
-                   
                     onClickDay={(e) => onClickDayHandler(e.toLocaleDateString())}
                     value={dateToday}
                     tileContent={({ activeStartDate, date, view }) => {

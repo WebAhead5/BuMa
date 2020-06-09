@@ -1,4 +1,5 @@
 const queries = require('../models/users')
+const bcrypt = require('bcrypt')
 
 const {
     validateSignupData,
@@ -26,6 +27,7 @@ exports.getOneUser = (req, res) => {
 }
 
 exports.addUser = (req, res) => {
+    
     const newUser = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -39,12 +41,23 @@ exports.addUser = (req, res) => {
         crn: req.body.crn,
         business_address: req.body.business_address
     };
+//---------------------- Validate  -------------------------- //
 
     const { valid, errors } = validateSignupData(newUser);
 
     if (!valid) return res.status(400).json(errors);
 
-    queries.addUser(newUser)
+
+
+    //---------------------- Hash Password  -------------------------- //
+
+
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+       
+        newUser.password = hash;
+
+// add to database
+        queries.addUser(newUser)
         .then(() => {
             res.status(200).json({ message: 'user added successfully', code: 200 })
         })
@@ -52,6 +65,9 @@ exports.addUser = (req, res) => {
             console.error(err)
             return res.status(500).json({ error: err.code })
         });
+        
+    });
+        
 }
 
 exports.deleteUser = (req, res) => {

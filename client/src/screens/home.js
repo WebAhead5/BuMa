@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'
 
 var styles = {
     date: {
-        color: "#E4FDFF"
+        color: "#E4FDFF",
     },
     bmBurgerButton: {
       position: 'fixed',
@@ -64,7 +64,16 @@ var styles = {
       backgroundSize: 'cover',
       width: '50px',
       height: '50px',
-      border: 'none'
+      border: 'none',
+      position: 'absolute',
+      right: '20px'
+
+  },
+  footer: {
+    bottom: '5px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center'
   }
   }
 
@@ -128,11 +137,13 @@ const Home = () => {
                     }
                 />
             </div>
+            <div style={styles.footer}>
             <Link to={'/addappointment'}>
                 <Button style={styles.addBtn}></Button>
             </Link>
             <div style={styles.date}>
                 {dateToday? dateToday : new Date().toLocaleDateString()}
+            </div>
             </div>
         </ScreenContainer>
     )

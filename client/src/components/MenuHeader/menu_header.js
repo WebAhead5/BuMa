@@ -9,7 +9,6 @@ let styles = {
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
-        height: "100%",
         fontFamily: 'gothamBook',
         backgroundColor: '#0B8D98',
         color: '#0B8D98',

@@ -114,3 +114,10 @@ body {
   height: 2px;
   background-color: #0B8D98;
 }
+
+.Calendar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 42.5vh;
+}

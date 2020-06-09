@@ -1,8 +1,13 @@
 const queries = require('../models/users')
 
+const {
+    validateSignupData,
+    validateLoginData,
+  } = require("../util/validators")
+
 exports.getUsers = (req, res) => {
     queries.getUsers()
-        .then(users => res.status(200).json({users, code: 200}))
+        .then(users => res.status(200).json({ users, code: 200 }))
         .catch(err => {
             console.error(err)
             return res.status(500).json({ error: err.code })
@@ -27,6 +32,7 @@ exports.addUser = (req, res) => {
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
+        confirmPassword: req.body.confirmPassword,
         phone: req.body.phone,
         business_name: req.body.business_name,
         business_logo: req.body.business_logo,
@@ -34,9 +40,13 @@ exports.addUser = (req, res) => {
         business_address: req.body.business_address
     };
 
+    const { valid, errors } = validateSignupData(newUser);
+
+    if (!valid) return res.status(400).json(errors);
+
     queries.addUser(newUser)
         .then(() => {
-            res.status(200).json({ message: 'user added successfully',code: 200 })
+            res.status(200).json({ message: 'user added successfully', code: 200 })
         })
         .catch(err => {
             console.error(err)
@@ -68,9 +78,9 @@ exports.updateUser = (req, res) => {
         business_address: req.body.business_address
     };
     queries.editUser(newUser)
-    .then(() => res.status(200).json({ message: 'user updated successfuly' }))
-    .catch(err => {
-        console.error(err);
-        return res.status(500).json({ error: err.code })
-    })
+        .then(() => res.status(200).json({ message: 'user updated successfuly' }))
+        .catch(err => {
+            console.error(err);
+            return res.status(500).json({ error: err.code })
+        })
 }

@@ -74,9 +74,9 @@ CREATE TABLE users(
   username VARCHAR(20) NOT NULL,
   password VARCHAR(12) NOT NULL,
   phone VARCHAR(20),
-  business_name VARCHAR(30) NOT NULL,
+  business_name VARCHAR(30) ,
   business_logo VARCHAR(100),
-  crn VARCHAR(20) NOT NULL,
+  crn VARCHAR(20),
   business_address VARCHAR(100)
 );
 

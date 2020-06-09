@@ -24,7 +24,9 @@ router.delete('/user/admin/delete-appointment/:id', appointments.deleteAppointme
 router.put('/user/admin/edit-appointment/:id', appointments.updateAppointment)
 router.get('/user/admin/users', users.getUsers)
 router.get('/user/admin/users/:id', users.getOneUser)
-router.post('/user/admin/users/add-user',users.addUser)
+//Signup route
+router.post('/user/admin/add-user',users.addUser)
+
 router.delete('/user/admin/users/delete-user/:id', users.deleteUser)
 router.put('/user/admin/users/edit-user/:id', users.updateUser)
 
@@ -33,8 +35,6 @@ router.get('/user/admin/reports',reports.getAllReports)
 router.get('/user/admin/report/:id',reports.getSingleReport)
 router.post('/user/admin/add-report/',reports.addSingleReport)
 router.delete('/user/admin/delete-report/:id',reports.deleteReport)
-
-//Register Route
 
 
 

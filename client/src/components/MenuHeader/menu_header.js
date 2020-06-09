@@ -31,7 +31,7 @@ let styles = {
     },
     titleSingle: {
         fontSize: '30px',
-        color: 'white',
+        color: '#E4FDFF',
         fontWeight: 'bold',
         fontFamily: 'gothamBook',
 

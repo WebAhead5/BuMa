@@ -7,28 +7,30 @@ const users = require('./users')
 const login = require('./login');
 const middlewares = require('../middlewares');
 
- 
+ //Login route
 router.post('/login', login.checkUserLogin);
 
-
+// Customers Route
 router.get('/user/admin/customers', customers.getAllCustomers)
 router.get('/user/admin/customer/:id', customers.getOneCustomer)
 router.post('/user/admin/add-customer', customers.addOneCustomer)
 router.delete('/user/admin/delete-customer/:id', customers.deleteCustomer)
 router.put('/user/admin/edit-customer/:id', customers.updateCustomer)
+// Appointments Route
 router.get('/user/admin/appointments', appointments.getAllAppointments)
 router.get('/user/admin/appointment/:id', appointments.getOneAppointment)
 router.post('/user/admin/add-appointment', appointments.addOneAppointment)
 router.delete('/user/admin/delete-appointment/:id', appointments.deleteAppointment)
 router.put('/user/admin/edit-appointment/:id', appointments.updateAppointment)
+//Users Route
 router.get('/user/admin/users', users.getUsers)
 router.get('/user/admin/users/:id', users.getOneUser)
+router.delete('/user/admin/users/delete-user/:id', users.deleteUser)
+router.put('/user/admin/users/edit-user/:id', users.updateUser)
 //Signup route
 router.post('/user/admin/add-user',users.addUser)
 
-router.delete('/user/admin/users/delete-user/:id', users.deleteUser)
-router.put('/user/admin/users/edit-user/:id', users.updateUser)
-
+//Reports route
 
 router.get('/user/admin/reports',reports.getAllReports)
 router.get('/user/admin/report/:id',reports.getSingleReport)

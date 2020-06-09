@@ -72,7 +72,7 @@ CREATE TABLE users(
   last_name VARCHAR(30) NOT NULL,
   email VARCHAR(30) UNIQUE NOT NULL,
   username VARCHAR(20) NOT NULL,
-  password VARCHAR(100) NOT NULL,
+  password VARCHAR(200) NOT NULL,
   phone VARCHAR(20),
   business_name VARCHAR(30) ,
   business_logo VARCHAR(100),

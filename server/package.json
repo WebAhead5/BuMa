@@ -7,17 +7,19 @@
     "start": "nodemon src/server.js",
     "test": "NODE_ENV=test nodemon src/tests/dataBase.test.js | tap-spec",
     "test_reports_modules": "NODE_ENV=test nodemon src/tests/reports.test.js | tap-spec",
-    "test_appointments_modules" : "NODE_ENV=test tape src/tests/appointments_modules.test.js | tap-spec",
-    "test_users_modules" : "NODE_ENV=test tape  src/tests/users_modules.test.js | tap-spec",
+    "test_appointments_modules": "NODE_ENV=test tape src/tests/appointments_modules.test.js | tap-spec",
+    "test_users_modules": "NODE_ENV=test tape  src/tests/users_modules.test.js | tap-spec",
     "test_modules": "npm run test_appointments_modules & npm run test_users_modules & npm run test_reports_modules "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "pg-promise": "^10.5.6"
   },
   "devDependencies": {

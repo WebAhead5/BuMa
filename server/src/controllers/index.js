@@ -7,11 +7,10 @@ const users = require('./users')
 
 
 const login = require('./login');
-const error = require('./error');
 const middlewares = require('../middlewares');
 
  
-
+router.post('/login', login.checkUserLogin);
 
 
 router.get('/user/admin/customers', customers.getAllCustomers)

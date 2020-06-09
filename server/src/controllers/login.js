@@ -1,46 +1,46 @@
 // use these functions to manipulate our database
-// const { findByUsername, addNewUser } = require('../models/users/User.model');
+const queries = require('../models/users')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
-exports.checkUserLogin = async (req, res) => {
+exports.checkUserLogin = (req, res) => {
 
     const password = req.body.password;
-    const user = req.body.username;
+    const userName = req.body.username;
 
-    const username = await findByUsername(user);
+    queries.getUserByName(userName)
+   
 
-    try {
+        .then(userData =>
+            
+            userData.length < 1 ? res.status(404).json({ message: 'No user found' }) :
+                bcrypt.compare(password, userData.password, function (err, result) {
+                    if (result) {
+                        res.status(200).json({ message: 'Login Successfully' });
+                    } else {
 
-        bcrypt.compare(password, username.password, function (err, result) {
+                        res.status(404).json({ message: 'Your username or password seems to be incorrect' });
+                        console.log(userData)
 
-            if (result) {
-                jwt.sign(user, process.env.JWT_SECRET, function (err, token) {
-                    if (err) {
-                        console.log('Error occurred')
                     }
 
-                    res.cookie('access_token', token);
-                    res.redirect('/');
-                });
 
 
-            } else {
-
-                res.render("login", {
-                    passerr: true,
-                    errpassword: "Password is not correct"
                 })
-            }
 
-        });
-
-    } catch (error) {
-        res.render("login", {
-
-            loginerr: true,
-            errlogin: error.message
-        })
-    }
+        )
+}
 
 
-};
+
+                        //         // jwt.sign(user, process.env.JWT_SECRET, function (err, token) {
+                        //         //     if (err) {
+                        //         //         return res.status(500).json({ error: 'Error occurred' })
+                        //         //     }
+
+                        //         //     res.cookie('access_token', token);
+                        //         //     res.redirect('/');
+                        //         // });
+
+                        //     }

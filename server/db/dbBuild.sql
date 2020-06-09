@@ -72,7 +72,7 @@ CREATE TABLE users(
   last_name VARCHAR(30) NOT NULL,
   email VARCHAR(30) UNIQUE NOT NULL,
   username VARCHAR(20) NOT NULL,
-  password VARCHAR(12) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   phone VARCHAR(20),
   business_name VARCHAR(30) NOT NULL,
   business_logo VARCHAR(100),
@@ -133,8 +133,8 @@ INSERT INTO users (first_name, last_name, email, username, password, phone, busi
   crn,
   business_address)
 VALUES 
-('Morad', 'Abed','moraabed@email.com', 'morad', '111', '0500500506', 'Microsoft','http://morad_logo.jpg', '1234','1, Akko, Is'),
-('Amir', 'Fahoum','amirfahoum@email.com', 'amir', '222', '0544444444', 'Google','http://amir_logo.jpg', '444','1, Akko, Is');
+('Morad', 'Abed','moraabed@email.com', 'morad', '$2b$10$iI423ND21pWJJ4/.swMyHurPxV4ARfCp/ykBWgYDybEp9Xm0qMVZq', '0500500506', 'Microsoft','http://morad_logo.jpg', '1234','1, Akko, Is'),
+('Amir', 'Fahoum','amirfahoum@email.com', 'amir', '$2b$10$cBwqSI5PXeRDC2a1pfDQteAA.IV.bheNw7Diy1HP1WvQmwnB75ofu', '0544444444', 'Google','http://amir_logo.jpg', '444','1, Akko, Is');
 
 COMMIT;
 

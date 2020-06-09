@@ -6,6 +6,10 @@ const getUsers= () => {
     return db.query(`SELECT * FROM users `);
 }
 
+const getUserByName = (userName) => {
+    return db.query(`SELECT * FROM users where username = $1`, userName);
+}
+
 
 
 const getUserById = (userId) => {
@@ -39,6 +43,7 @@ const editUser = (user) =>
 
 module.exports = {
     getUsers,
+    getUserByName,
     getUserById,
     addUser,
     deleteUser,

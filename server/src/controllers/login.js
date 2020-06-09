@@ -20,23 +20,14 @@ exports.checkUserLogin = async (req, res ) => {
         bcrypt.compare(password, userData[0].password, function (err, result) {
 
             if (result) {
-                jwt.sign((userData[0].id).toString(), process.env.JWT_SECRET, function (err, token) {
-                    if (err) {
-                      console.log('Error occurred')
-                    }
-                    console.log('token : ' ,token)
-                    res.cookie('access_token', token);
-          
-
-                })
+               const accessToken = generateAccessToken((userData[0].id).toString())
+               console.log(accessToken)
+               res.cookie('access_token', accessToken)
+               res.end()
                
-
             } else {
                 res.status(404).json({ message: 'Your username or password seems to be incorrect' });
-                res.redirect('/');
-
             }
-
         })
 
     } catch {
@@ -46,3 +37,7 @@ exports.checkUserLogin = async (req, res ) => {
     }
 
 }
+
+function generateAccessToken(user) {
+    return jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '10min'})
+  }

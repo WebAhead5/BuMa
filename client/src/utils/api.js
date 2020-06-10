@@ -66,6 +66,7 @@ export function callApi(dispatch, getState, method, path, body, successType, fai
 
   return fetch(API_HOST + path, {
     method: method,
+    credentials : "include",
     headers: headers,
     body: body ? JSON.stringify(body) : null,
   }).then(response => response.json())

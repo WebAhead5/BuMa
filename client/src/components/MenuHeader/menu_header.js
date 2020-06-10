@@ -11,7 +11,6 @@ let styles = {
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
-        height: "100%",
         fontFamily: 'gothamBook',
         backgroundColor: '#0B8D98',
         color: '#0B8D98',
@@ -22,31 +21,22 @@ let styles = {
 
     },
     backArrowIcon: {
-
         display: 'flex',
     },
     title: {
         fontSize: '1.0em',
         color: '#0B8D98',
         fontWeight: 'bold',
-        fontFamily: 'gothamBook',
     },
     titleSingle: {
         fontSize: '30px',
-        color: 'white',
+        color: '#E4FDFF',
         fontWeight: 'bold',
-        fontFamily: 'gothamBook',
-
+        marginBottom: '-10px'
     },
 };
 
-
 const Menu_header = (props) => {
-    // const businessDetails = useRecoilValue(user);
-    // let headerImageUrl = businessDetails.business_logo;
-    // if (headerImageUrl===null || headerImageUrl===undefined)
-    //     headerImageUrl='/img/logo.png';
-    // styles.header.backgroundColor = props.colorBackground;
     let header = (
         <div className="col-xs-12 navbar-fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>

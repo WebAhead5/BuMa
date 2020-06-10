@@ -134,7 +134,7 @@ const CustomerCard = ({ match }) => {
 
     return (
         <ScreenContainer>
-            <MenuHeader title="Customer Card" />
+            <MenuHeader icon="backArrow" title="Customer Card" />
 
             <CustomerInfo
                 customerData = {customerData}

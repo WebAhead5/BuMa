@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReportCard from "./reportCard";
-import Button from "../../components/Button";
+import Button from "../Button";
 import {fetchReports, getReportById} from '../../actions/reports';
 import { fetchCustomers } from '../../actions/customers';
 

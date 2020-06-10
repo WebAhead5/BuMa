@@ -4,10 +4,12 @@ import MenuHeader from '../components/MenuHeader';
 import { useRecoilValue } from 'recoil';
 import { fetchAppointments } from '../actions/appointments'
 import { appointments, useSetAppointments } from '../store/appointments'
+import { useSetDate } from '../store/date'
 import AppointmentsList from '../components/AppointmentsList';
 import Button from '../components/Button'
 import { Link } from 'react-router-dom'
-import Date from '../components/DateClicked'
+import DateClicked from '../components/DateClicked'
+
 
 const style = {
     date: {
@@ -18,20 +20,41 @@ const style = {
         backgroundSize: 'cover',
         width: '50px',
         height: '50px',
-        border: 'none'
+        border: 'none',
+        position: 'absolute',
+        right: '20px'
     }
 }
 
+
+
 const Appointments = (props) => {
+
 
     const allAppointments = useRecoilValue(appointments)
 
     const setItems = useSetAppointments();
 
+    const setDate = useSetDate()
+
     useEffect(() => {
         fetchAppointments(setItems)
+        setDate(dateFromParams)
     }, [])
 
+    // we receive the date from the params and filter our appointments result according to the date we get.
+    const search = props.location.search;
+    const params = new URLSearchParams(search);
+    const dateFromParams = params.get('date');
+    
+    const comparisonDate = new Date(dateFromParams)
+
+    let splittedISOString = date => {
+       return date.split('T')[0]
+    }
+
+    
+    let appointmentsDays = allAppointments.filter(appointments => splittedISOString(appointments.day) === splittedISOString(comparisonDate.toISOString()))
 
 
     return (
@@ -39,9 +62,8 @@ const Appointments = (props) => {
             <MenuHeader icon="backArrow"
                 title="Appointments">
             </MenuHeader>
-            {/* TODO: change change value to be sent from the calendar */}
-            <h1 style={style.date}><Date/></h1>
-            <AppointmentsList appointments={allAppointments} />
+            <h1 style={style.date}><DateClicked /></h1>
+            <AppointmentsList appointments={appointmentsDays} />
             <Link to={'/addappointment'}>
                 <Button style={style.addBtn}></Button>
             </Link>

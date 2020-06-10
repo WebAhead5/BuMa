@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { addUser } from '../../actions/users';
 import { Redirect } from 'react-router';
+//import { Label, Error } from '@progress/kendo-react-labels';
 //import { Input } from '@material-ui/core';
 
 function RegistrationForm() {
-  const date = new Date();
-  const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
-  const [confirmPassword, setConfirmPassword]= useState("");
   const [businessDetails, setBusinessDetails] = useState({
-    first_name: 'First name',
-    last_name: 'Last name',
-    email: 'Email',
-    username: 'Username',
-    password: 'Password',
+    first_name: '',
+    last_name: '',
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword : '',
     phone:'',
     business_name:'',
     business_logo:'',
@@ -24,27 +23,38 @@ function RegistrationForm() {
 
 const style={
     table:{
-        width:"90%",
-        TextAlignment:"center",
-        margin:"15px",
-        padding:"15px"
-
+        width:"80%",
+        TextAlignment:"left",
+        margin: "auto",
+        padding:"10px",
+        background:''
     },
     input:{
-        margin:"5px"
-    }
-}
-  const handleChangePassword = (e) => {
-    setConfirmPassword(e.target.value);
+        margin:"2px"
+    },
+    label : {
+      color : 'white',
+      marginTop:'20px',
+      width:'100%'
+    },
+    img:{
+      width:'150px',
+      height:'150px',
+      overFlow:'hidden'
+  },
+  tbody:{
+    background:'',
+    paddingLeft:'10px',
   }
+}
   const handleChange = (e) => {
     setBusinessDetails({ ...businessDetails, [e.target.id]: e.target.value });
+    console.log(businessDetails)
   }
 
   const handleSubmit = (event) => {
-    if(confirmPassword===businessDetails.password){
-      addUser(businessDetails)
-      alert('thank you for registering with us')
+    if(businessDetails.confirmPassword==businessDetails.password){
+      addUser(businessDetails, () => alert('thank you for registering with us') )
       setRedirect(true);
     }else{
       alert('please type in identical passwords')
@@ -53,69 +63,86 @@ const style={
   }
 
   return (
-
     <form onSubmit={handleSubmit} style={{ background: '#1F2B30' }}>
-      <div className="tc pa4 vcenter">
+      <div className="tl vcenter">
       <table border="0" style={style.table}>
+      <thead>
+        <tr>
+        <th colSpan="2">
+        <div className="tc shadow-4 pa3 br3">
+            <img src='../img/logo.png' style={style.img}></img>
+            <br></br>
+            <h1 style={{marginTop:'-40px', color:'#0B8D98'}}>BuMa L.T.D</h1>
+            </div>
+        </th>
+        </tr>
+      </thead>
+      <tbody style={style.tbody}>
       <tr><td>
+        <label style={style.label}> first name*</label> 
         <input
           id="first_name"
           type="text"
           onChange={handleChange}
-          style={{width:"90%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.first_name}
+          style={{width:"90%", height:"40px"}}
+          placeholder={businessDetails.first_name}
           required
         />
         </td><td>
+        <label style={style.label}>last name*</label>
         <input
           id="last_name"
           type="text"
           onChange={handleChange}
-          style={{width:"90%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.last_name}
+          style={{width:"90%", height:"40px"}}
+          placeholder={businessDetails.last_name}
           required
         />
         </td></tr>
-        <tr ><td colspan="2">
+        <tr ><td colSpan="2">
+        <label style={style.label}>username*</label>
         <input
           id="username"
           type="text"
           onChange={handleChange}
-          style={{width:"95%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.username}
+          style={{width:"95%", height:"40px"}}
+          placeholder={businessDetails.username}
           required
         />
         </td></tr>
-        <tr ><td colspan="2">
+        <tr ><td colSpan="2">
+        <label style={style.label}>email*</label>
         <input
           id="email"
           type="email"
           onChange={handleChange}
-          style={{width:"95%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.email}
+          style={{width:"95%", height:"40px"}}
+          placeholder={businessDetails.email}
           required
         />
          </td></tr>
          <tr><td>
+         <label style={style.label}>password*</label>
          <input
             id="password"
             type="password"
             onChange={handleChange}
-            style={{width:"90%",margin:"10px", height:"35px"}}
-            placeHolder={businessDetails.password}
+            style={{width:"90%", height:"40px"}}
+            placeholder={businessDetails.password}
             required
           />
           </td><td>
+          <label style={style.label} >confirm password*</label>
           <input
-            id="password2"
+            id="confirmPassword"
             type="password"
-            onChange={handleChangePassword}
-            style={{width:"90%",margin:"10px", height:"35px"}}
-            placeHolder="Confirm Password"
+            onChange={handleChange}
+            style={{width:"90%", height:"40px"}}
+            placeholder={businessDetails.confirmPassword}
             required
           />
           </td></tr>
-          <tr ><td colspan="2" style={{textAlign:"center"}}>
+          <tr ><td colSpan="2" style={{textAlign:"center"}}>
         <input
           type="submit"
           value="Registration"
@@ -124,6 +151,7 @@ const style={
           style={{ background: '#0B8D98', color: "white", width: "80%", marginTop:"50px"}}
         />
         </td></tr>
+        </tbody>
         </table>
       </div>
 

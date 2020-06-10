@@ -50,19 +50,27 @@ const style={
     <form onSubmit={handleSubmit} style={{ background: '#1F2B30' }}>
       <div className="tc pa4 vcenter">
       <table border="0" style={style.table}>
-        <tr ><td style={{textAlign:"center"}} colSpan="2">
+      <thead>
+        <tr ><th style={{textAlign:"center"}} colSpan="2">
             <div className="tc shadow-4 pa3 br3">
-            <img src={userDetails.business_logo} style={style.img}></img>
+            <img 
+            src={userDetails.business_logo} 
+            style={style.img}
+            alt="Profile Image"
+            ></img>
             <br></br>
             <h1 style={{marginTop:'-40px', color:'#0B8D98'}}>{userDetails.business_name}</h1>
             </div>
-        </td></tr>
-        <tr>
-            <td>
+        </th></tr>
+        </thead>
+        <tbody>
+        <tr >
+            <td >
             <TextField
             id="first_name"
             label="First name"
             type="text"
+            className="br2"
             onChange={handleChange}
             style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.first_name}
@@ -76,6 +84,7 @@ const style={
             id="last_name"
             label="Last name"
             type="text"
+            className="br2"
             onChange={handleChange}
             style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.last_name}
@@ -90,6 +99,7 @@ const style={
             id="business_name"
             label="Business name"
             type="text"
+            className="br2"
             onChange={handleChange}
             style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.business_name}
@@ -103,6 +113,7 @@ const style={
             id="email"
             label="Email"
             type="email"
+            className="br2"
             onChange={handleChange}
             style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.email}
@@ -116,6 +127,7 @@ const style={
             id="crn"
             label="CRN"
             type="number"
+            className="br2"
             onChange={handleChange}
             style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.crn}
@@ -129,6 +141,7 @@ const style={
             id="phone"
             label="Phone"
             type="tel"
+            className="br2"
             onChange={handleChange}
             style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.phone}
@@ -142,6 +155,7 @@ const style={
           <TextField
             id="business_address"
             label="Address"
+            className="br2"
             onChange={handleChange}
             style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.business_address}
@@ -155,6 +169,7 @@ const style={
             id="business_logo"
             label="Logo URL"
             type="text"
+            className="br2"
             onChange={handleChange}
             style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.business_logo}
@@ -171,6 +186,7 @@ const style={
             style={{ background: '#0B8D98', color: "white", width: "80%", marginTop:"40px"}}
             />
         </td></tr>
+        </tbody>
         </table>
       </div>
 

@@ -2,16 +2,22 @@ import React from 'react'
 import ScreenContainer from '../components/Screen';
 import MenuHeader from '../components/MenuHeader';
 import Button from '../components/Button'
+import { Link } from 'react-router-dom'
 
 
 const styles = {
 
-    container: {
+
+    btnsContainer: {
+
 
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: '5px',
+        width: '100vw',
+        height: '30.5vh',
+        borderBottom: ' 1px solid rgba(255,255,255, 0.2)'
+
 
     },
 
@@ -19,6 +25,7 @@ const styles = {
 
 
         color: 'white',
+        marginLeft: '20px'
     },
 
     paymentBtn: {
@@ -26,11 +33,15 @@ const styles = {
 
         background: '#1F2B30',
         border: 'none',
-        marginLeft: '20px',
+        marginLeft: '25px',
         height: '50px',
         width: '50px',
         background: 'url(/img/payment.svg)',
         backgroundSize: 'cover',
+        marginBottom: '20px',
+        marginTop: '20px',
+        outline:'none',
+
 
     },
 
@@ -43,19 +54,23 @@ const styles = {
         width: '50px',
         background: 'url(/img/notification.svg)',
         backgroundSize: 'cover',
-
+        marginBottom: '20px',
+        marginTop: '20px',
+        outline:'none',
 
     },
 
     syncBtn: {
         background: '#1F2B30',
         border: 'none',
-        marginLeft: '20px',
+        marginRight: '5px',
         height: '50px',
         width: '50px',
         background: 'url(/img/sync.svg)',
         backgroundSize: 'cover',
-
+        marginBottom: '20px',
+        marginTop: '20px',
+        outline:'none',
 
 
     }
@@ -73,37 +88,41 @@ const Settings = () => {
             <MenuHeader icon="backArrow" title="Settings" />
 
 
-            <div style={styles.container}>
-
-                <Button
-
-                    style={styles.paymentBtn} />
-                    
-                <label style={styles.label}>Payment Settings</label>
+            <Link to='payment-settings' style={{ textDecoration: 'none' }}>
+                <div style={styles.btnsContainer}>
 
 
-            </div>
+                    <Button
 
-            <div style={styles.container}>
+                        style={styles.paymentBtn} />
 
-                <label>Notification Settings</label>
+
+
+                    <label style={styles.label}>Payment Settings</label>
+
+                </div>
+            </Link>
+
+            <div style={styles.btnsContainer}>
 
                 <Button
 
                     style={styles.notificationBtn} />
 
+                <label style={styles.label}>Notification Settings</label>
+
+
             </div>
 
-            <div style={styles.container}>
-
-                <label>Sync Calenders</label>
+            <div style={styles.btnsContainer}>
 
                 <Button
 
                     style={styles.syncBtn} />
 
-            </div>
+                <label style={styles.label}>Sync Calenders</label>
 
+            </div>
 
 
         </ScreenContainer>

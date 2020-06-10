@@ -9,6 +9,15 @@ exports.getAllAppointments = (req, res) => {
         })
 }
 
+exports.getAppointmentsByUserId = (req, res) => {
+    queries.appointmentsByUserId(res.locals.userid)
+    .then(appointments => res.status(200).json({ appointments, code: 200 }))
+        .catch(err => {
+            console.error(err)
+            return res.status(500).json({ error: err.code })
+        })
+}
+
 exports.getOneAppointment = (req, res) => {
     queries.getAppointmentById(req.params.id)
         .then(appointment =>

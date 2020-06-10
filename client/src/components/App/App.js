@@ -11,10 +11,12 @@ import { RecoilRoot } from 'recoil';
 import AddAppointment from '../../screens/addAppointment';
 import Appointments from '../../screens/Appointments';
 import Settings from '../../screens/settings'
+import PaymentSettings from '../../screens/paymentSettings'
 import AppointmentCard from '../../screens/appointmentCard';
 import Registration from '../../screens/registration';
 import Profile from '../../screens/profile';
 import Reports from '../../screens/reports';
+// import Signin from '../../screens/signin';
 
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
         <div className="App">
 
           <Switch>
-            <Route path='/' exact component={Home} />
+            <Route path={['/', '/home']} exact component={Home} />
             <Route path='/addcustomer' exact component={AddCustomer} />
             <Route path='/customercard/:id' exact component={CustomerCard} />
             <Route path='/selectcustomer' exact component={SelectCustomer} />
@@ -34,10 +36,12 @@ function App() {
             <Route path='/appointments' exact component={Appointments}/>
             <Route path="/customercard/:id" exact component={CustomerCard} />
             <Route path="/settings" exact component={Settings} />
+            <Route path="/payment-settings" exact component={PaymentSettings} />
             <Route path="/appointmentcard/:id" exact component={AppointmentCard} />
             <Route path="/registration" exact component={Registration} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/reports" exact component={Reports} />
+            {/* <Route path="/signin" exact component={Signin} /> */}
           </Switch>
         </div>
       </Router>

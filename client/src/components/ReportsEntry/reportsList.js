@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 import {fetchReports, getReportById} from '../../actions/reports';
 import { fetchCustomers } from '../../actions/customers';
 
-const Reports = ({match}) => {
+const ReportsList = ({match}) => {
     
     const reportsDetails = [
         {id: '1', userid: '3', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
@@ -60,7 +60,7 @@ const Reports = ({match}) => {
                         <ReportCard 
                         key={user.id} 
                         userid={user.userid} 
-                        creatingdate={user.creatingDate} 
+                        creatingdate={user.creatingdate} 
                         pdfile={user.pdfile} 
                         />
                     );
@@ -75,4 +75,4 @@ const Reports = ({match}) => {
 
 }
 
-export default Reports;
+export default ReportsList;

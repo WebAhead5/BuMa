@@ -1,6 +1,6 @@
 import React from 'react';
 
-const reportCard = (props) => {
+const ReportCard = (props) => {
     const style={
         layout:{
             background:'#1F2B30',
@@ -30,4 +30,4 @@ const reportCard = (props) => {
 
 }
 
-export default reportCard;
+export default ReportCard;

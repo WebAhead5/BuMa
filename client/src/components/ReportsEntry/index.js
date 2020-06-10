@@ -1,3 +1,3 @@
-import reports from "./reports";
+import ReportsList from "./reportsList";
 
-export default reports;
+export default ReportsList;

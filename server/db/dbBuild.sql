@@ -139,10 +139,10 @@ VALUES
 
 INSERT INTO reports (userid,creatingdate,pdfile) VALUES 
 
- (1,'2012-04-25','pdflink/1st.pdf'),
- (1, '2012-04-26','pdflink/2nd.pdf'),
- (1, '2012-04-27','pdflink/3rd.pdf'),
- (1, '2012-04-28','pdflink/4th.pdf');
+ (1,'2012-04-25','/img/report.png'),
+ (1, '2012-04-26','/img/report.png'),
+ (1, '2012-04-27','/img/report.png'),
+ (1, '2012-04-28','/img/report.png');
 
 
 INSERT INTO users (first_name, last_name, email, username, password, phone, business_name,

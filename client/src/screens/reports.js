@@ -1,15 +1,15 @@
 import React from 'react';
 import MenuHeader from '../components/MenuHeader';
-import Reports from "../components/ReportsEntry";
+import ReportsList from "../components/ReportsEntry";
 import ScreenContainer from '../components/Screen';
 
-const reports = () => {
+const Reports = () => {
         return (
             <ScreenContainer>
                 <MenuHeader icon="backArrow" title="Reports" />
-                <Reports />
+                <ReportsList />
             </ScreenContainer>
         );
 }
  
-export default reports;
+export default Reports;

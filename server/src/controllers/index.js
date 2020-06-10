@@ -13,6 +13,9 @@ const middlewares = require('../middlewares');
 //Login route
 router.post('/user/admin/login', login.checkUserLogin);
 
+//Logout route
+router.delete('/user/admin/logout', users.logout)
+
 
 // Customers Route
 router.get('/user/admin/customers', middlewares.authCheck , customers.getAllCustomers)

@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
 import { filterDisplay, customers , customersState } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
+import TextBoxesPopup from '../components/TextBoxesPopup';
+import { makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -53,6 +55,7 @@ const Customers = (props) => {
 
     const [error, setError] = React.useState('')
     const [searchText, setSearchText] = React.useState('')
+    const [popupShow,setPopupShow] = React.useState(false);
 
 
     useEffect(() => {
@@ -73,8 +76,39 @@ const Customers = (props) => {
         }
     }
 
+    const useStyles = makeStyles((theme) => ({
+        dates :{
+            backgroundColor: 'white',
+            marginBottom: '10px',
+            height: '200px',
+            width:'200px',
+        }
+    }));
+
+    const classes = useStyles();
+
+    const messageTextBox = [
+        {
+            label:"Message",
+            type: "Text",
+            defaultValue:"",
+            multiline:"true",
+            rows:9,
+            variant: "outlined",
+            className: classes.dates
+        }
+    ]
+    const handleChangeMessageTextBox = () => {
+
+    }
+    const callBacks = [
+        handleChangeMessageTextBox
+    ]
+
+ 
     return (
         <ScreenContainer>
+            <TextBoxesPopup callbacks= {callBacks} textBoxes={messageTextBox} setShow={setPopupShow} show= {popupShow}></TextBoxesPopup> 
             <MenuHeader icon="backArrow"
                 title= "Customers" />
             <SearchField value={searchText} handleChange={searchFieldHandleChange} />
@@ -90,7 +124,7 @@ const Customers = (props) => {
 
                 </Link>
 
-                <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
+                <Button text="Public Announcement" onClickButton={() => setPopupShow(true)} style={styles.btn} />
             </div>
         </ScreenContainer>
     );

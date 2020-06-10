@@ -75,6 +75,14 @@ var styles = {
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'center'
+  },
+  img: {
+    position:'absolute',
+    top: '-18px',
+    right: '5px',
+    width: '100px',
+    height: '90px',
+    transform: 'rotate(-1deg)'
   }
 }
 
@@ -124,7 +132,8 @@ const Home = () => {
   return (
     <ScreenContainer>
 
-      <MenuHeader title="Home" icon=''></MenuHeader>
+      <MenuHeader title="BuMa" icon=''></MenuHeader>
+      <img src="/img/logoTransparent.png" style={styles.img}/>
       <Menu styles={styles}>
         <a id="customers" className="menu-item" href="/customers">Customers</a>
         <a id="appointments" className="menu-item" href="/appointments">Appointments</a>

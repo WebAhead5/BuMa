@@ -36,7 +36,6 @@ const style={
 }
   const handleChangePassword = (e) => {
     setConfirmPassword(e.target.value);
-    console.log(confirmPassword)
   }
   const handleChange = (e) => {
     setBusinessDetails({ ...businessDetails, [e.target.id]: e.target.value });

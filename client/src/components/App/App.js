@@ -14,6 +14,7 @@ import Settings from '../../screens/settings'
 import AppointmentCard from '../../screens/appointmentCard';
 import Registration from '../../screens/registration';
 import Profile from '../../screens/profile';
+import Reports from '../../screens/reports';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/appointmentcard/:id" exact component={AppointmentCard} />
             <Route path="/registration" exact component={Registration} />
             <Route path="/profile" exact component={Profile} />
+            <Route path="/reports" exact component={Reports} />
           </Switch>
         </div>
       </Router>

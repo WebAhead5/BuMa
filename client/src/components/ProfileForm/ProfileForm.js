@@ -10,7 +10,6 @@ function ProfileForm(props) {
   const [isRedirect, setRedirect] = useState(false);
   let userDetails = props.userDetails;
   const setItems = SetUserDetails();
-  const id='3';
 
 const style={
     table:{

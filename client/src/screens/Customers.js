@@ -14,9 +14,6 @@ import { filterDisplay, customers , customersState } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
 
 
-
-
-
 const styles = {
     btn: {
         backgroundColor: '#0B8D98',
@@ -40,8 +37,6 @@ const styles = {
     }
 
 };
-
-
 
 
 const Customers = (props) => {

@@ -32,14 +32,14 @@ let styles = {
     },
     titleSingle: {
         fontSize: '30px',
-        color: 'white',
+        color: '#E4FDFF',
         fontWeight: 'bold',
         fontFamily: 'gothamBook',
 
     },
 };
 
-const menu_header = (props) => {
+const Menu_header = (props) => {
     let header = (
         <div className="col-xs-12 navbar-fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>

@@ -1,76 +1,204 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
+import { makeStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Image from '../Image'
 import {login} from '../../actions/users'
 
 function SignInForm() {
-    const date = new Date();
-    const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+
     const [isRedirect, setRedirect] = useState(false);
-    const [businessDetails, setBusinessDetails] = useState({
-        firstName: 'First name',
-        lastName: 'Last name',
-        userName: 'Username',
-        email: 'Email',
-        password: 'Password'
-    });
 
-
-    const style = {
+    const useStyles = makeStyles((theme) => ({
+        margin: {
+            margin: theme.spacing(1),
+        },
+        backgroundColor: {
+            backgroundColor: "#ffffff"
+        },
+        center: {
+            margin: '20px',
+            width: '50%',
+            padding: '10px'
+        },
+        password: {
+            marginTop: '20px',
+            marginBottom: '20px',
+            width: '100%',
+            padding: '10px',
+            backgroundColor: 'whitesmoke',
+            borderRadius: '5px'
+        },
+        username: {
+            marginTop: '20px',
+            marginBottom: '20px',
+            width: '100%',
+            padding: '10px',
+            backgroundColor: 'whitesmoke',
+            borderRadius: '5px'
+        },
+        helperText: {
+            color: '#C7C7C7',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginRight: '5px',
+            marginTop: '-20px',
+            marginBottom: '10px',
+            backgroundColor: '#1F2B30'
+        },
+        checkBox: {
+            color: 'white'
+        },
+        checkBoxLabel: {
+            color: '#C7C7C7',
+            marginBottom: 0
+        },
+        iconsRow: {
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'row',
+            marginBottom: '15px'
+        },
+        facebookLogo: {
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginRight: '5px'
+        },
+        googleLogo: {
+            display: 'flex',
+            justifyContent: 'flex-start',
+            marginLeft: '5px'
+        },
         table: {
-            width: "90%",
             TextAlignment: "center",
-            margin: "15px",
+            margin: "auto",
             padding: "15px"
 
-        },
-        input: {
-            margin: "5px"
         }
-    }
+    }));
 
-    const handleChange = (e) => {
-        
-    }
+    const classes = useStyles();
 
     const handleSubmit = (event) => {
 
-        login()
+        login({username : 'mario966111' , password : '5585mrr'}, () => console.log('success'))
+
         event.preventDefault();
+    }
+
+    const handleChangeUsernname = (event) => {
+
+    }
+
+    const handleChangePassword = (event) => {
+
+    }
+
+    const handleClickForgetPassword = (event) => {
+
+    }
+
+    const handleRemeberMeChange = (event) => {
+
+    }
+
+    const handleFacebookIconClick = (event) => {
+
+    }
+
+    const handleGoogleIconClick = (event) => {
+
+    }
+
+    const handleSignupClick = (event) => {
+
     }
 
     return (
 
         <form onSubmit={handleSubmit} style={{ background: '#1F2B30' }}>
             <div className="tc pa4 vcenter">
-                <table border="0" style={style.table}>
-                    <tr ><td colspan="2">
-                        <input
-                            id="userName"
-                            type="text"
-                            onChange={handleChange}
-                            style={{ width: "95%", margin: "10px", height: "35px" }}
-                            placeHolder={businessDetails.userName}
-                            required
-                        />
-                    </td></tr>
+                <table border="0" className={classes.table}>
                     <tr><td>
-                        <input
-                            id="password"
-                            type="password"
-                            onChange={handleChange}
-                            style={{ width: "90%", margin: "10px", height: "35px" }}
-                            placeHolder={businessDetails.password}
-                            required
-                        />
+                        <Grid className={classes.username} container spacing={1} >
+                            <Grid item>
+                                <AccountCircle />
+                            </Grid>
+                            <Grid item>
+                                <TextField
+                                    id="username"
+                                    label="Username"
+                                    type="text"
+                                    onChange={handleChangeUsernname}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
                     </td></tr>
+                    <tr><td >
+                        <Grid className={classes.password} container spacing={1} >
+                            <Grid item>
+                                <AccountCircle />
+                            </Grid>
+                            <Grid item>
+                                <TextField
+                                    id="password"
+                                    label="Password"
+                                    type="password"
+                                    onChange={handleChangePassword}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+                    </td></tr>
+                    <tr>
+                        <td className={classes.helperText}>
+                            <h6 onClick={handleClickForgetPassword}>Forgot password?</h6>
+                        </td>
+                    </tr>
+
+
                     <tr ><td colspan="2" style={{ textAlign: "center" }}>
+                        <input className={classes.checkBox} type="checkbox" id="remember" name="remember" value="No" />
+                        <label className={classes.checkBoxLabel} for="remember"> Remember me!</label>
                         <input
                             type="submit"
-                            value="Login"
+                            onchange={handleRemeberMeChange}
+                            value="Sign in"
                             className='btn btn-submit ma3 btn-lg grow'
-                            style={{ background: '#0B8D98', color: "white", width: "80%", marginTop: "50px" }}
+                            style={{ background: '#0B8D98', color: "white", width: "60%", marginTop: "2px" }}
                         />
-                    </td></tr></table>
+                    </td></tr>
+                    <tr>
+                        <td style={{ color: "#C7C7C7" }}>
+                            <h5> -OR- </h5><br></br>
+                            <h6>Sign in with</h6>
+                        </td>
+                    </tr>
+                    <tr className={classes.iconsRow}>
+                        <td className={classes.facebookLogo}>
+                            <Image onClick={handleFacebookIconClick} src='/img/facebook-logo.svg'></Image>
+                        </td>
+                        <td className={classes.googleLogo}>
+                            <Image onClick={handleGoogleIconClick} src='/img/google-logo.svg'></Image>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{ color: "#C7C7C7" }}>
+                            <h6>Don’t have an account? Sign up!</h6>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             {/* {isRedirect && (

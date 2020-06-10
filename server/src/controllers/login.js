@@ -21,7 +21,6 @@ exports.checkUserLogin = async (req, res ) => {
 
             if (result) {
                const accessToken = generateAccessToken((userData[0].id).toString())
-               console.log(accessToken)
                res.cookie('access_token', accessToken)
                res.end()
                

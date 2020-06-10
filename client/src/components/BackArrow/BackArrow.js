@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom'
 
 const styles = {
   image: {
-    width: '80%',
-
+    width: '40px',
+    height: '35px'
   },
 };
 
@@ -20,11 +20,11 @@ const BackArrow = (props) => {
   }
 
   return (<img
-    className="grow br3 shadow-2"
+
     onClick={() => onClickGoBackArrow()}
     alt="presentation"
     style={styles.image}
-    src="/img/arrow-back.png" />);
+    src="/img/back-button.svg" />);
 
 }
 

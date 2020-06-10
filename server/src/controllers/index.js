@@ -14,10 +14,14 @@ const middlewares = require('../middlewares');
 //Login route
 router.post('/user/admin/login', login.checkUserLogin);
 
+//Logout route
+router.delete('/user/admin/logout', users.logout)
+
 
 // Customers Route
 router.get('/user/admin/customers', middlewares.authCheck , customers.getAllCustomers)
-router.get('/user/admin/customer/:id', customers.getOneCustomer)
+router.get('/user/admin/customer/:id', middlewares.authCheck,customers.getOneCustomer)
+router.get('/user/admin/customersbyuser', middlewares.authCheck, customers.getCustomersByUserId)
 router.post('/user/admin/add-customer', customers.addOneCustomer)
 router.delete('/user/admin/delete-customer/:id', customers.deleteCustomer)
 router.put('/user/admin/edit-customer/:id', customers.updateCustomer)
@@ -27,6 +31,7 @@ router.get('/user/admin/appointment/:id', appointments.getOneAppointment)
 router.post('/user/admin/add-appointment', appointments.addOneAppointment)
 router.delete('/user/admin/delete-appointment/:id', appointments.deleteAppointment)
 router.put('/user/admin/edit-appointment/:id', appointments.updateAppointment)
+router.get('/user/admin/appointmentsbyuser', middlewares.authCheck, appointments.getAppointmentsByUserId)
 //Users Route
 router.get('/user/admin/users', users.getUsers)
 router.get('/user/admin/users/:id', users.getOneUser)

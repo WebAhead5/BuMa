@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReportCard from "./reportCard";
 import Button from "../../components/Button";
-import {fetchReports} from '../../actions/reports';
+import {fetchReports, getReportById} from '../../actions/reports';
 import { fetchCustomers } from '../../actions/customers';
 
-const reports = () => {
+const Reports = ({match}) => {
     
-    const reports = [
+    const reportsDetails = [
         {id: '1', userid: '3', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
         {id: '2', userid: '4', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
         {id: '3', userid: '1', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
         {id: '4', userid: '1', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
         {id: '5', userid: '1', creatingdate:'20-12-2020', pdfile:'/img/report.png'}
     ];
-    
-    //const reports = fetchReports();
+    // let reportsDetails;
+    // const handleReports = (err, res) => {
+    //     if (err) {
+    //         return;
+    //     }
+    //     reportsDetails= res.report[0]
+    //     console.log(reportsDetails)
+    // };
+        
+    // useEffect(() => {
+    //     // Update the document title using the browser API
+    //     getReportById(1, handleReports);
+      
 
-    //console.log(reports)
-
+    // }, []);
+   
     const style={
         layout:{
             background:'#1F2B30',
@@ -44,7 +55,7 @@ const reports = () => {
         <div>
             <div style={style.layout} className="tc">
             {
-                reports.map((user) => {
+                reportsDetails.map((user) => {
                     return(
                         <ReportCard 
                         key={user.id} 
@@ -64,4 +75,4 @@ const reports = () => {
 
 }
 
-export default reports;
+export default Reports;

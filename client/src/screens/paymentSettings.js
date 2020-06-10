@@ -3,8 +3,13 @@ import ScreenContainer from '../components/Screen';
 import MenuHeader from '../components/MenuHeader';
 import PaymentSettingsData from '../components/paymentSettingsData'
 import {getPaymentSettingsByUserId} from '../actions/paymentSettings'
+import {user} from '../store/users'
+import {useRecoilValue} from 'recoil'
 
 const PaymentSettings = () => {
+    
+    const userObj = useRecoilValue(user)
+
 
 
     const [userSettings,setUserSettings] = useState({})
@@ -24,8 +29,8 @@ const PaymentSettings = () => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        getPaymentSettingsByUserId(2,handleUserSettings);
-    }, []);
+        getPaymentSettingsByUserId(userObj.id,handleUserSettings);
+    }, [userObj]);
 
 
     return (

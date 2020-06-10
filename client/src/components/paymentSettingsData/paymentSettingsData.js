@@ -1,8 +1,11 @@
-import React from 'react'
-import {editPaymentSettings} from '../../actions/paymentSettings'
+import React,{useState} from 'react'
+import { editPaymentSettings } from '../../actions/paymentSettings'
+import { Redirect } from 'react-router'
 
 function PaymentSettingsData(props) {
 
+
+    const [isRedirect, setRedirect] = useState(false);
 
     const styles = {
 
@@ -65,7 +68,7 @@ function PaymentSettingsData(props) {
 
         updatedData = ({ ...updatedData, [e.target.id]: e.target.value });
 
-        
+
     }
 
 
@@ -78,10 +81,10 @@ function PaymentSettingsData(props) {
 
     const handleSubmit = (e) => {
 
-        console.log(updatedData)
         editPaymentSettings(updatedData.userid, updatedData, () => console.log("Updated Settings Successfully"))
+        setRedirect(true);
         e.preventDefault();
-        
+
     }
 
 
@@ -94,10 +97,10 @@ function PaymentSettingsData(props) {
 
                 <select
                     type="text"
-                    id = "currency"
+                    id="currency"
                     className="pa2 br3 mb2 ma1 w-20"
                     onChange={handleCurrencyChange}
-                    >
+                >
                     <option value="ILS" selected={props.userSettings.currency == "ILS"} >ILS</option>
                     <option value="USD" selected={props.userSettings.currency == "USD"}> USD</option>
                     <option value="EUR" selected={props.userSettings.currency == "EUR"} >EUR</option>
@@ -115,11 +118,11 @@ function PaymentSettingsData(props) {
 
                 <select
                     type="number"
-                    id = "request_payment_every_value"
+                    id="request_payment_every_value"
                     className="pa2 br3 mb2 ma1 w-15"
                     onChange={handleRequestPaymentEveryValueChange}
-                    
-                    >
+
+                >
                     <option value="1" selected={props.userSettings.request_payment_every_value == "1"} >1</option>
                     <option value="2" selected={props.userSettings.request_payment_every_value == "2"} >2</option>
                     <option value="3" selected={props.userSettings.request_payment_every_value == "3"} >3</option>
@@ -130,9 +133,9 @@ function PaymentSettingsData(props) {
                 <select
                     type="text"
                     className="pa2 br3 mb2 ma1 w-15"
-                    id = "request_payment_every_unit"
+                    id="request_payment_every_unit"
                     onChange={handleRequestPaymentEveryUnitChange}>
-                    
+
                     >
                     <option value="Appointment" selected={props.userSettings.request_payment_every_unit == "Appointment"}>Appointment</option>
                     <option value="Week" selected={props.userSettings.request_payment_every_unit == "Week"}>Week</option>
@@ -143,14 +146,16 @@ function PaymentSettingsData(props) {
             </div>
 
 
-
-
             <input
                 type="submit"
                 value="Save"
                 className='btn btn-submit ma3 btn-lg grow'
                 style={styles.saveBtn}
             />
+
+            {isRedirect && (
+                <Redirect to={'/settings'} />
+            )}
 
 
         </form>

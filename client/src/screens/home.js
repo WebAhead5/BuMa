@@ -9,7 +9,8 @@ import { fetchAppointments } from '../actions/appointments'
 import { appointments, useSetAppointments } from '../store/appointments'
 import { slide as Menu } from 'react-burger-menu'
 import Button from '../components/Button'
-import { Link } from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom'
+
 
 
 
@@ -110,19 +111,39 @@ const Home = () => {
         return;
     }
 
+    const clickRedirect = () => {
+
+
+
+    }
+
 
     return (
         <ScreenContainer>
             
             <MenuHeader title="Home" icon=''></MenuHeader>
             <Menu styles={ styles }>
-                <a id="customers" className="menu-item" href="/customers">Customers</a>
-                <a id="appointments" className="menu-item" href="/appointments">Appointments</a>
-                <a id="reports" className="menu-item" href="/reports">Accounting reports</a>
-                <a id="profile" className="menu-item" href="/profile">Profile</a>
-                <a onClick={showSettings} className="menu-item--small" href="">Settings</a>
+            <Link to='/customers'>
+                <a id="customers" className="menu-item">Customers</a>
+              </Link>
+              <Link to = '/appointments'>
+                <a id="appointments" className="menu-item">Appointments</a>
+                </Link>
+                <Link to = '/reports'>
+                <a id="reports" className="menu-item">Accounting reports</a>
+                </Link>
+                <Link to = '/profile'>
+                <a id="profile" className="menu-item">Profile</a>
+                </Link>
+                <Link to='/settings'>
+                <a id="settings" className="menu-item">Settings</a>
+                </Link>
+                <Link to ='/aboutus'>
                 <a id="about" className="menu-item" href="/aboutus">About</a>
-                <a id="logout" className="menu-item" href="/logout">Logout</a>
+                </Link>
+                <Link to ='/logout'>
+                <a id="logout" className="menu-item">Logout</a>
+                </Link>
             </Menu>
             <div className="Calendar-container">
                 <Calendar 

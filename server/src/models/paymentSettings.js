@@ -11,8 +11,8 @@ const editPaymentSettings = (user) =>
   `UPDATE payment_settings
    SET currency = $2,
    request_payment_every_value = $3,
-   request_payment_very_unit = $4
-   WHERE userid = $1` , [user.userid, user.currency, user.request_payment_every_value, user.request_payment_very_unit]
+   request_payment_every_unit = $4
+   WHERE userid = $1` , [user.userid, user.currency, user.request_payment_every_value, user.request_payment_every_unit]
     );
 
 

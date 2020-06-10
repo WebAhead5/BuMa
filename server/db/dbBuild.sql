@@ -51,7 +51,7 @@ CREATE TABLE payment_settings(
   userid INT UNIQUE NOT NULL,
   currency currency_code DEFAULT 'ILS',
   request_payment_every_value INT,
-  request_payment_very_unit payment_unit
+  request_payment_every_unit payment_unit
 );
 
 
@@ -109,7 +109,7 @@ VALUES
 ( 3, 3),
 ( 4, 3);
 
-INSERT INTO payment_settings (userid, currency,request_payment_every_value,request_payment_very_unit)
+INSERT INTO payment_settings (userid, currency,request_payment_every_value,request_payment_every_unit)
 VALUES 
 (1, null , 2,'Month'),
 (2, 'ILS', 5,'Week'),

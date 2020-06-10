@@ -7,7 +7,7 @@ const addCustomer = () => {
 
     return (
         <ScreenContainer>
-            <Header title="Add Customer" />
+            <Header icon="backArrow" title="Add Customer" />
             <CustomerForm />
         </ScreenContainer >
     );

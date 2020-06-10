@@ -8,6 +8,7 @@ const getCustomers = () => db.query(`SELECT * FROM customers `);
 
 const getCustomerById = (customerId) => db.query(`SELECT * FROM customers where id = $1`, customerId);
 
+const customersByUserId = (userId) => db.query('select * from customers where userid = $1', [userId])
 
 
 const addCustomer = ({ name, email, phone, userid, paymentStatus, activityStatus, notes, balance, appointmentPrice,
@@ -47,12 +48,12 @@ const editCustomer = (customer) =>
    paymentEveryValue = $10,
    paymentEveryUnit = $11,
    balanceValidUntil = $12
-   WHERE id = $1` , [customer.id, customer.name, customer.email, customer.phone, customer.paymentstatus, 
-    customer.activitystatus, customer.notes, customer.balance,
-    customer.appointmentprice,
-    customer.paymenteveryvalue,
-    customer.paymenteveryunit,
-    customer.balancevaliduntil]
+   WHERE id = $1` , [customer.id, customer.name, customer.email, customer.phone, customer.paymentstatus,
+  customer.activitystatus, customer.notes, customer.balance,
+  customer.appointmentprice,
+  customer.paymenteveryvalue,
+  customer.paymenteveryunit,
+  customer.balancevaliduntil]
   );
 
 
@@ -62,7 +63,8 @@ module.exports = {
   getCustomerById,
   addCustomer,
   deleteCustomer,
-  editCustomer
+  editCustomer,
+  customersByUserId
 
 };
 

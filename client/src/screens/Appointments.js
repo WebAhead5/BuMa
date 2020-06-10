@@ -4,7 +4,7 @@ import MenuHeader from '../components/MenuHeader';
 import { useRecoilValue } from 'recoil';
 import { fetchAppointments } from '../actions/appointments'
 import { appointments, useSetAppointments } from '../store/appointments'
-import { localeDate, useSetDate } from '../store/date'
+import { useSetDate } from '../store/date'
 import AppointmentsList from '../components/AppointmentsList';
 import Button from '../components/Button'
 import { Link } from 'react-router-dom'
@@ -35,7 +35,6 @@ const Appointments = (props) => {
 
     const setItems = useSetAppointments();
 
-    const dateToday = useRecoilValue(localeDate)
     const setDate = useSetDate()
 
     useEffect(() => {

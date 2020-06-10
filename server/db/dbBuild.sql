@@ -48,10 +48,10 @@ CREATE TABLE appointments_customers (
 
 CREATE TABLE payment_settings(
   id SERIAL PRIMARY KEY,
-  userid INT NOT NULL,
+  userid INT UNIQUE NOT NULL,
   currency currency_code DEFAULT 'ILS',
   request_payment_every_value INT,
-  request_payment_very_unit payment_unit
+  request_payment_every_unit payment_unit
 );
 
 
@@ -90,16 +90,16 @@ INSERT INTO customers (name, email, phone, userid, paymentStatus, activityStatus
   balanceValidUntil)
 VALUES 
 ('Marwan', 'gobo@email.com', 0551554555, 1, true, true, 'Marwan Note', 50,40,2,'Week','2012-04-25'),
-('Hashem', 'hashem@email.com', 0551534555, 1, true, false, 'Note',50,100,2,'Appointment','2012-04-25'),
-('Farid', 'farid@email.com', 0551254555, 1, true, false, 'Note',50,25,1,'Month',null),
+('Hashem', 'hashem@email.com', 0551534555, 3, true, false, 'Note',50,100,2,'Appointment','2012-04-25'),
+('Farid', 'farid@email.com', 0551254555, 3, true, false, 'Note',50,25,1,'Month',null),
 ('Khalid', 'khalid@email.com', 0531554555, 1, true, true, 'Note',90,40,2,'Week','2012-04-25');
 
 
 INSERT INTO appointments (userid, day, start_at, end_at, note)
 VALUES 
-(1, '2020-06-02', '08:00:00', '10:00:00','Note 1'),
+(3, '2020-06-02', '08:00:00', '10:00:00','Note 1'),
 (1, '2020-06-20', '09:00:00', '11:00:00','Note 2'),
-(1, '2020-05-28', '12:00:00', '14:00:00','Note 3'),
+(3, '2020-05-28', '12:00:00', '14:00:00','Note 3'),
 (1, '2020-05-25', '20:00:00', '21:00:00','Note 4');
 
 INSERT INTO appointments_customers (customerid, appintmentid)
@@ -109,12 +109,12 @@ VALUES
 ( 3, 3),
 ( 4, 3);
 
-INSERT INTO payment_settings (userid, currency,request_payment_every_value,request_payment_very_unit)
+INSERT INTO payment_settings (userid, currency,request_payment_every_value,request_payment_every_unit)
 VALUES 
 (1, null , 2,'Month'),
-(1, 'ILS', 5,'Week'),
-(1, 'EUR', 6,'Month'),
-(1, 'CNY', 1,'Appointment');
+(2, 'ILS', 5,'Week'),
+(3, 'EUR', 6,'Month'),
+(4, 'CNY', 1,'Appointment');
 
 
 

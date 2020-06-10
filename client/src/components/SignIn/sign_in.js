@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -9,11 +9,17 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Image from '../Image'
-import {login} from '../../actions/users'
+import { login } from '../../actions/users'
+import { user, SetUserDetails } from '../../store/users'
 
 function SignInForm() {
 
+    let userData = {};
+
     const [isRedirect, setRedirect] = useState(false);
+    const [localUser, setLocalUser] = useState(user);
+    const setUserData = SetUserDetails();
+
 
     const useStyles = makeStyles((theme) => ({
         margin: {
@@ -85,40 +91,54 @@ function SignInForm() {
 
     const classes = useStyles();
 
+
     const handleSubmit = (event) => {
 
-        login({username : 'mario966111' , password : '5585mrr'}, () => console.log('success'))
 
+        // { username: 'mario966111', password: '5585mrr' }
+        login(userData,setUserData)
+        setRedirect(true)
+
+      
         event.preventDefault();
     }
 
-    const handleChangeUsernname = (event) => {
+    const handleChangeUsername = (e) => {
+
+        userData = ({ ...userData, [e.target.id]: e.target.value });
+    }
+
+    const handleChangePassword = (e) => {
+
+        userData = ({ ...userData, [e.target.id]: e.target.value });
+    }
+
+
+    const handleClickForgetPassword = (e) => {
 
     }
 
-    const handleChangePassword = (event) => {
+    const handleRemeberMeChange = (e) => {
 
     }
 
-    const handleClickForgetPassword = (event) => {
+    const handleFacebookIconClick = (e) => {
 
     }
 
-    const handleRemeberMeChange = (event) => {
+    const handleGoogleIconClick = (e) => {
 
     }
 
-    const handleFacebookIconClick = (event) => {
+    const handleSignupClick = (e) => {
 
     }
 
-    const handleGoogleIconClick = (event) => {
+    // useEffect(() => {
+    //     if (user != undefined)
+            
+    // }, [localUser]);
 
-    }
-
-    const handleSignupClick = (event) => {
-
-    }
 
     return (
 
@@ -135,7 +155,7 @@ function SignInForm() {
                                     id="username"
                                     label="Username"
                                     type="text"
-                                    onChange={handleChangeUsernname}
+                                    onChange={handleChangeUsername}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -201,9 +221,9 @@ function SignInForm() {
                 </table>
             </div>
 
-            {/* {isRedirect && (
-        <Redirect to={'/home'} />
-      )} */}
+            {isRedirect && (
+                <Redirect to={'/'} />
+            )}
         </form>
     );
 }

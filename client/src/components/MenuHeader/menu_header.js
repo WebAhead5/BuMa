@@ -21,21 +21,18 @@ let styles = {
 
     },
     backArrowIcon: {
-
         display: 'flex',
     },
     title: {
         fontSize: '1.0em',
         color: '#0B8D98',
         fontWeight: 'bold',
-        fontFamily: 'gothamBook',
     },
     titleSingle: {
         fontSize: '30px',
         color: '#E4FDFF',
         fontWeight: 'bold',
-        fontFamily: 'gothamBook',
-
+        marginBottom: '-10px'
     },
 };
 

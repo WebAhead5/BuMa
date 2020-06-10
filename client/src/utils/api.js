@@ -41,6 +41,7 @@ function success(dispatch, successType, json, cb) {
   //   dispatch(setSuccess(successType, json))
   // }
   if (cb) {
+    console.log('success')
     cb(null, json);
   }
   return Promise.resolve(json);

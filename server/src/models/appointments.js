@@ -12,6 +12,9 @@ const getAppointmentById = (appointmentId) => {
     return db.query(`SELECT * FROM appointments where id = $1`, appointmentId);
 }
 
+const appointmentsByUserId = (userId) => {
+    return db.query(`select * from appointments where userid = $1`, [userId])
+}
 
 
 const addAppointment = ({ userid, day, start_at, end_at, note, customerIds }) => {
@@ -53,7 +56,8 @@ module.exports = {
     getAppointmentById,
     addAppointment,
     deleteAppointment,
-    editAppointment
+    editAppointment,
+    appointmentsByUserId
 
 };
 

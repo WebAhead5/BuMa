@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import ScreenContainer from '../components/Screen';
-import { localeDate, useSetDate } from '../store/date'
+import { localeDate } from '../store/date'
 import { useRecoilValue } from 'recoil';
 import MenuHeader from '../components/MenuHeader'
 import { fetchAppointments } from '../actions/appointments'
@@ -99,7 +99,6 @@ const Home = () => {
   appointmentsDays = appointmentsDays.map(date => new Date(date)).sort((a, b) => a - b)
 
   const dateToday = useRecoilValue(localeDate)
-  const setDate = useSetDate()
 
 
   const onClickDayHandler = (e) => {

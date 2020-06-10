@@ -19,7 +19,7 @@ exports.getOneUser = (req, res) => {
     queries.getUserById(req.params.id)
         .then(user =>
             user.length < 1 ? res.status(404).json({ message: 'No user found' }) :
-                res.status(200).json(user))
+            res.status(200).json({ user, code: 200 }))
         .catch(err => {
             console.error(err)
             return res.status(500).json({ error: err.code })
@@ -82,6 +82,7 @@ exports.deleteUser = (req, res) => {
 
 exports.updateUser = (req, res) => {
     const newUser = {
+        id: req.params.id,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
@@ -94,7 +95,7 @@ exports.updateUser = (req, res) => {
         business_address: req.body.business_address
     };
     queries.editUser(newUser)
-        .then(() => res.status(200).json({ message: 'user updated successfuly' }))
+        .then(() => res.status(200).json({ message: 'user updated successfuly', code: 200 }))
         .catch(err => {
             console.error(err);
             return res.status(500).json({ error: err.code })

@@ -7,7 +7,7 @@ const registration = () => {
 
     return (
         <ScreenContainer>
-            <Header title="Registration" />
+            <Header icon="backArrow" title="Registration" />
             <RegistrationForm />
         </ScreenContainer >
     );

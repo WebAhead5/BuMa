@@ -5,6 +5,7 @@ import { appointments } from "./atoms";
 export const useSetAppointments = () => {
     const [items, setItems] = useRecoilState(appointments);
     return (err, data) => {
+        console.log(data)
         setItems(data.appointments);
     };
 };
@@ -13,5 +14,12 @@ export const useRemoveAppointment = () => {
     const [items, setItems] = useRecoilState(appointments)
     return (id) => {
         setItems(items.filter(item => item.id !== id))
+    }
+}
+
+export const useSetAppointment = () => {
+    const [items, setItems] = useRecoilState(appointments)
+    return (id) => {
+        setItems(items.filter(item => item.id === id))
     }
 }

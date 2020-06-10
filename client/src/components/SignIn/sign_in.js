@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 
-function SiginForm() {
+function SignInForm() {
     const date = new Date();
     const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     const [isRedirect, setRedirect] = useState(false);
@@ -81,4 +81,4 @@ function SiginForm() {
 }
 
 
-export default SiginForm;
+export default SignInForm;

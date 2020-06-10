@@ -1,7 +1,9 @@
 import React from 'react';
 //import BurgerIcon from '../BurgerIcon';
 import BackArrow from '../BackArrow';
-import Burger from '../BurgerIcon'
+import Burger from '../BurgerIcon';
+import { useRecoilValue } from 'recoil';
+import { user } from '../../store/users';
 
 let styles = {
     header: {
@@ -50,6 +52,9 @@ const menu_header = (props) => {
             </span>
 
             <div className="col-xs-2 vcenter">
+                {/* <img 
+                style={{width:'60px'}}
+                src={headerImageUrl}></img> */}
             </div>
         </div>
     );
@@ -61,4 +66,4 @@ const menu_header = (props) => {
 
 
 
-export default menu_header;
+export default Menu_header;

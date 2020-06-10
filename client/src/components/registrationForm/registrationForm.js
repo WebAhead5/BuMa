@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import { addUser } from '../../actions/users';
+import { addUser } from '../../actions/users';
 import { Redirect } from 'react-router';
 //import { Input } from '@material-ui/core';
 
@@ -7,12 +7,18 @@ function RegistrationForm() {
   const date = new Date();
   const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
+  const [confirmPassword, setConfirmPassword]= useState("");
   const [businessDetails, setBusinessDetails] = useState({
-    firstName: 'First name',
-    lastName: 'Last name',
-    userName: 'Username',
+    first_name: 'First name',
+    last_name: 'Last name',
     email: 'Email',
-    password: 'Password'
+    username: 'Username',
+    password: 'Password',
+    phone:'',
+    business_name:'',
+    business_logo:'',
+    crn:'',
+    business_address:''
   });
 
 
@@ -28,19 +34,22 @@ const style={
         margin:"5px"
     }
 }
-
+  const handleChangePassword = (e) => {
+    setConfirmPassword(e.target.value);
+    console.log(confirmPassword)
+  }
   const handleChange = (e) => {
     setBusinessDetails({ ...businessDetails, [e.target.id]: e.target.value });
-    console.log(businessDetails);
   }
 
   const handleSubmit = (event) => {
-    // add new business(user) to the database
-    //password confirm password are identical
-   // addBusiness(businessDetails)
-
-   // setRedirect(true);
-
+    if(confirmPassword===businessDetails.password){
+      addUser(businessDetails)
+      alert('thank you for registering with us')
+      setRedirect(true);
+    }else{
+      alert('please type in identical passwords')
+    }
     event.preventDefault();
   }
 
@@ -51,37 +60,37 @@ const style={
       <table border="0" style={style.table}>
       <tr><td>
         <input
-          id="firstName"
+          id="first_name"
           type="text"
           onChange={handleChange}
           style={{width:"90%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.firstName}
+          placeHolder={businessDetails.first_name}
           required
         />
         </td><td>
         <input
-          id="lastName"
+          id="last_name"
           type="text"
           onChange={handleChange}
           style={{width:"90%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.lastName}
+          placeHolder={businessDetails.last_name}
           required
         />
         </td></tr>
         <tr ><td colspan="2">
         <input
-          id="userName"
+          id="username"
           type="text"
           onChange={handleChange}
           style={{width:"95%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.userName}
+          placeHolder={businessDetails.username}
           required
         />
         </td></tr>
         <tr ><td colspan="2">
         <input
           id="email"
-          type="type"
+          type="email"
           onChange={handleChange}
           style={{width:"95%",margin:"10px", height:"35px"}}
           placeHolder={businessDetails.email}
@@ -101,6 +110,7 @@ const style={
           <input
             id="password2"
             type="password"
+            onChange={handleChangePassword}
             style={{width:"90%",margin:"10px", height:"35px"}}
             placeHolder="Confirm Password"
             required
@@ -110,15 +120,17 @@ const style={
         <input
           type="submit"
           value="Registration"
+          
           className='btn btn-submit ma3 btn-lg grow'
           style={{ background: '#0B8D98', color: "white", width: "80%", marginTop:"50px"}}
         />
-        </td></tr></table>
+        </td></tr>
+        </table>
       </div>
 
-      {/* {isRedirect && (
-        <Redirect to={'/home'} />
-      )} */}
+      {isRedirect && (
+        <Redirect to={'/'} />
+      )}
     </form>
   );
 }

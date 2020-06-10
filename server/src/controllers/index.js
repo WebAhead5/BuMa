@@ -4,7 +4,7 @@ const customers = require('./customers')
 const appointments = require('./appointments')
 const reports = require('./reports')
 const users = require('./users')
-
+const payments = require('./payments')
 
 const login = require('./login');
 const error = require('./error');
@@ -35,5 +35,10 @@ router.get('/user/admin/reports', reports.getAllReports)
 router.get('/user/admin/report/:id', reports.getSingleReport)
 router.post('/user/admin/add-report/', reports.addSingleReport)
 router.delete('/user/admin/delete-report/:id', reports.deleteReport)
+
+router.get('/user/admin/payments', payments.getAllPayments)
+router.get('/user/admin/payment/:id', payments.getSinglePayment)
+router.post('/user/admin/add-payment/', payments.addSinglePayment)
+router.delete('/user/admin/delete-payment/:id', payments.deletePayment)
 
 module.exports = router;

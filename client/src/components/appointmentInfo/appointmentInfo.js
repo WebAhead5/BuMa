@@ -20,8 +20,7 @@ function AppointmentInfo(props) {
   const setAppointment = useSetAppointment()
  
   //get customer data by id in order to display name
-  const getCustomer = getCustomerData(appointmentDetails.userid)
-  console.log(getCustomer)
+  //const getCustomer = getCustomerData(appointmentDetails.userid)
 
   //parse date 
   const getAppointmentDate = (dateData) =>{

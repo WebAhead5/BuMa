@@ -9,6 +9,7 @@ import {useRecoilValue} from 'recoil'
 const PaymentSettings = () => {
     
     const userObj = useRecoilValue(user)
+    console.log(userObj)
 
 
 

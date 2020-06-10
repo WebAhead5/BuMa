@@ -45,7 +45,6 @@ router.get('/user/admin/report/:id',reports.getSingleReport)
 router.post('/user/admin/add-report/',reports.addSingleReport)
 router.delete('/user/admin/delete-report/:id',reports.deleteReport)
 //Payments Settings Route
-
 router.get('/user/admin/payment-settings', paymentSettings.getAllPaymentSettings)
 router.get('/user/admin/paymentSettings/:id',paymentSettings.getAllPaymentSettingsByUserId) 
 router.put('/user/admin/edit-payment-settings/:id' , paymentSettings.updateSettings)

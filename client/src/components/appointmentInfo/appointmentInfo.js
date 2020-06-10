@@ -37,7 +37,7 @@ function AppointmentInfo(props) {
     return appointmentDateValue;
   }
   
-  const handleChange = ( e) => {
+  const handleChange = (e) => {
     appointmentDetails = ({ ...appointmentDetails, [e.target.id]: e.target.value });
   }
 

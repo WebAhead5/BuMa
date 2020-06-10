@@ -9,9 +9,11 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Image from '../Image'
-import {login} from '../../actions/users'
+import { login } from '../../actions/users'
 
 function SignInForm() {
+
+    let userData = {};
 
     const [isRedirect, setRedirect] = useState(false);
 
@@ -87,36 +89,43 @@ function SignInForm() {
 
     const handleSubmit = (event) => {
 
-        login({username : 'mario966111' , password : '5585mrr'}, () => console.log('success'))
+       
+        // { username: 'mario966111', password: '5585mrr' }
+        console.log(userData)
+        login(userData, () => console.log('successful Login'))
+        setRedirect(true)
 
         event.preventDefault();
     }
 
-    const handleChangeUsernname = (event) => {
+    const handleChangeUsername = (e) => {
+
+        userData = ({ ...userData, [e.target.id]: e.target.value });
+    }
+
+    const handleChangePassword = (e) => {
+
+        userData = ({ ...userData, [e.target.id]: e.target.value });
+    }
+
+
+    const handleClickForgetPassword = (e) => {
 
     }
 
-    const handleChangePassword = (event) => {
+    const handleRemeberMeChange = (e) => {
 
     }
 
-    const handleClickForgetPassword = (event) => {
+    const handleFacebookIconClick = (e) => {
 
     }
 
-    const handleRemeberMeChange = (event) => {
+    const handleGoogleIconClick = (e) => {
 
     }
 
-    const handleFacebookIconClick = (event) => {
-
-    }
-
-    const handleGoogleIconClick = (event) => {
-
-    }
-
-    const handleSignupClick = (event) => {
+    const handleSignupClick = (e) => {
 
     }
 
@@ -135,7 +144,7 @@ function SignInForm() {
                                     id="username"
                                     label="Username"
                                     type="text"
-                                    onChange={handleChangeUsernname}
+                                    onChange={handleChangeUsername}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -201,9 +210,9 @@ function SignInForm() {
                 </table>
             </div>
 
-            {/* {isRedirect && (
-        <Redirect to={'/home'} />
-      )} */}
+            {isRedirect && (
+        <Redirect to={'/'} />
+      )}
         </form>
     );
 }

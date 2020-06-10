@@ -48,7 +48,7 @@ CREATE TABLE appointments_customers (
 
 CREATE TABLE payment_settings(
   id SERIAL PRIMARY KEY,
-  userid INT NOT NULL,
+  userid INT UNIQUE NOT NULL,
   currency currency_code DEFAULT 'ILS',
   request_payment_every_value INT,
   request_payment_very_unit payment_unit
@@ -112,9 +112,9 @@ VALUES
 INSERT INTO payment_settings (userid, currency,request_payment_every_value,request_payment_very_unit)
 VALUES 
 (1, null , 2,'Month'),
-(1, 'ILS', 5,'Week'),
-(1, 'EUR', 6,'Month'),
-(1, 'CNY', 1,'Appointment');
+(2, 'ILS', 5,'Week'),
+(3, 'EUR', 6,'Month'),
+(4, 'CNY', 1,'Appointment');
 
 
 

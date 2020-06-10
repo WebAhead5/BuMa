@@ -5,6 +5,7 @@ const appointments = require('./appointments')
 const reports = require('./reports')
 const users = require('./users')
 const login = require('./login');
+const paymentSettings = require('./paymentSettings')
 const middlewares = require('../middlewares');
 
 
@@ -38,15 +39,11 @@ router.get('/user/admin/reports',reports.getAllReports)
 router.get('/user/admin/report/:id',reports.getSingleReport)
 router.post('/user/admin/add-report/',reports.addSingleReport)
 router.delete('/user/admin/delete-report/:id',reports.deleteReport)
-router.post('/user/admin/add-user', users.addUser)
-router.delete('/user/admin/delete-user/:id', users.deleteUser)
-router.put('/user/admin/edit-user/:id', users.updateUser)
+//Payments Settings Route
 
+router.get('/user/admin/payment-settings', paymentSettings.getAllPaymentSettings)
+router.put('/user/admin/edit-payment-settings/:id' , paymentSettings.updateSettings)
 
-router.get('/user/admin/reports', reports.getAllReports)
-router.get('/user/admin/report/:id', reports.getSingleReport)
-router.post('/user/admin/add-report/', reports.addSingleReport)
-router.delete('/user/admin/delete-report/:id', reports.deleteReport)
 
 
 

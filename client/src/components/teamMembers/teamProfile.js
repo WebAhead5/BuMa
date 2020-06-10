@@ -3,7 +3,7 @@ export const members = [{
         name: 'BuMa',
         profession: 'Business Solution',
         desciption: 'Manage you business',
-        src: '/img/far.png'
+        src: '/img/logo.png'
 
     },
     {

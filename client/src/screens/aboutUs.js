@@ -1,12 +1,12 @@
 import React from 'react';
 //import BackButton from '../components/BackArrow';
-import Header from '../components/MenuHeader';
+import MenuHeader from '../components/MenuHeader';
 import TeamCards from "../components/teamMembers";
 
 const aboutUs = () => {
         return (
             <div>
-                <Header title="About Us" />
+                <MenuHeader icon="backArrow" title="About Us" />
                 <TeamCards />
             </div>
         );

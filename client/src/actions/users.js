@@ -19,19 +19,23 @@ export const SET_LOGIN_URI_BUTTON_ID = "SET_LOGIN_URI_BUTTON_ID";
 export const BUTTON_DELETE_SUCCESS = 'BUTTON_DELETE_SUCCESS';
 export const BUTTON_DELETE_FAILURE = 'BUTTON_DELETE_FAILURE';
 
-export function fetchAppointments(cb) {
-    callApi(null, null, 'GET', 'appointments', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
-    // }
+
+export function addUser(user, cb) {
+    callApi(null, null, 'POST', 'add-user', user, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE, cb);
 }
 
-export function deleteAppointment(id, cb) {
-    callApi(null, null, 'DELETE', `delete-appointment/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb)
+export function updateUser(id, user, cb) {
+    callApi(null, null, 'PUT', `edit-user/${id}`, user, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE, cb);
 }
 
-export function addAppointment(appointment, cb) {
-    callApi(null, null, 'POST', 'add-appointment', appointment, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE, cb);
+export function getOneUser(id, cb) {
+    callApi(null, null, 'GET', `users/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+
 }
 
-export function updateAppointment(id, appointment, cb) {
-    callApi(null, null, 'PUT', `edit-appointment/${id}`, appointment, BUTTON_UPDATE_SUCCESS, BUTTON_UPDATE_FAILURE, cb);
+export function login(userData, cb) {
+    callApi(null, null, 'POST', `login`, userData, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+
 }
+
+

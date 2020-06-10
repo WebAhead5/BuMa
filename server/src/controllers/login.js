@@ -1,46 +1,42 @@
 // use these functions to manipulate our database
-// const { findByUsername, addNewUser } = require('../models/users/User.model');
+const { getUserByName } = require('../models/users');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
-exports.checkUserLogin = async (req, res) => {
+exports.checkUserLogin = async (req, res ) => {
 
     const password = req.body.password;
-    const user = req.body.username;
+    const userName = req.body.username;
+    
 
-    const username = await findByUsername(user);
+    const userData = await getUserByName(userName);
+
 
     try {
 
-        bcrypt.compare(password, username.password, function (err, result) {
+        (userData.length) < 1 ? res.status(404).json({ message: 'No user found' }) :
+
+        bcrypt.compare(password, userData[0].password, function (err, result) {
 
             if (result) {
-                jwt.sign(user, process.env.JWT_SECRET, function (err, token) {
-                    if (err) {
-                        console.log('Error occurred')
-                    }
-
-                    res.cookie('access_token', token);
-                    res.redirect('/');
-                });
-
-
+               const accessToken = generateAccessToken((userData[0].id).toString())
+               res.cookie('access_token', accessToken)
+               res.end()
+               
             } else {
-
-                res.render("login", {
-                    passerr: true,
-                    errpassword: "Password is not correct"
-                })
+                res.status(404).json({ message: 'Your username or password seems to be incorrect' });
             }
-
-        });
-
-    } catch (error) {
-        res.render("login", {
-
-            loginerr: true,
-            errlogin: error.message
         })
+
+    } catch {
+
+        return res.status(500).json({ error: "Error Occurred" })
+
     }
 
+}
 
-};
+function generateAccessToken(user) {
+    return jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '10min'})
+  }

@@ -9,8 +9,9 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Image from '../Image'
+import {login} from '../../actions/users'
 
-function SiginForm() {
+function SignInForm() {
 
     const [isRedirect, setRedirect] = useState(false);
 
@@ -85,6 +86,8 @@ function SiginForm() {
     const classes = useStyles();
 
     const handleSubmit = (event) => {
+
+        login({username : 'mario966111' , password : '5585mrr'}, () => console.log('success'))
 
         event.preventDefault();
     }
@@ -206,4 +209,4 @@ function SiginForm() {
 }
 
 
-export default SiginForm;
+export default SignInForm;

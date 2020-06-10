@@ -11,7 +11,7 @@ const middlewares = require('../middlewares');
 
 
 //Login route
-router.post('/login', login.checkUserLogin);
+router.post('/user/admin/login', login.checkUserLogin);
 
 
 // Customers Route

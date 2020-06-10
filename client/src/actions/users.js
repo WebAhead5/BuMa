@@ -32,3 +32,10 @@ export function getOneUser(id, cb) {
     callApi(null, null, 'GET', `users/${id}`, null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
 
 }
+
+export function login(userData, cb) {
+    callApi(null, null, 'POST', `/login`, userData, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+
+}
+
+

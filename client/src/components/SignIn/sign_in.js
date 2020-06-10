@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
+import {login} from '../../actions/users'
 
 function SignInForm() {
     const date = new Date();
@@ -28,13 +29,12 @@ function SignInForm() {
     }
 
     const handleChange = (e) => {
-        setBusinessDetails({ ...businessDetails, [e.target.id]: e.target.value });
-        console.log(businessDetails);
+        
     }
 
     const handleSubmit = (event) => {
 
-
+        login()
         event.preventDefault();
     }
 

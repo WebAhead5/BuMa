@@ -19,7 +19,7 @@ router.delete('/user/admin/logout', users.logout)
 
 // Customers Route
 router.get('/user/admin/customers', middlewares.authCheck , customers.getAllCustomers)
-router.get('/user/admin/customer/:id', customers.getOneCustomer)
+router.get('/user/admin/customer/:id', middlewares.authCheck,customers.getOneCustomer)
 router.get('/user/admin/customersbyuser', middlewares.authCheck, customers.getCustomersByUserId)
 router.post('/user/admin/add-customer', customers.addOneCustomer)
 router.delete('/user/admin/delete-customer/:id', customers.deleteCustomer)

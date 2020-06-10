@@ -22,16 +22,17 @@ const styles = {
     },
     deleteBtn: {
         width: '35px',
-        height: '35px',
+        height: '28px',
         border: 'none',
         background: 'url(/img/deleteIcon.svg)',
         backgroundSize: 'cover',
-        outline: 'none'
+        outline: 'none',
     }, 
     
     h4: {
         color: '#E4FDFF',
-    }
+    },
+    
     
 }
 
@@ -69,19 +70,18 @@ const AppointmentEntry = (props) => {
     return (
         //TODO: link to the page that khalid is working on - Appointment page.
     
-        <Link to={`/appointmentCard/${id}`}>
         <ul style={styles.appointment}>
-       
+        <Link to={`/appointmentCard/${id}`} style={styles.appointment}>
             <li>{id}</li>
 
             <li key="fromhour">{fromHour} </li>
 
             <li>{toHour} </li>
-       
+            </Link>
             <li><Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
-                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]}></Popup> </li>
+                <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]}>
+                    Are you Sure you want to delete appointment?</Popup> </li>
         </ul>
-        </Link>
         
      
     )

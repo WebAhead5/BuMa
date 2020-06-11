@@ -40,6 +40,7 @@ const styles = {
         width: '50px',
         background: 'url(/img/deleteIconWhite.svg)',
         backgroundSize: 'cover',
+        outline: 'none',
     },
 
     activeUser: {
@@ -51,7 +52,8 @@ const styles = {
         width: '50px',
         background: 'url(/img/activityicon.svg)',
         backgroundSize: 'cover',
-        transform: 'rotate(180deg)'
+        transform: 'rotate(180deg)',
+        outline: 'none',
 
     },
 
@@ -63,7 +65,8 @@ const styles = {
         height: '50px',
         width: '50px',
         background: 'url(/img/activityicon.svg)',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        outline: 'none',
 
     },
     h4: {

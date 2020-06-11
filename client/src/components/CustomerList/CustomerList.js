@@ -8,8 +8,9 @@ const styles = {
   container: {
 
     backgroundColor: '#1F2B30',
-    height: '70vh',
-    width : '50vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
 
   },
 

@@ -42,12 +42,13 @@ const styles = {
     },
 
     btnContainer: {
-
         display: 'flex',
-        justifyContent: 'space-evenly',
+        flexWrap: 'nowrap',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        width : '100vw',
-        height : '10vh'
+        position: 'absolute',
+        width: '100%',
+        bottom: '5px'
     }
 
 };

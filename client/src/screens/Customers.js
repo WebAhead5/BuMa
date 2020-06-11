@@ -10,7 +10,7 @@ import CustomerList from '../components/CustomerList';
 import SearchField from '../components/searchField'
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
-import { filterDisplay, customers , customersState } from '../store/customers';
+import { filterDisplay, customers, customersState } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
 import TextBoxesPopup from '../components/TextBoxesPopup';
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,44 +20,29 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const styles = {
-    AddBtn: {
-        background: '#0B8D98',
-            color: "white",
-            width: "25vw",
-            height : '9vh',
-
-
-    },
-
-    PublicBtn: {
-        background: '#0B8D98',
-            color: "white",
-            width: "25vw",
-            height : '9vh',
-            
-    },
-    noButtonFoundText: {
-        color: '#a9b4bf',
-        fontSize: '1.1em',
+    btn: {
+        backgroundColor: '#0B8D98',
+        color: 'white',
+        width: '40vw',
+        height: '10vh',
+        marginBottom: '20px',
+        overflow: 'hidden',
     },
 
     btnContainer: {
         display: 'flex',
-        flexWrap: 'nowrap',
-        justifyContent: 'space-around',
-        alignItems: 'center',
         position: 'absolute',
-        width: '100%',
-        bottom: '5px'
-    }
+        bottom: '10px',
 
-};
+    },
+
+}
 
 
 
 
 const Customers = (props) => {
-    const allCustomers =  useRecoilValue(customers);
+    const allCustomers = useRecoilValue(customers);
     const filteredCustomers = useRecoilValue(filterDisplay)
 
     const setItems = useSetCustomers();
@@ -65,7 +50,7 @@ const Customers = (props) => {
 
     const [error, setError] = React.useState('')
     const [searchText, setSearchText] = React.useState('')
-    const [popupShow,setPopupShow] = React.useState(false);
+    const [popupShow, setPopupShow] = React.useState(false);
 
 
     useEffect(() => {
@@ -77,9 +62,9 @@ const Customers = (props) => {
     const searchFieldHandleChange = (e) => {
         let input = e.target.value
         if (input !== '') {
-           setSearchText(input.trim())
-           let newList = allCustomers.filter(({ name }) => name.toLowerCase().startsWith(input.toLowerCase()))
-           setFilterItems(newList);
+            setSearchText(input.trim())
+            let newList = allCustomers.filter(({ name }) => name.toLowerCase().startsWith(input.toLowerCase()))
+            setFilterItems(newList);
         } else {
             setSearchText('')
             setFilterItems(allCustomers);
@@ -87,11 +72,11 @@ const Customers = (props) => {
     }
 
     const useStyles = makeStyles((theme) => ({
-        dates :{
+        dates: {
             backgroundColor: 'white',
             marginBottom: '10px',
             height: '200px',
-            width:'200px',
+            width: '200px',
         }
     }));
 
@@ -99,11 +84,11 @@ const Customers = (props) => {
 
     const messageTextBox = [
         {
-            label:"Message",
+            label: "Message",
             type: "Text",
-            defaultValue:"",
-            multiline:"true",
-            rows:9,
+            defaultValue: "",
+            multiline: "true",
+            rows: 9,
             variant: "outlined",
             className: classes.dates
         }
@@ -115,26 +100,26 @@ const Customers = (props) => {
         handleChangeMessageTextBox
     ]
 
- 
+
     return (
         <ScreenContainer>
-            <TextBoxesPopup callbacks= {callBacks} textBoxes={messageTextBox} setShow={setPopupShow} show= {popupShow}></TextBoxesPopup> 
+            <TextBoxesPopup callbacks={callBacks} textBoxes={messageTextBox} setShow={setPopupShow} show={popupShow}></TextBoxesPopup>
             <MenuHeader icon="backArrow"
-                title= "Customers" />
+                title="Customers" />
             <SearchField value={searchText} handleChange={searchFieldHandleChange} />
 
 
             <CustomerList customers={filteredCustomers} error={error} />
-           
+
 
             <div style={styles.btnContainer}>
                 <Link to={`/addcustomer`}>
 
-                    <Button text="Add new" style={styles.AddBtn} />
+                    <Button text="Add new" style={styles.btn} />
 
                 </Link>
 
-                <Button text="Public Announcement" onClickButton={() => setPopupShow(true)} style={styles.PublicBtn} />
+                <Button text="Public Announcement" onClickButton={() => setPopupShow(true)} style={styles.btn} />
             </div>
         </ScreenContainer>
     );

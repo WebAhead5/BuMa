@@ -22,10 +22,18 @@ const styles = {
     listStyleType: 'none',
     width: '95vw',
     borderRadius: '6px',
-    height: '5vh',
-    marginLeft : '10px'
+    height: '6vh',
+    marginLeft : '10px',
+
+  },
+
+  li : {
+
+
 
   }
+
+
 
 
 };
@@ -65,13 +73,13 @@ const CustomerList = (props) => {
 
       <ul style={styles.ul}>
 
-        <li>Activity Status </li>
+        <li style={styles.li}>Activity Status </li>
 
-        <li>Name</li>
+        <li style={styles.li}>Name</li>
 
-        <li>Payment Status </li>
+        <li style={styles.li}>Payment Status </li>
 
-        <li>Amount </li>
+        <li style={styles.li}>Amount </li>
 
 
       </ul>

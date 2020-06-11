@@ -8,6 +8,8 @@ import { deleteCustomer } from '../actions/customers'
 import { useDeleteCustomerFromSelectedCustomers } from '../store/customers'
 import Popup from '../components/Popups'
 import { useHistory } from 'react-router-dom'
+import { customers } from '../store/customers'
+import { useRecoilValue } from 'recoil';
 
 
 
@@ -75,19 +77,13 @@ const CustomerCard = ({ match }) => {
     const [error, setError] = React.useState('');
     const [show, setShow] = React.useState(false)
 
+    const customersByUserId = useRecoilValue(customers)
+
+    const matchId = match.params.id
+
+    let userCustomers = customersByUserId.filter((customer) => customer.id === +matchId)
 
     const removeCustomer = useDeleteCustomerFromSelectedCustomers()
-
-    const handlegetCustomerData = (err, customer_res) => {
-        if (err) {
-            setError(err)
-            return;
-        }
-        setCustomerData(customer_res.customer[0])
-        setCustomerActivity(customer_res.customer[0].activitystatus)
-        
-    };
-
 
 
     const handleDeleteButton = (clickId) => {
@@ -111,18 +107,18 @@ const CustomerCard = ({ match }) => {
     }
 
 
-    useEffect(() => {
-        // Update the document title using the browser API
-        getCustomerData(match.params.id, handlegetCustomerData);
+    // useEffect(() => {
+    //     // Update the document title using the browser API
+    //     getCustomerData(match.params.id, handlegetCustomerData);
 
-    }, []);
+    // }, []);
 
 
 
     const handleActivityStatus = () => {
 
         setCustomerActivity(!customerActivity)
-        setCustomerData({ ...customerData, ['activitystatus']: !customerActivity});
+        userCustomers = ({ ...userCustomers[0], ['activitystatus']: !userCustomers[0].activitystatus});
     } 
 
     
@@ -132,7 +128,7 @@ const CustomerCard = ({ match }) => {
             <MenuHeader icon="backArrow" title="Customer Card" />
 
             <CustomerInfo
-                customerData = {customerData}
+                customerData = {userCustomers}
                 activity = {customerActivity}
                 
             />

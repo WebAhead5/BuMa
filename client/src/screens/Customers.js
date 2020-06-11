@@ -1,7 +1,7 @@
 /**
  * Created by farid on 03/07/17.
  */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ScreenContainer from '../components/Screen';
 import MenuHeader from '../components/MenuHeader';
 import { fetchCustomers } from '../actions/customers';

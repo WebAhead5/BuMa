@@ -106,12 +106,6 @@ const Home = () => {
     window.location.href = `/appointments?date=${e}`
   }
 
-  const showSettings = (event) => {
-    event.preventDefault();
-    return;
-  }
-
-
   const handleLogout = () => {
     logout((err, success) => {
       if (err) {

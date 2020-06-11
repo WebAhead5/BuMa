@@ -11,6 +11,15 @@ import { Redirect } from 'react-router';
 import { user } from '../../store/users'
 import { useRecoilValue } from 'recoil'
 
+const styles = {
+
+
+  addContainer : {
+
+    display : 'flex',
+    justifyContent : 'center'
+  }
+}
 
 
 
@@ -90,12 +99,14 @@ function CustomerForm() {
           onChange={handleChange}
           placeHolder={customerDetails.notes}
         />
+        <div style={styles.addContainer}>
         <input
           type="submit"
           value="Add"
           className='btn btn-submit ma3 btn-lg grow'
           style={{ background: '#0B8D98', color: "white", width: "100px" }}
         />
+        </div>
 
       </div>
 

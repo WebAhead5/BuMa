@@ -33,6 +33,9 @@ const styles = {
     borderRadius: '5px',
     marginLeft : '10px'
   },
+  li:{
+    width:'25%'
+  }
 }
 
 const CustomerEntry = (props) => {
@@ -58,11 +61,11 @@ const CustomerEntry = (props) => {
 
         <li style={styles.li}><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>
 
-        <li>{customerName}</li>
+        <li style={styles.li}>{customerName}</li>
 
-        <li>{customerPaymentStatus ? 'Done' : 'Pending ...'} </li>
+        <li style={styles.li}>{customerPaymentStatus ? 'Done' : 'Pending ...'} </li>
 
-        <li>{customerAppointmentPrice} </li>
+        <li style={styles.li}>{customerAppointmentPrice} </li>
 
       </ul>
 

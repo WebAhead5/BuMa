@@ -5,7 +5,7 @@ import CustomerSelectionList from '../components/customerSelectionList'
 import Button from '../components/Button';
 import SearchField from '../components/searchField'
 import { useRecoilValue } from 'recoil';
-import { filterDisplay, customers } from '../store/customers';
+import { filterDisplay, customers,selectedCustomers } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers, allCustomersDetailsState, filterCustomerState } from "../store/customers";
 import { fetchCustomers } from '../actions/customers';
 import { Link, useHistory } from 'react-router-dom'
@@ -29,8 +29,7 @@ const styles = {
 const SelectCustomer = () => {
     let history = useHistory();
     const allCustomers = useRecoilValue(allCustomersDetailsState);
-    const filteredCustomers = useRecoilValue(filterCustomerState)
-
+    const filteredCustomers = useRecoilValue(filterCustomerState);
 
     const setItems = useSetCustomers();
     const setFilterItems = useSetfilterDisplay();
@@ -59,13 +58,9 @@ const SelectCustomer = () => {
         }
     }
 
-
-
     const onClickGoBack = () => {
         history.goBack();  
     }
-
-
 
     return (
         <ScreenContainer>
@@ -76,17 +71,13 @@ const SelectCustomer = () => {
 
 
             <CustomerSelectionList
-
                 customersName={filteredCustomers.data}
                 error={error}
-
             />
 
             <div style={styles.btnContainer}>
 
                 <Button text="Done" onClickButton={() => onClickGoBack()} style={styles.btn} />
-
-
 
                 <Link to={`/addCustomer`}>
 

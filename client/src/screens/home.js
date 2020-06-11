@@ -24,17 +24,18 @@ var styles = {
     top: '12px'
   },
   bmBurgerBars: {
-    background: '#373a47'
+    background: '#E4FDFF'
   },
   bmBurgerBarsHover: {
     background: '#a90000'
   },
   bmCrossButton: {
-    height: '24px',
-    width: '24px'
+    height: '0px',
+    width: '0px'
   },
   bmCross: {
-    background: '#bdc3c7'
+    background: '#bdc3c7',
+    width:'0px',
   },
   bmMenuWrap: {
     position: 'fixed',
@@ -42,17 +43,19 @@ var styles = {
   },
   bmMenu: {
     background: '#1A4452',
-    padding: '2.5em 1.5em 0',
+    padding: '0.5em 1.5em 0',
     fontSize: '1.15em'
   },
   bmMorphShape: {
     fill: '#373a47'
   },
   bmItemList: {
-    color: '#b8b7ad',
-    padding: '0.8em'
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly'
   },
   bmItem: {
+    display: 'flex',
     color: '#E4FDFF',
   },
   bmOverlay: {
@@ -133,10 +136,7 @@ const Home = () => {
         <Link to='/customers' style={styles.link}>
           <a id="customers" className="menu-item" >Customers</a>
         </Link>
-        <Link to='/appointments' style={styles.link}>
-          <a id="appointments" className="menu-item">Appointments</a>
-        </Link>
-        <Link to='/reports' style={styles.link}>
+        <Link to='/reports'>
           <a id="reports" className="menu-item">Accounting reports</a>
         </Link>
         <Link to='/profile' style={styles.link}>
@@ -145,7 +145,7 @@ const Home = () => {
         <Link to='/settings' style={styles.link}>
           <a id="settings" className="menu-item">Settings</a>
         </Link>
-        <Link to='/aboutus' style={styles.link}>
+        <Link to='/aboutus'>
           <a id="about" className="menu-item">About</a>
         </Link>
         <Link to='/logout' style={styles.link}>

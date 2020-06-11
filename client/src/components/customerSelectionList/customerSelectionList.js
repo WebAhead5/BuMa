@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CustomerSelectionEntry from '../customerSelectionEntry';
 import { useRecoilValue } from 'recoil';
 import { selectedCustomers, useAddCustomerSelectedCustomers, useDeleteCustomerFromSelectedCustomers, useAddCustomerToSelectedCustomers } from '../../store/customers';
-
+import * as equal from 'deep-equal';
 
 
 const styles = {
@@ -31,8 +31,7 @@ const styles = {
 };
 
 const CustomerSelectionList = (props) => {
-
-    const checkedCustomers = useRecoilValue(selectedCustomers);
+    const selectedCustomersItems = useRecoilValue(selectedCustomers);
 
     const addCustomers = useAddCustomerToSelectedCustomers();
     const removeCustomer = useDeleteCustomerFromSelectedCustomers();
@@ -43,19 +42,23 @@ const CustomerSelectionList = (props) => {
         return (<div>Could not fetch, try again later</div>)
     }
 
-    props.customersName.forEach((customer, index) => {
 
-        customers.push(<CustomerSelectionEntry key={`Entry + ${index} `}
+
+    props.customersName.forEach((customer, index) => {
+        let checked = false;
+        selectedCustomersItems.forEach((element)=>{
+            if(equal(element,customer))
+                checked = true;
+        })
+        customers.push(
+        <CustomerSelectionEntry key={`Entry + ${index} `}
             customer={customer}
             handleAddCustomer={addCustomers}
             handleDeleteCustomer={removeCustomer}
             selectedCustomers={selectedCustomers}
-
+            checked = {checked}
             {...props}
-
         />);
-
-
     });
 
 

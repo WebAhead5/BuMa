@@ -8,8 +8,9 @@ const styles = {
   container: {
 
     backgroundColor: '#1F2B30',
-    height: '70vh',
-    width : '50vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
 
   },
 
@@ -24,8 +25,12 @@ const styles = {
     height: '5vh',
     marginLeft : '10px'
 
+  },
+  li:{
+    width:'25%',
+    height: '25px'
   }
-
+  
 
 };
 
@@ -64,13 +69,13 @@ const CustomerList = (props) => {
 
       <ul style={styles.ul}>
 
-        <li>Activity Status </li>
+        <li style={styles.li}>Activity </li>
 
-        <li>Name</li>
+        <li style={styles.li}>Name</li>
 
-        <li>Payment Status </li>
+        <li style={styles.li}>Payment </li>
 
-        <li>Amount </li>
+        <li style={styles.li}>Amount </li>
 
 
       </ul>

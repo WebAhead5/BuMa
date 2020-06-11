@@ -139,7 +139,7 @@ exports.login = async (req, res) => {
 }
 
 function generateAccessToken(user) {
-    return jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '30m' })
+    return jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '72h' })
 }
 
 

@@ -11,7 +11,7 @@ const middlewares = require('../middlewares');
 
 
 //Login route
-router.post('/user/admin/login', users.login)
+router.post('/login', users.login)
 //Logout route
 router.delete('/logout', users.logout)
 

@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ScreenContainer from '../components/Screen';
 import MenuHeader from '../components/MenuHeader';
 import AppointmentInfo from '../components/appointmentInfo'
-//import Button from '../components/Button';
-//import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
-import { getAppointmentData } from '../actions/appointments';
-import { useSetAppointments, appointments, appointmentsState } from '../store/appointments';
+import { appointments } from '../store/appointments';
 
 
 const styles = {
@@ -26,7 +23,6 @@ const styles = {
 }
 
 const AppointmentCard = ({match}) => {
-    //const appointmentsCard = useRecoilValue(appointmentsState);
     const appointmentsCard = useRecoilValue(appointments);
     const appointmentDetails = appointmentsCard.filter(appointment => match.params.id==appointment.id)
     return (

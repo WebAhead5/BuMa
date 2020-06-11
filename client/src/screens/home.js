@@ -96,7 +96,6 @@ const Home = () => {
 
   //convert date from db to an actual Date to compare them with the calendar values
   let appointmentsDays = allAppointments.map(appointments => appointments.day)
-  console.log(appointmentsDays)
   appointmentsDays = appointmentsDays.map(date => new Date(date)).sort((a, b) => a - b)
   
 

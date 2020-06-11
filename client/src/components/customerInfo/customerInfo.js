@@ -32,9 +32,11 @@ const styles = {
 
 const CustomerInfo = (props) => {
 
+    console.log(props.customerData)
+
     const [isRedirect, setRedirect] = useState(false);
 
-    let customer = props.customerData;
+    let customer = props.customerData[0];
 
     const handleSubmit = (event) => {
 

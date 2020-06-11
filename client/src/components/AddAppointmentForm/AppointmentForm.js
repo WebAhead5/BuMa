@@ -6,9 +6,9 @@ import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import { selectedCustomers } from '../../store/customers';
-import { RecoilRoot } from 'recoil';
 import { useRecoilValue } from 'recoil';
 import { makeStyles } from '@material-ui/core/styles';
+import { user } from '../../store/users'
 
 
 
@@ -18,6 +18,7 @@ function AppointmentForm() {
   const [isRedirectHome, setRedirectHome] = useState(false);
   const selectedCustomersItems = useRecoilValue(selectedCustomers);
   const [selectedCustomersNames, setSelectedCustomersNames] = useState();
+  const userValue = useRecoilValue(user)
 
   const useStyles = makeStyles((theme) => ({
     textBoxes: {
@@ -54,7 +55,7 @@ function AppointmentForm() {
 
 
   let appointmentDetails = {
-    userid: '1',
+    userid: userValue.id,
     day: '2012-04-25',
     start_at: '08:00:00',
     end_at: '10:00:00',

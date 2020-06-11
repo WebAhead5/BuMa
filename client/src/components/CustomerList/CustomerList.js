@@ -24,8 +24,12 @@ const styles = {
     borderRadius: '6px',
     height: '5vh'
 
+  },
+  li:{
+    width:'25%',
+    height: '25px'
   }
-
+  
 
 };
 
@@ -64,13 +68,13 @@ const CustomerList = (props) => {
 
       <ul style={styles.ul}>
 
-        <li>Activity Status </li>
+        <li style={styles.li}>Activity </li>
 
-        <li>Name</li>
+        <li style={styles.li}>Name</li>
 
-        <li>Payment Status </li>
+        <li style={styles.li}>Payment </li>
 
-        <li>Amount </li>
+        <li style={styles.li}>Amount </li>
 
 
       </ul>

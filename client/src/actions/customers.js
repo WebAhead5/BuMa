@@ -23,7 +23,7 @@ export const BUTTON_DELETE_FAILURE = 'BUTTON_DELETE_FAILURE';
 
 export function fetchCustomers(cb) {
     // return function (dispatch, getState) {
-    callApi(null, null, 'GET', 'customers', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    callApi(null, null, 'GET', 'customersbyuser', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
     // }
 }
 

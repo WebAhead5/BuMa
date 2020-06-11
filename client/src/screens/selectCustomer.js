@@ -61,9 +61,7 @@ const SelectCustomer = () => {
 
 
     const onClickGoBack = () => {
-
-            history.goBack();
-        
+        history.goBack();  
     }
 
 

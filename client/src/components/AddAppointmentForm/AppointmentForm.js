@@ -6,8 +6,9 @@ import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import { selectedCustomers } from '../../store/customers';
-import { RecoilRoot } from 'recoil';
 import { useRecoilValue } from 'recoil';
+import { makeStyles } from '@material-ui/core/styles';
+import { user } from '../../store/users'
 
 
 
@@ -16,23 +17,45 @@ function AppointmentForm() {
   const [isRedirect, setRedirect] = useState(false);
   const [isRedirectHome, setRedirectHome] = useState(false);
   const selectedCustomersItems = useRecoilValue(selectedCustomers);
-  const [selectedCustomersNames,setSelectedCustomersNames] = useState();
+  const [selectedCustomersNames, setSelectedCustomersNames] = useState();
+  const userValue = useRecoilValue(user)
 
+  const useStyles = makeStyles((theme) => ({
+    textBoxes: {
+      color: "#1A4452",
+      backgroundColor: "#ffffff"
+    },
 
-  useEffect(()=>{
-    let namesArry="names...";
-    if(selectedCustomersItems.size > 0){
+    timeBoxes :{
+      color: "#1A4452",
+      width: "70%",
+      backgroundColor: "#ffffff",
+      marginBottom:'10px',
+      borderRadius: '5px'
+    },
+    timeform :{
+      display: "flex",
+      flexDirection: "column"
+    }
+
+  }));
+
+  const classes = useStyles();
+
+  useEffect(() => {
+    let namesArry = "names...";
+    if (selectedCustomersItems.size > 0) {
       namesArry = "";
       selectedCustomersItems.forEach((customer) => {
-        namesArry+= customer.name+ " ";
+        namesArry += customer.name + " ";
       })
     }
     setSelectedCustomersNames(namesArry);
-  },selectedCustomersItems)
+  }, selectedCustomersItems)
 
 
   let appointmentDetails = {
-    userid: '1',
+    userid: userValue.id,
     day: '2012-04-25',
     start_at: '08:00:00',
     end_at: '10:00:00',
@@ -72,7 +95,7 @@ function AppointmentForm() {
       appointmentDetails = { ...appointmentDetails, ['customerIds']: customerIds };
       addAppointment(appointmentDetails);
       setRedirectHome(true);
-    }else{
+    } else {
       //If no user was selected should show error message.
     }
   }
@@ -84,13 +107,18 @@ function AppointmentForm() {
           <OpenAnotherComponentTextField
             click={handleSelectCustomersClick}
             placeHolder={selectedCustomersNames}
+            classNmae = {classes.textBoxes}
           />
         </Link>
-        <form noValidate>
+        <form noValidate className={classes.timeform}>
           <TextField
             id="start_at"
             label="Start time"
             type="time"
+            InputProps={{
+              className: classes.textBoxes
+            }}
+            className={ classes.timeBoxes}
             onChange={handleChangeStartAt}
             defaultValue="10:30"
             InputLabelProps={{
@@ -101,6 +129,10 @@ function AppointmentForm() {
             id="end_at"
             label="End time"
             type="time"
+            InputProps={{
+              className: classes.textBoxes
+            }}
+            className={classes.timeBoxes}
             onChange={handleChangeEndAt}
             defaultValue="10:30"
             InputLabelProps={{
@@ -114,6 +146,10 @@ function AppointmentForm() {
             id="day"
             label="Date"
             type="date"
+            InputProps={{
+              className: classes.textBoxes
+            }}
+            className={classes.timeBoxes}
             onChange={handleChangeDay}
             defaultValue="2017-05-24"
             InputLabelProps={{

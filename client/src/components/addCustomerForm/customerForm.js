@@ -7,7 +7,10 @@ import PaymentNumber from './paymentEvery';
 import PaymentPeriod from './paymentPer';
 import NoteFieldText from '../NoteFieldText';
 import { addCustomer } from '../../actions/customers';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
+import { user } from '../../store/users'
+import { useRecoilValue } from 'recoil'
+
 
 
 
@@ -15,11 +18,13 @@ function CustomerForm() {
   const date = new Date();
   const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
+  const userValue = useRecoilValue(user)
+
   const [customerDetails, setCustomerDetails] = useState({
     name: 'Name',
     email: 'Email',
     phone: 'Phone',
-    userid: '1',
+    userid: userValue.id,
     paymentStatus: 'false',
     activityStatus: 'true',
     notes: 'Note',

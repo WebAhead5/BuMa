@@ -34,11 +34,13 @@ const styles = {
     },
 
     btnContainer: {
-
         display: 'flex',
-        flexWrap : 'nowrap',
+        flexWrap: 'nowrap',
         justifyContent: 'space-around',
         alignItems: 'center',
+        position: 'absolute',
+        width: '100%',
+        bottom: '5px'
     }
 
 };

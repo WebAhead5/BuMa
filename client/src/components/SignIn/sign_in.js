@@ -11,6 +11,18 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Image from '../Image'
 import { login } from '../../actions/users'
 import { user, SetUserDetails } from '../../store/users'
+import { Link } from 'react-router-dom'
+
+const styles = {
+
+    link: {
+
+        outline: 'none',
+        textDecoration: 'none',
+        color: 'white',
+    }
+}
+
 
 function SignInForm() {
 
@@ -96,10 +108,10 @@ function SignInForm() {
 
 
         // { username: 'mario966111', password: '5585mrr' }
-        login(userData,setUserData)
+        login(userData, setUserData)
         setRedirect(true)
 
-      
+
         event.preventDefault();
     }
 
@@ -136,7 +148,7 @@ function SignInForm() {
 
     // useEffect(() => {
     //     if (user != undefined)
-            
+
     // }, [localUser]);
 
 
@@ -215,7 +227,9 @@ function SignInForm() {
                     </tr>
                     <tr>
                         <td style={{ color: "#C7C7C7" }}>
-                            <h6>Don’t have an account? Sign up!</h6>
+                            <Link to='/registration' style={styles.link}>
+                                <h6>Don’t have an account? Sign up!</h6>
+                            </Link>
                         </td>
                     </tr>
                 </table>

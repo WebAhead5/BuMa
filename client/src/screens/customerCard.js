@@ -15,11 +15,7 @@ const styles = {
 
     container: {
 
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingBottom: '5px',
-
+        backgroundColor : '#1F2B30',
     },
 
     saveBtn: {
@@ -28,7 +24,7 @@ const styles = {
         color: "white",
         width: "150px",
         marginLeft: '15px',
-        marginBottom: '15px',
+
 
     },
 
@@ -37,8 +33,8 @@ const styles = {
         marginLeft: '25px',
         height: '50px',
         width: '50px',
-        background: 'url(/img/deleteIcon.svg)',
-        backgroundSize: 'cover'
+        background: 'url(/img/deleteIconWhite.svg)',
+        backgroundSize: 'cover',
     },
 
     activeUser: {

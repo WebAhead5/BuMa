@@ -17,16 +17,18 @@ const styles = {
         alignItems: 'center',
         listStyleType: 'none',
         width: '95vw',
-        height: '5vh',
+        height: '6vh',
         borderRadius: '5px'
     },
     deleteBtn: {
         width: '35px',
-        height: '28px',
+        height: '35px',
         border: 'none',
         background: 'url(/img/deleteIcon.svg)',
         backgroundSize: 'cover',
         outline: 'none',
+        marginRight : '5px',
+        marginTop : '15px',
     }, 
     
     h4: {

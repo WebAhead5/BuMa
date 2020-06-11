@@ -8,7 +8,8 @@ const styles = {
   container: {
 
     backgroundColor: '#1F2B30',
-    height: '800px'
+    height: '70vh',
+    width : '50vw',
 
   },
 
@@ -20,7 +21,8 @@ const styles = {
     listStyleType: 'none',
     width: '95vw',
     borderRadius: '6px',
-    height: '5vh'
+    height: '5vh',
+    marginLeft : '10px'
 
   }
 

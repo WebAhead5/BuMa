@@ -13,7 +13,7 @@ const styles = {
     ul: {
         backgroundColor: 'white',
         display: 'flex',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         listStyleType: 'none',
         width: '95vw',

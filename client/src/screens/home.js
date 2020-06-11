@@ -83,6 +83,12 @@ var styles = {
     width: '100px',
     height: '90px',
     transform: 'rotate(-1deg)'
+  },
+
+  link : {
+
+    outline: 'none',
+    textDecoration:'none',
   }
 }
 
@@ -136,25 +142,25 @@ const Home = () => {
       <MenuHeader title="BuMa" icon=''></MenuHeader>
       <img src="/img/logoTransparent.png" style={styles.img} />
       <Menu styles={styles}>
-        <Link to='/customers'>
-          <a id="customers" className="menu-item">Customers</a>
+        <Link to='/customers' style={styles.link}>
+          <a id="customers" className="menu-item" >Customers</a>
         </Link>
-        <Link to='/appointments'>
+        <Link to='/appointments' style={styles.link}>
           <a id="appointments" className="menu-item">Appointments</a>
         </Link>
-        <Link to='/reports'>
+        <Link to='/reports' style={styles.link}>
           <a id="reports" className="menu-item">Accounting reports</a>
         </Link>
-        <Link to='/profile'>
+        <Link to='/profile' style={styles.link}>
           <a id="profile" className="menu-item">Profile</a>
         </Link>
-        <Link to='/settings'>
+        <Link to='/settings' style={styles.link}>
           <a id="settings" className="menu-item">Settings</a>
         </Link>
-        <Link to='/aboutus'>
+        <Link to='/aboutus' style={styles.link}>
           <a id="about" className="menu-item">About</a>
         </Link>
-        <Link to='/logout'>
+        <Link to='/logout' style={styles.link}>
           <a id="logout" onClick={handleLogout} className="menu-item">Logout</a>
         </Link>
       </Menu>

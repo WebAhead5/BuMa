@@ -18,13 +18,18 @@ import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
 
 
 const styles = {
-    btn: {
-        backgroundColor: '#0B8D98',
-        color: 'E4FDFF',
-        width: '40vw',
-        height: '10vh',
-        marginBottom : '20px',
-        overflow : 'hidden',
+    AddBtn: {
+        background: '#0B8D98',
+            color: "white",
+            width: "fit-content",
+            height : '9vh',
+    },
+
+    PublicBtn: {
+        background: '#0B8D98',
+            color: "white",
+            width: "fit-content",
+            height : '9vh',
     },
     noButtonFoundText: {
         color: '#a9b4bf',
@@ -86,11 +91,11 @@ const Customers = (props) => {
             <div style={styles.btnContainer}>
                 <Link to={`/addcustomer`}>
 
-                    <Button text="Add new" style={styles.btn} />
+                    <Button text="Add new" style={styles.AddBtn} />
 
                 </Link>
 
-                <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.btn} />
+                <Button text="Public Announcement" onClickButton={() => console.log('clicked')} style={styles.PublicBtn} />
             </div>
         </ScreenContainer>
     );

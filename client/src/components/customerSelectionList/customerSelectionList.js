@@ -10,7 +10,7 @@ const styles = {
     container: {
 
         backgroundColor: '#1F2B30',
-        height: '800px'
+        height: '50vh',
 
     },
 

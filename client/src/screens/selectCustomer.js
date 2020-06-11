@@ -16,12 +16,13 @@ const styles = {
     btn: {
 
         backgroundColor: '#0B8D98',
-        color: 'E4FDFF',
-        width: '40vw',
+        color: 'white',
+        width: '30vw',
         height: '10vh',
         marginBottom: '20px',
         overflow: 'hidden',
     },
+
 }
 
 
@@ -89,7 +90,7 @@ const SelectCustomer = () => {
             <div style={styles.btnContainer}>
 
                 <Button text="Done" onClickButton={() => onClickGoBack()} style={styles.btn} />
-                {/* <button onClick={() => onClickGoBack()} style={styles.btn}> Done </button> */}
+
 
 
                 <Link to={`/addCustomer`}>

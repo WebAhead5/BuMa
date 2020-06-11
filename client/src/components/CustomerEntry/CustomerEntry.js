@@ -15,7 +15,8 @@ const styles = {
     listStyleType: 'none',
     width: '95vw',
     height: '5vh',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    marginLeft : '10px',
   },
 
   NotActiveUser: {
@@ -30,6 +31,7 @@ const styles = {
     width: '95vw',
     height: '5vh',
     borderRadius: '5px',
+    marginLeft : '10px'
   },
 }
 

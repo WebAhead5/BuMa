@@ -1,5 +1,6 @@
 const queries = require('../models/users')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken');
 
 const {
     validateSignupData,
@@ -102,11 +103,55 @@ exports.updateUser = (req, res) => {
         })
 }
 
-exports.logout =  (req, res) => {
+
+
+exports.login = async (req, res) => {
+
+    const password = req.body.password;
+    const userName = req.body.username;
+
+
+    const userData = await queries.getUserByName(userName);
+
+
+    try {
+
+        (userData.length) < 1 ? res.status(404).json({ message: 'No user found' }) :
+
+            bcrypt.compare(password, userData[0].password, function (err, result) {
+
+                if (result) {
+                    const accessToken = generateAccessToken((userData[0].id).toString())
+                    res.cookie('access_token', accessToken)
+                    res.status(200).json({ user: userData[0], code: 200 })
+                    res.end()
+
+                } else {
+                    res.status(404).json({ message: 'Your username or password seems to be incorrect' });
+                }
+            })
+
+    } catch {
+
+        return res.status(500).json({ error: "Error Occurred" })
+
+    }
+
+}
+
+function generateAccessToken(user) {
+    return jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '30m' })
+}
+
+
+
+
+
+exports.logout = (req, res) => {
 
     try {
         res.clearCookie('access_token');
-        res.status(200).json({code: 200})
+        res.status(200).json({ code: 200 })
     } catch (err) {
         console.log(err)
         res.status(500).json({ error: err })

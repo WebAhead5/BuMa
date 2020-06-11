@@ -16,7 +16,7 @@ import AppointmentCard from '../../screens/appointmentCard';
 import Registration from '../../screens/registration';
 import Profile from '../../screens/profile';
 import Reports from '../../screens/reports';
-// import Signin from '../../screens/signin';
+import Signin from '../../screens/signin';
 
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
             <Route path="/registration" exact component={Registration} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/reports" exact component={Reports} />
-            {/* <Route path="/signin" exact component={Signin} /> */}
+            <Route path="/signin" exact component={Signin} />
           </Switch>
         </div>
       </Router>

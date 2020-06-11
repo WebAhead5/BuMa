@@ -1,34 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReportCard from "./reportCard";
-import Button from "../Button";
 import {fetchReports, getReportById} from '../../actions/reports';
-import { fetchCustomers } from '../../actions/customers';
+import {useRecoilValue} from 'recoil'
+import { user } from '../../store/users';
+import { SetUserDetails } from '../../store/users';
 
-const ReportsList = ({match}) => {
-    
-    const reportsDetails = [
-        {id: '1', userid: '3', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
-        {id: '2', userid: '4', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
-        {id: '3', userid: '1', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
-        {id: '4', userid: '1', creatingdate:'20-12-2020', pdfile:'/img/report.png'},
-        {id: '5', userid: '1', creatingdate:'20-12-2020', pdfile:'/img/report.png'}
-    ];
-    // let reportsDetails;
-    // const handleReports = (err, res) => {
-    //     if (err) {
-    //         return;
-    //     }
-    //     reportsDetails= res.report[0]
-    //     console.log(reportsDetails)
-    // };
-        
-    // useEffect(() => {
-    //     // Update the document title using the browser API
-    //     getReportById(1, handleReports);
-      
-
-    // }, []);
-   
+const ReportsList = () => {
     const style={
         layout:{
             background:'#1F2B30',
@@ -46,28 +23,45 @@ const ReportsList = ({match}) => {
             fontSize:'22px'
         }
     };
+    const userRecord = useRecoilValue(user)
+    //const setNewReport = SetUserDetails()
+    let [reportsDetails, setReportsDetails]= useState([]);
 
+    const handleReports = (err, res) => {
+        if (err) {
+            return;
+        }
+        setReportsDetails(res.reports)
+        
+    };
+        
+    useEffect(() => {
+        //getReportById(userRecord.id, handleReports);
+        fetchReports(handleReports)
+    }, []);
+   
     const handlePopUp = () => {
 
     }
+
 
     return (
         <div>
             <div style={style.layout} className="tc">
             {
-                reportsDetails.map((user) => {
-                    return(
+                reportsDetails.map(user => (
+                    <div className="tc dib">
                         <ReportCard 
                         key={user.id} 
                         userid={user.userid} 
                         creatingdate={user.creatingdate} 
                         pdfile={user.pdfile} 
                         />
-                    );
-                })
+                        <br></br>
+                    </div>
+                ))
             }
             <br></br>
-             <Button text="New Report" style={style.btn} onClickButton={handlePopUp}/> 
             </div>
            
         </div>

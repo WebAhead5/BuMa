@@ -11,13 +11,7 @@ const middlewares = require('../middlewares');
 
 
 //Login route
-<<<<<<< HEAD
 router.post('/user/admin/login', users.login)
-
-=======
-router.post('/login', login.checkUserLogin);
->>>>>>> 08ab4e56a0403f8a3a9e4d6c1e1eaf11c4595a7e
-
 //Logout route
 router.delete('/logout', users.logout)
 

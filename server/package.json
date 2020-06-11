@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server.js",
+    "dev": "NODE_ENV=test nodemon src/server.js",
     "test": "NODE_ENV=test nodemon src/tests/dataBase.test.js | tap-spec",
     "test_reports_modules": "NODE_ENV=test nodemon src/tests/reports.test.js | tap-spec",
     "test_appointments_modules": "NODE_ENV=test tape src/tests/appointments_modules.test.js | tap-spec",

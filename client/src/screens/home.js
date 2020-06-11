@@ -152,7 +152,7 @@ const Home = () => {
           <a id="settings" className="menu-item">Settings</a>
         </Link>
         <Link to='/aboutus'>
-          <a id="about" className="menu-item" href="/aboutus">About</a>
+          <a id="about" className="menu-item">About</a>
         </Link>
         <Link to='/logout'>
           <a id="logout" onClick={handleLogout} className="menu-item">Logout</a>

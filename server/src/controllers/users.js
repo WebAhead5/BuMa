@@ -27,7 +27,6 @@ exports.getOneUser = (req, res) => {
 }
 
 exports.addUser = (req, res) => {
-
     const newUser = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,

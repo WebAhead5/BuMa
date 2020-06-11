@@ -35,14 +35,16 @@ const CustomerInfo = (props) => {
     const [isRedirect, setRedirect] = useState(false);
 
     let customer = props.customerData;
-    console.log(customer)
-
-    console.log(customer)
 
     const handleSubmit = (event) => {
 
-        updateCustomer(customer.id, customer, () => console.log('success'))
-        setRedirect(true);
+        updateCustomer(customer.id, customer, (err, res) => {
+            if (err) {
+                console.log(err)
+                return;
+            }
+            setRedirect(true);
+        })
         event.preventDefault();
     }
 

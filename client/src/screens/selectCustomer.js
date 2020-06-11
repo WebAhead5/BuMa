@@ -49,7 +49,6 @@ const SelectCustomer = () => {
         if (input !== '') {
             setSearchText(input.trim())
             let newList = allCustomers.data.filter(({ name }) => name.toLowerCase().startsWith(input.toLowerCase()))
-            console.log(newList)
             setFilterItems(newList);
 
 
@@ -62,8 +61,6 @@ const SelectCustomer = () => {
 
 
     const onClickGoBack = () => {
-
-        console.log('clicked')
 
             history.goBack();
         

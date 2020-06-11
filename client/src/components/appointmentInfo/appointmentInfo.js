@@ -21,7 +21,6 @@ function AppointmentInfo(props) {
  
   //get customer data by id in order to display name
   const getCustomer = getCustomerData(appointmentDetails.userid)
-  console.log(getCustomer)
 
   //parse date 
   const getAppointmentDate = (dateData) =>{
@@ -47,7 +46,6 @@ function AppointmentInfo(props) {
     
     //update database
     appointmentDetails = ({ ...appointmentDetails, 'day': getAppointmentDate(appointmentDetails.day) });
-    console.log(appointmentDetails)
     updateAppointment(appointmentDetails.id, appointmentDetails);
     setRedirect(true);
     event.preventDefault()

@@ -19,31 +19,10 @@ const style = {
 };
 
 const PaymentPer = (props) => {
-  // const [show, setShow] = React.useState(false)
-  // const [repeat, setRepeat] = React.useState(1)
-
-
-  // limit the counter to not go lower than 1
-  // const handleRepeat = () => {
-  //   if (repeat > 1)
-  //     setRepeat(repeat - 1)
-  //   return;
-  // }
-
-  //update database
-  // const handleYesOpt = () => console.log('Yes Clicked')
-  // const handleNoOpt = () => console.log('No Click')
+ 
 
   return (
     <div>
-      {/* <button onClick={() => setShow(true)} style={style.button}>Payment every?</button>
-      <Popup isOpen={show} style={style.content} setShow={(el)=> setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]}>
-        <label>Repeat
-              <input value={repeat} onChange={(e, id) => props.onChange(e, props.stateId)} >
-          </input>
-          <button onClick={() => setRepeat(repeat + 1)}>+</button>
-          <button onClick={handleRepeat}>-</button>
-        </label> */}
         <label style={{color:'white'}}>Every</label>
             <select
             type="number"
@@ -54,7 +33,6 @@ const PaymentPer = (props) => {
             <option value="Month" selected={props.Value=== "Month"}>Month</option>
           </select>
         
-      {/* </Popup> */}
     </div>
   );
 }

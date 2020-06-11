@@ -4,16 +4,14 @@ import { Redirect } from 'react-router';
 //import { Input } from '@material-ui/core';
 
 function RegistrationForm() {
-  const date = new Date();
-  const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
-  const [confirmPassword, setConfirmPassword]= useState("");
   const [businessDetails, setBusinessDetails] = useState({
-    first_name: 'First name',
-    last_name: 'Last name',
-    email: 'Email',
-    username: 'Username',
-    password: 'Password',
+    first_name: '',
+    last_name: '',
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword : '',
     phone:'',
     business_name:'',
     business_logo:'',
@@ -25,27 +23,27 @@ function RegistrationForm() {
 const style={
     table:{
         width:"90%",
-        TextAlignment:"center",
-        margin:"15px",
-        padding:"15px"
+        TextAlignment:"left",
+        margin:"5px",
+        padding:"5px"
 
     },
     input:{
         margin:"5px"
+    },
+    label : {
+
+      color : 'white'
     }
 }
-  const handleChangePassword = (e) => {
-    setConfirmPassword(e.target.value);
-    console.log(confirmPassword)
-  }
+
   const handleChange = (e) => {
     setBusinessDetails({ ...businessDetails, [e.target.id]: e.target.value });
   }
 
   const handleSubmit = (event) => {
-    if(confirmPassword===businessDetails.password){
-      addUser(businessDetails)
-      alert('thank you for registering with us')
+    if(businessDetails.confirmPassword==businessDetails.password){
+      addUser(businessDetails, () => alert('thank you for registering with us') )
       setRedirect(true);
     }else{
       alert('please type in identical passwords')
@@ -56,63 +54,69 @@ const style={
   return (
 
     <form onSubmit={handleSubmit} style={{ background: '#1F2B30' }}>
-      <div className="tc pa4 vcenter">
+      <div className="tc vcenter">
       <table border="0" style={style.table}>
       <tr><td>
+        <label style={style.label} >first name</label>
         <input
           id="first_name"
           type="text"
           onChange={handleChange}
           style={{width:"90%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.first_name}
+          placeholder={businessDetails.first_name}
           required
         />
         </td><td>
+        <label style={style.label}>last name</label>
         <input
           id="last_name"
           type="text"
           onChange={handleChange}
           style={{width:"90%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.last_name}
+          placeholder={businessDetails.last_name}
           required
         />
         </td></tr>
         <tr ><td colspan="2">
+        <label style={style.label}>username</label>
         <input
           id="username"
           type="text"
           onChange={handleChange}
           style={{width:"95%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.username}
+          placeholder={businessDetails.username}
           required
         />
         </td></tr>
         <tr ><td colspan="2">
+        <label style={style.label}>email</label>
         <input
           id="email"
           type="email"
           onChange={handleChange}
           style={{width:"95%",margin:"10px", height:"35px"}}
-          placeHolder={businessDetails.email}
+          placeholder={businessDetails.email}
           required
         />
          </td></tr>
          <tr><td>
+         <label style={style.label} >password</label>
          <input
             id="password"
             type="password"
             onChange={handleChange}
             style={{width:"90%",margin:"10px", height:"35px"}}
-            placeHolder={businessDetails.password}
+            placeholder={businessDetails.password}
             required
           />
           </td><td>
+          <label style={style.label} >confirm password</label>
           <input
-            id="password2"
+            id="confirmPassword"
             type="password"
-            onChange={handleChangePassword}
+            onChange={handleChange}
             style={{width:"90%",margin:"10px", height:"35px"}}
-            placeHolder="Confirm Password"
+            placeholder={businessDetails.confirmPassword}
             required
           />
           </td></tr>

@@ -30,11 +30,12 @@ var styles = {
     background: '#a90000'
   },
   bmCrossButton: {
-    height: '24px',
-    width: '24px'
+    height: '0px',
+    width: '0px'
   },
   bmCross: {
-    background: '#bdc3c7'
+    background: '#bdc3c7',
+    width:'0px',
   },
   bmMenuWrap: {
     position: 'fixed',
@@ -42,17 +43,19 @@ var styles = {
   },
   bmMenu: {
     background: '#1A4452',
-    padding: '2.5em 1.5em 0',
+    padding: '0.5em 1.5em 0',
     fontSize: '1.15em'
   },
   bmMorphShape: {
     fill: '#373a47'
   },
   bmItemList: {
-    color: '#b8b7ad',
-    padding: '0.8em'
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly'
   },
   bmItem: {
+    display: 'flex',
     color: '#E4FDFF',
   },
   bmOverlay: {
@@ -132,9 +135,6 @@ const Home = () => {
         <Link to='/customers'>
           <a id="customers" className="menu-item">Customers</a>
         </Link>
-        <Link to='/appointments'>
-          <a id="appointments" className="menu-item">Appointments</a>
-        </Link>
         <Link to='/reports'>
           <a id="reports" className="menu-item">Accounting reports</a>
         </Link>
@@ -145,7 +145,7 @@ const Home = () => {
           <a id="settings" className="menu-item">Settings</a>
         </Link>
         <Link to='/aboutus'>
-          <a id="about" className="menu-item" href="/aboutus">About</a>
+          <a id="about" className="menu-item">About</a>
         </Link>
         <Link to='/logout'>
           <a id="logout" onClick={handleLogout} className="menu-item">Logout</a>

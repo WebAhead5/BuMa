@@ -13,7 +13,10 @@ import { useRecoilValue } from 'recoil';
 
 
 
+
 const styles = {
+
+    
 
     container: {
 
@@ -72,16 +75,19 @@ const styles = {
 
 const CustomerCard = ({ match }) => {
 
-    const [customerData, setCustomerData] = useState({});
-    const [customerActivity, setCustomerActivity] = useState(null)
+    const [customerActivity,setCustomerActivity] = useState(false)
     const [error, setError] = React.useState('');
     const [show, setShow] = React.useState(false)
 
     const customersByUserId = useRecoilValue(customers)
+    
+
 
     const matchId = match.params.id
 
     let userCustomers = customersByUserId.filter((customer) => customer.id === +matchId)
+    let updatedCustomer = userCustomers[0];
+
 
     const removeCustomer = useDeleteCustomerFromSelectedCustomers()
 
@@ -107,18 +113,11 @@ const CustomerCard = ({ match }) => {
     }
 
 
-    // useEffect(() => {
-    //     // Update the document title using the browser API
-    //     getCustomerData(match.params.id, handlegetCustomerData);
-
-    // }, []);
-
 
 
     const handleActivityStatus = () => {
-
-        setCustomerActivity(!customerActivity)
-        userCustomers = ({ ...userCustomers[0], ['activitystatus']: !userCustomers[0].activitystatus});
+        setCustomerActivity(!customerActivity);
+        updatedCustomer = { ...updatedCustomer, ['activitystatus']: !customerActivity};
     } 
 
     
@@ -128,7 +127,7 @@ const CustomerCard = ({ match }) => {
             <MenuHeader icon="backArrow" title="Customer Card" />
 
             <CustomerInfo
-                customerData = {userCustomers}
+                updatedCustomer = {updatedCustomer}
                 activity = {customerActivity}
                 
             />

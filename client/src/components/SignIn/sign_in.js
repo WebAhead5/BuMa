@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -29,7 +25,6 @@ function SignInForm() {
     let userData = {};
 
     const [isRedirect, setRedirect] = useState(false);
-    const [localUser, setLocalUser] = useState(user);
     const setUserData = SetUserDetails();
 
 
@@ -105,13 +100,11 @@ function SignInForm() {
 
 
     const handleSubmit = (event) => {
-
-
-        // { username: 'mario966111', password: '5585mrr' }
-        login(userData, setUserData)
-        setRedirect(true)
-
-
+        login(userData,setUserData)
+        setTimeout(()=>{
+            setRedirect(true)
+        },2000);
+       
         event.preventDefault();
     }
 
@@ -145,12 +138,6 @@ function SignInForm() {
     const handleSignupClick = (e) => {
 
     }
-
-    // useEffect(() => {
-    //     if (user != undefined)
-
-    // }, [localUser]);
-
 
     return (
 

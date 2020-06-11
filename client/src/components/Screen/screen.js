@@ -18,8 +18,4 @@ const Screen = (props) => {
     );
 }
 
-Screen.propTypes = {};
-
-Screen.defaultProps = {};
-
 export default Screen;

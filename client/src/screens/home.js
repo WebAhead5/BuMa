@@ -15,9 +15,7 @@ import { logout } from '../actions/users'
 
 
 var styles = {
-  date: {
-    color: "#E4FDFF",
-  },
+
   bmBurgerButton: {
     position: 'fixed',
     width: '36px',
@@ -67,14 +65,9 @@ var styles = {
     height: '50px',
     border: 'none',
     position: 'absolute',
+    bottom:'20px',
     right: '20px'
 
-  },
-  footer: {
-    bottom: '5px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignContent: 'center'
   },
   img: {
     position: 'absolute',
@@ -128,7 +121,7 @@ const Home = () => {
   const handleLogout = () => {
     logout((err, success) => {
       if (err) {
-        console.log(err)
+
         return
       }
       window.location.pathname = "/signin"
@@ -177,14 +170,11 @@ const Home = () => {
           }
         />
       </div>
-      <div style={styles.footer}>
+
         <Link to={'/addappointment'}>
           <Button style={styles.addBtn}></Button>
         </Link>
-        <div style={styles.date}>
-          {dateToday ? dateToday : new Date().toLocaleDateString()}
-        </div>
-      </div>
+
     </ScreenContainer>
   )
 }

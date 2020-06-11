@@ -11,7 +11,6 @@ let styles = {
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
-        fontFamily: 'gothamBook',
         backgroundColor: '#0B8D98',
         color: '#0B8D98',
     },
@@ -29,6 +28,7 @@ let styles = {
         fontWeight: 'bold',
     },
     titleSingle: {
+        marginTop:'5px',
         fontSize: '30px',
         color: '#E4FDFF',
         fontWeight: 'bold',

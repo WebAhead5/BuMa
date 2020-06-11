@@ -128,11 +128,13 @@ VALUES
 
 INSERT INTO payment_settings (userid, currency,request_payment_every_value,request_payment_every_unit)
 VALUES 
-(1, null , 2,'Month'),
 (2, 'ILS', 5,'Week'),
 (3, 'EUR', 6,'Month'),
 (4, 'CNY', 1,'Appointment');
 
+INSERT INTO payment_settings (userid, request_payment_every_value,request_payment_every_unit)
+VALUES 
+(1, 2,'Month');
 
 
 

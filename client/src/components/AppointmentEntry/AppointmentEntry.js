@@ -34,6 +34,9 @@ const styles = {
     h4: {
         color: '#E4FDFF',
     },
+    li: {
+        width: '25%'
+    }
     
     
 }
@@ -74,13 +77,13 @@ const AppointmentEntry = (props) => {
     
         <ul style={styles.appointment}>
         <Link to={`/appointmentCard/${id}`} style={styles.appointment}>
-            <li>{id}</li>
+            <li style={styles.li}>{id}</li>
 
-            <li key="fromhour">{fromHour} </li>
+            <li style={styles.li} key="fromhour">{fromHour} </li>
 
-            <li>{toHour} </li>
+            <li style={styles.li}>{toHour} </li>
             </Link>
-            <li><Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
+            <li style={styles.li}><Button style={styles.deleteBtn} onClickButton={() => setShow(true)} />
                 <Popup isOpen={show} setShow={(el) => setShow(el)} labels={['yes', 'no']} callbacks={[handleYesOpt, handleNoOpt]}>
                     Are you Sure you want to delete appointment?</Popup> </li>
         </ul>

@@ -6,21 +6,6 @@ import { useRecoilValue } from 'recoil';
 import { appointments } from '../store/appointments';
 
 
-const styles = {
-    container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingBottom: '5px',
-    },
-    saveBtn: {
-        background: '#0B8D98',
-        color: "white",
-        width: "150px",
-        marginLeft: '15px',
-        marginBottom : '15px',
-    },
-}
 
 const AppointmentCard = ({match}) => {
     const appointmentsCard = useRecoilValue(appointments);

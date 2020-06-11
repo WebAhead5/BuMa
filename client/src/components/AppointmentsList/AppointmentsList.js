@@ -6,7 +6,9 @@ const styles = {
     container: {
 
         backgroundColor: '#1F2B30',
-        height: '800px'
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
 
     },
 
@@ -19,7 +21,9 @@ const styles = {
         width: '95vw',
         borderRadius: '6px',
         height: '5vh'
-
+    },
+    li: {
+        width: '25%'
     }
 
 
@@ -46,11 +50,13 @@ const AppointmentsList = (props) => {
 
             <ul style={styles.ul}>
 
-                <li key="name">Name </li>
+                <li style={styles.li} key="name">Name </li>
 
-                <li key="from">From</li>
+                <li style={styles.li} key="from">From</li>
 
-                <li key="to">To </li>
+                <li style={styles.li} key="to">To </li>
+
+                <li style={styles.li}></li>
 
 
 

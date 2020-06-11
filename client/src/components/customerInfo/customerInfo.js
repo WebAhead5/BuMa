@@ -110,10 +110,6 @@ const CustomerInfo = (props) => {
                 />
 
 
-
-                <input className="input-reset ba b--black-20 pa2 br3 mb2 db w-90" type="text" name="paymentHistory" placeholder={'Payment History'} disabled />
-                <input className="input-reset ba b--black-20 pa2 br3 mb2 db w-90" type="text" name="paymentMethod" placeholder={'Payment Method'} disabled />
-
                 <div style={styles.btnContainer}>
                     <input
                         type="submit"

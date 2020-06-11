@@ -72,19 +72,26 @@ const styles = {
 
 const CustomerCard = ({ match }) => {
 
-    const [customerData, setCustomerData] = useState({});
+    const [currentCustomer, setCurrentCustomer] = useState([{}]);
     const [customerActivity, setCustomerActivity] = useState(null)
     const [error, setError] = React.useState('');
     const [show, setShow] = React.useState(false)
 
     const customersByUserId = useRecoilValue(customers)
 
-    const matchId = match.params.id
+    useEffect(() => {
+        let userCustomers = customersByUserId.filter((customer) => customer.id === +match.params.id)
+    
+        if(!userCustomers.length) {
+            userCustomers = JSON.parse(localStorage.getItem('currentCustomer'))
+        } else {
+            localStorage.setItem('currentCustomer', JSON.stringify(userCustomers))
+        }
 
-    let userCustomers = customersByUserId.filter((customer) => customer.id === +matchId)
+        setCurrentCustomer(userCustomers)
+    }, [])
 
     const removeCustomer = useDeleteCustomerFromSelectedCustomers()
-
 
     const handleDeleteButton = (clickId) => {
         deleteCustomer(clickId, (err, msg) => {
@@ -118,17 +125,20 @@ const CustomerCard = ({ match }) => {
     const handleActivityStatus = () => {
 
         setCustomerActivity(!customerActivity)
-        userCustomers = ({ ...userCustomers[0], ['activitystatus']: !userCustomers[0].activitystatus});
+        setCurrentCustomer({ ...currentCustomer[0], ['activitystatus']: !currentCustomer[0].activitystatus});
     } 
 
     
+    if (!currentCustomer) {
+        return 'Loading...'
+    }
 
     return (
         <ScreenContainer>
             <MenuHeader icon="backArrow" title="Customer Card" />
 
             <CustomerInfo
-                customerData = {userCustomers}
+                customerData = {currentCustomer}
                 activity = {customerActivity}
                 
             />

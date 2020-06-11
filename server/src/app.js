@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: ['https://buma-app.netlify.app', 'http://localhost:3000']}));
 app.use(cookieParser())
 app.use(controllers)
 

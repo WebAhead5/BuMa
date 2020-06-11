@@ -18,10 +18,8 @@ const PaymentSettings = () => {
     const handleUserSettings = (err,userSettingsResponse) => {
 
         if (err) {
-            console.log('error')
             return;
         }
-        console.log('no error')
         setUserSettings(userSettingsResponse.settings[0])
 
     }

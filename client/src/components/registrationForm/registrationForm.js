@@ -39,7 +39,6 @@ const style={
 
   const handleChange = (e) => {
     setBusinessDetails({ ...businessDetails, [e.target.id]: e.target.value });
-    console.log(businessDetails)
   }
 
   const handleSubmit = (event) => {

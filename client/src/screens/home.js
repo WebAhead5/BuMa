@@ -102,21 +102,17 @@ const Home = () => {
 
   //convert date from db to an actual Date to compare them with the calendar values
   let appointmentsDays = allAppointments.map(appointments => appointments.day)
-
+  console.log(appointmentsDays)
   appointmentsDays = appointmentsDays.map(date => new Date(date)).sort((a, b) => a - b)
+  
 
   const dateToday = useRecoilValue(localeDate)
 
 
   const onClickDayHandler = (e) => {
+    console.log(e)
     window.location.href = `/appointments?date=${e}`
   }
-
-  const showSettings = (event) => {
-    event.preventDefault();
-    return;
-  }
-
 
   const handleLogout = () => {
     logout((err, success) => {
@@ -159,7 +155,7 @@ const Home = () => {
       </Menu>
       <div className="Calendar-container">
         <Calendar
-          onClickDay={(e) => onClickDayHandler(e.toLocaleDateString())}
+          onClickDay={(e) => onClickDayHandler(e)}
           value={dateToday}
           tileContent={({ activeStartDate, date, view }) => {
             //compare our date value with calendar values, and show highlighted days that have appointments

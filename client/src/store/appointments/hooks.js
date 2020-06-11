@@ -5,7 +5,6 @@ import { appointments } from "./atoms";
 export const useSetAppointments = () => {
     const [items, setItems] = useRecoilState(appointments);
     return (err, data) => {
-        console.log(data)
         setItems(data.appointments);
     };
 };

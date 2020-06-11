@@ -33,13 +33,11 @@ const style={
  
   const handleChange = (e) => {
     userDetails = ({ ...userDetails, [e.target.id]: e.target.value });
-    console.log(userDetails);
   }
 
   const handleSubmit = (event) => {
     // edit state
     setItems(userDetails)
-    console.log(userDetails)
     // edit table
     updateUser(userDetails.id , userDetails)
     setRedirect(true);

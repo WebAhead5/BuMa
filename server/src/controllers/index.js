@@ -11,43 +11,48 @@ const middlewares = require('../middlewares');
 
 
 //Login route
+<<<<<<< HEAD
 router.post('/user/admin/login', users.login)
 
+=======
+router.post('/login', login.checkUserLogin);
+>>>>>>> 08ab4e56a0403f8a3a9e4d6c1e1eaf11c4595a7e
 
 //Logout route
-router.delete('/user/admin/logout', users.logout)
+router.delete('/logout', users.logout)
 
 
 // Customers Route
-router.get('/user/admin/customers', middlewares.authCheck , customers.getAllCustomers)
-router.get('/user/admin/customer/:id', middlewares.authCheck,customers.getOneCustomer)
-router.get('/user/admin/customersbyuser', middlewares.authCheck, customers.getCustomersByUserId)
-router.post('/user/admin/add-customer', customers.addOneCustomer)
-router.delete('/user/admin/delete-customer/:id', customers.deleteCustomer)
-router.put('/user/admin/edit-customer/:id', customers.updateCustomer)
+router.get('/customers', middlewares.authCheck , customers.getAllCustomers)
+router.get('/customer/:id', middlewares.authCheck,customers.getOneCustomer)
+router.get('/customersbyuser', middlewares.authCheck, customers.getCustomersByUserId)
+router.post('/add-customer',middlewares.authCheck, customers.addOneCustomer)
+router.delete('/delete-customer/:id',middlewares.authCheck, customers.deleteCustomer)
+router.put('/edit-customer/:id', middlewares.authCheck, customers.updateCustomer)
 // Appointments Route
-router.get('/user/admin/appointments', appointments.getAllAppointments)
-router.get('/user/admin/appointment/:id', appointments.getOneAppointment)
-router.post('/user/admin/add-appointment', appointments.addOneAppointment)
-router.delete('/user/admin/delete-appointment/:id', appointments.deleteAppointment)
-router.put('/user/admin/edit-appointment/:id', appointments.updateAppointment)
-router.get('/user/admin/appointmentsbyuser', middlewares.authCheck, appointments.getAppointmentsByUserId)
+router.get('/appointments', middlewares.authCheck, appointments.getAllAppointments)
+router.get('/appointment/:id', middlewares.authCheck, appointments.getOneAppointment)
+router.post('/add-appointment', middlewares.authCheck, appointments.addOneAppointment)
+router.delete('/delete-appointment/:id', middlewares.authCheck, appointments.deleteAppointment)
+router.put('/edit-appointment/:id', middlewares.authCheck, appointments.updateAppointment)
+router.get('/appointmentsbyuser', middlewares.authCheck, appointments.getAppointmentsByUserId)
 //Users Route
-router.get('/user/admin/users', users.getUsers)
-router.get('/user/admin/users/:id', users.getOneUser)
-router.delete('/user/admin/delete-user/:id', users.deleteUser)
-router.put('/user/admin/edit-user/:id', users.updateUser)
+router.get('/users', middlewares.authCheck, users.getUsers)
+router.get('/users/:id', middlewares.authCheck, users.getOneUser)
+router.delete('/delete-user/:id', middlewares.authCheck, users.deleteUser)
+router.put('/edit-user/:id', middlewares.authCheck, users.updateUser)
 //Signup route
-router.post('/user/admin/add-user',users.addUser)
+router.post('/add-user',users.addUser)
 //Reports route
-router.get('/user/admin/reports',reports.getAllReports)
-router.get('/user/admin/report/:id',reports.getSingleReport)
-router.post('/user/admin/add-report/',reports.addSingleReport)
-router.delete('/user/admin/delete-report/:id',reports.deleteReport)
+router.get('/reports',middlewares.authCheck, reports.getAllReports)
+router.get('/report/:id', middlewares.authCheck, reports.getSingleReport)
+router.post('/add-report/', middlewares.authCheck, reports.addSingleReport)
+router.delete('/delete-report/:id', middlewares.authCheck, reports.deleteReport)
 //Payments Settings Route
-router.get('/user/admin/payment-settings', paymentSettings.getAllPaymentSettings)
-router.get('/user/admin/paymentSettings/:id',paymentSettings.getAllPaymentSettingsByUserId) 
-router.put('/user/admin/edit-payment-settings/:id' , paymentSettings.updateSettings)
+
+router.get('/payment-settings', middlewares.authCheck, paymentSettings.getAllPaymentSettings)
+router.get('/paymentSettings/:id', middlewares.authCheck, paymentSettings.getAllPaymentSettingsByUserId) 
+router.put('/edit-payment-settings/:id' , middlewares.authCheck, paymentSettings.updateSettings)
 
 
 

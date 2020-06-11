@@ -74,8 +74,7 @@ const CustomerCard = ({ match }) => {
     const [customerActivity, setCustomerActivity] = useState(null)
     const [error, setError] = React.useState('');
     const [show, setShow] = React.useState(false)
-    console.log(customerActivity)
-    console.log(customerData)
+
 
     const removeCustomer = useDeleteCustomerFromSelectedCustomers()
 

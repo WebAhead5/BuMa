@@ -8,16 +8,16 @@ import TextField from '@material-ui/core/TextField';
 import { selectedCustomers } from '../../store/customers';
 import { useRecoilValue } from 'recoil';
 import { makeStyles } from '@material-ui/core/styles';
-import { user } from '../../store/users'
-
-
-
+import {user} from '../../store/users'
+  
 function AppointmentForm() {
   const date = new Date();
   const [isRedirect, setRedirect] = useState(false);
   const [isRedirectHome, setRedirectHome] = useState(false);
   const selectedCustomersItems = useRecoilValue(selectedCustomers);
   const [selectedCustomersNames, setSelectedCustomersNames] = useState();
+
+
   const userValue = useRecoilValue(user)
 
   const useStyles = makeStyles((theme) => ({
@@ -36,6 +36,10 @@ function AppointmentForm() {
     timeform :{
       display: "flex",
       flexDirection: "column"
+    },
+    label :{
+      marginTop: '5px',
+      marginLeft: '5px'
     }
 
   }));
@@ -122,6 +126,7 @@ function AppointmentForm() {
             onChange={handleChangeStartAt}
             defaultValue="10:30"
             InputLabelProps={{
+              className: classes.label,
               shrink: true,
             }}
           />
@@ -136,6 +141,7 @@ function AppointmentForm() {
             onChange={handleChangeEndAt}
             defaultValue="10:30"
             InputLabelProps={{
+              className: classes.label,
               shrink: true,
             }}
           />
@@ -153,6 +159,7 @@ function AppointmentForm() {
             onChange={handleChangeDay}
             defaultValue="2017-05-24"
             InputLabelProps={{
+              className: classes.label,
               shrink: true,
             }}
           />

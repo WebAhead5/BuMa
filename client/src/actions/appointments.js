@@ -20,7 +20,7 @@ export const BUTTON_DELETE_SUCCESS = 'BUTTON_DELETE_SUCCESS';
 export const BUTTON_DELETE_FAILURE = 'BUTTON_DELETE_FAILURE';
 
 export function fetchAppointments(cb) {
-    callApi(null, null, 'GET', 'appointments', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
+    callApi(null, null, 'GET', 'appointmentsbyuser', null, FETCH_BUTTONS_SUCCESS, FETCH_BUTTONS_FAILURE, cb);
     // }
 }
 

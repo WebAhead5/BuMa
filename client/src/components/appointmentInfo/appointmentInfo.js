@@ -8,6 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import { useSetAppointments, useSetAppointment } from '../../store/appointments';
 import InputAdornment from '@material-ui/core/InputAdornment';
 //import AccountCircle from '@material-ui/icons/AccountCircle';
+import { customers } from '../../store/customers';
+import { useRecoilValue } from 'recoil';
 
 function AppointmentInfo(props) {
   
@@ -20,7 +22,10 @@ function AppointmentInfo(props) {
   const setAppointment = useSetAppointment()
  
   //get customer data by id in order to display name
-  //const getCustomer = getCustomerData(appointmentDetails.userid)
+  // const getCustomers = useRecoilValue(customers)
+  // console.log(getCustomers)
+  // let getName = getCustomers.filter(obj => obj.userid===appointmentDetails.userid)
+  
 
   //parse date 
   const getAppointmentDate = (dateData) =>{
@@ -46,7 +51,6 @@ function AppointmentInfo(props) {
     
     //update database
     appointmentDetails = ({ ...appointmentDetails, 'day': getAppointmentDate(appointmentDetails.day) });
-    console.log(appointmentDetails)
     updateAppointment(appointmentDetails.id, appointmentDetails);
     setRedirect(true);
     event.preventDefault()
@@ -59,9 +63,9 @@ function AppointmentInfo(props) {
         <TextField
             id="userid"
             label="Appointment with:"
-            type="number"
+            type="text"
             color="primary"
-            className="br3 tc pa2"
+            className="br2 tc"
             onChange={handleChange}
             style={{height:"70px", background: 'white', width:'90%', margin:'5px'}}
             value={appointmentDetails.userid}
@@ -75,8 +79,9 @@ function AppointmentInfo(props) {
             id="start_at"
             label="Start time"
             type="time"
+            color="primary"
             onChange={handleChange}
-            className="br3 tc pa2"
+            className="br2 tc pa2"
             style={{height:"50px", background: 'white', padding:'5px', width:'45%', margin:'5px'}}
             defaultValue={appointmentDetails.start_at}
             InputLabelProps={{
@@ -89,7 +94,7 @@ function AppointmentInfo(props) {
             label="End time"
             type="time"
             onChange={handleChange}
-            className="br3 tc pa2"
+            className="br2 tc pa2"
             style={{height:"50px", background: 'white', padding:'5px', width:'45%', margin:'5px'}}
             defaultValue={appointmentDetails.end_at}
             InputLabelProps={{
@@ -101,7 +106,8 @@ function AppointmentInfo(props) {
             id="day"
             label="Date"
             type="date"
-            className="br3 tc pa2"
+            color="primary"
+            className="br2 tc pa2"
             onChange={handleChange}
             style={{height:"50px", background: 'white', padding:'5px', width:'90%', margin:'5px'}}
             defaultValue={getAppointmentDate(appointmentDetails.day)}
@@ -113,11 +119,12 @@ function AppointmentInfo(props) {
         <TextField
           id="note"
           label="Note"
-          multiline
-          rowsMax={5}
+          multiline="true"
+          maxRows={8}
+          color="primary"
           onChange={handleChange}
-          className="br3 tc pa5"
-          style={{height:"50px", background: 'white', padding:'5px', width:'90%', margin:'5px', height:'200px'}}
+          className="br2 tc pa5"
+          style={{ background: 'white', padding:'5px', width:'90%', margin:'5px', height:'200px'}}
           defaultValue={appointmentDetails.note}
           InputLabelProps={{
               shrink: true,

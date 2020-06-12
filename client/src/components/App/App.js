@@ -26,7 +26,7 @@ function App() {
         <div className="App">
 
           <Switch>
-            <Route path={['/', '/home']} exact component={Home} />
+            <Route path='/' exact component={Home} />
             <Route path='/addcustomer' exact component={AddCustomer} />
             <Route path='/customercard/:id' exact component={CustomerCard} />
             <Route path='/selectcustomer' exact component={SelectCustomer} />

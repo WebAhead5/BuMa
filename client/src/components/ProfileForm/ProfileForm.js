@@ -20,16 +20,19 @@ const style={
         color:"white"
     },
     input:{
-        margin:"5px"
+        margin:"5px",
+        marginTop:'10px'
     },
     img:{
-        width:'150px',
+        width:'200px',
         height:'150px',
-        marginTop:'-60px',
+        marginTop:'-30px',
+        marginBottom:'15px',
         overFlow:'hidden'
     }
 }
  
+  
   const handleChange = (e) => {
     userDetails = ({ ...userDetails, [e.target.id]: e.target.value });
     console.log(userDetails);
@@ -54,7 +57,7 @@ const style={
         <tr ><th style={{textAlign:"center"}} colSpan="2">
             <div className="tc shadow-4 pa3 br3">
             <img 
-            src={userDetails.business_logo} 
+            src='../img/business_logo1.png'
             style={style.img}
             alt="Profile Image"
             ></img>
@@ -72,7 +75,7 @@ const style={
             type="text"
             className="br2"
             onChange={handleChange}
-            style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
+            style={{width:"80%",height:"50px",background:"white"}}
             defaultValue={userDetails.first_name}
             InputLabelProps={{
               shrink: true,
@@ -164,20 +167,6 @@ const style={
             }}
           />
           </td></tr>
-          <tr ><td colSpan="2">
-        <TextField
-            id="business_logo"
-            label="Logo URL"
-            type="text"
-            className="br2"
-            onChange={handleChange}
-            style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
-            defaultValue={userDetails.business_logo}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-         </td></tr>
           <tr ><td style={{textAlign:"center"}} colSpan="2">
             <input
             type="submit"

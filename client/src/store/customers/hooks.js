@@ -19,7 +19,6 @@ export const useSetfilterDisplay = () => {
   };
 
 
-
   export const useSetSelectedCustomers = () => {
     const [items, setItems] = useRecoilState(selectedCustomers);
     return (data) => {
@@ -46,6 +45,12 @@ export const useSetfilterDisplay = () => {
     const [items, setItems] = useRecoilState(customers)
     return (id) => {
         setItems(items.filter(item => item.id !== id))
-    }
-}
+    };
+};
 
+// export const getCustomerName = () => {
+//   const [items, setItems] = useRecoilState(customers)
+//   return (id) => {
+//       setItems(items.filter(item => item.id === id))
+//   };
+// };

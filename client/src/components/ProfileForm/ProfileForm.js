@@ -8,8 +8,9 @@ import { SetUserDetails } from '../../store/users';
 
 function ProfileForm(props) {
   const [isRedirect, setRedirect] = useState(false);
-  let userDetails = props.userDetails;
-  const setItems = SetUserDetails();
+  //let userDetails = props.userDetails;
+  const [userDetails, setUsersDetails] = useState(props.userDetails);
+  //const setItems = SetUserDetails();
 
 const style={
     table:{
@@ -34,15 +35,16 @@ const style={
  
   
   const handleChange = (e) => {
-    userDetails = ({ ...userDetails, [e.target.id]: e.target.value });
+    //userDetails = ({ ...userDetails, [e.target.id]: e.target.value });
+    setUsersDetails({ ...userDetails, [e.target.id]: e.target.value });
     console.log(userDetails);
   }
 
   const handleSubmit = (event) => {
     // edit state
-    setItems(userDetails)
-    console.log(userDetails)
-    // edit table
+    //setItems(userDetails)
+    //console.log(userDetails)
+    // edit table DB
     updateUser(userDetails.id , userDetails)
     setRedirect(true);
     event.preventDefault();
@@ -75,7 +77,7 @@ const style={
             type="text"
             className="br2"
             onChange={handleChange}
-            style={{width:"80%",height:"50px",background:"white"}}
+            style={{width:"80%",height:"50px",background:"white" ,padding:'10px',margin:'10px'}}
             defaultValue={userDetails.first_name}
             InputLabelProps={{
               shrink: true,

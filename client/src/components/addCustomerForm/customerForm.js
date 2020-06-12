@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CustomerName from './customerName';
 import CustomerEmail from './customerEmail';
 import CustomerPhone from './customerPhone';
@@ -19,6 +19,17 @@ function CustomerForm() {
   const todaysDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const [isRedirect, setRedirect] = useState(false);
   const userValue = useRecoilValue(user)
+  const [newUserValue, setUserValue] = React.useState({})
+
+  useEffect(() => {
+    let userId = userValue.id
+    if (!userId) {
+      userId = JSON.parse(localStorage.getItem('loggeduserid'))
+    } else {
+      localStorage.setItem('loggeduserid', JSON.stringify(userId))
+    }
+    setUserValue(userId)
+  })
 
   const [customerDetails, setCustomerDetails] = useState({
     name: 'Name',

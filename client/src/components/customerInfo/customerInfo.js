@@ -32,9 +32,11 @@ const styles = {
 
 const CustomerInfo = (props) => {
 
+    console.log(props.customerData)
+
     const [isRedirect, setRedirect] = useState(false);
 
-    let customer = props.customerData;
+    let customer = props.customerData[0];
 
     const handleSubmit = (event) => {
 
@@ -107,10 +109,6 @@ const CustomerInfo = (props) => {
                     required={false}
                 />
 
-
-
-                <input className="input-reset ba b--black-20 pa2 br3 mb2 db w-90" type="text" name="paymentHistory" placeholder={'Payment History'} disabled />
-                <input className="input-reset ba b--black-20 pa2 br3 mb2 db w-90" type="text" name="paymentMethod" placeholder={'Payment Method'} disabled />
 
                 <div style={styles.btnContainer}>
                     <input

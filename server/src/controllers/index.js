@@ -4,7 +4,6 @@ const customers = require('./customers')
 const appointments = require('./appointments')
 const reports = require('./reports')
 const users = require('./users')
-const login = require('./login');
 const paymentSettings = require('./paymentSettings')
 const middlewares = require('../middlewares');
 
@@ -12,8 +11,7 @@ const middlewares = require('../middlewares');
 
 
 //Login route
-router.post('/login', login.checkUserLogin);
-
+router.post('/login', users.login)
 //Logout route
 router.delete('/logout', users.logout)
 

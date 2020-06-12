@@ -37,8 +37,9 @@ export const useSetfilterDisplay = () => {
   export const useDeleteCustomerFromSelectedCustomers = () => {
     const [items, setItems] = useRecoilState(selectedCustomers);
     return (customer) => {
-      items.delete(customer);
-      setItems(items);
+      let newItems = Array.from(items);
+      newItems = newItems.filter(({id}) => id !== customer.id);
+      setItems(new Set(newItems));
     };
   };
 

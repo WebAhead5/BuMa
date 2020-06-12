@@ -24,17 +24,18 @@ var styles = {
     top: '12px'
   },
   bmBurgerBars: {
-    background: '#373a47'
+    background: '#E4FDFF'
   },
   bmBurgerBarsHover: {
     background: '#a90000'
   },
   bmCrossButton: {
-    height: '24px',
-    width: '24px'
+    height: '0px',
+    width: '0px'
   },
   bmCross: {
-    background: '#bdc3c7'
+    background: '#bdc3c7',
+    width:'0px',
   },
   bmMenuWrap: {
     position: 'fixed',
@@ -42,17 +43,19 @@ var styles = {
   },
   bmMenu: {
     background: '#1A4452',
-    padding: '2.5em 1.5em 0',
+    padding: '0.5em 1.5em 0',
     fontSize: '1.15em'
   },
   bmMorphShape: {
     fill: '#373a47'
   },
   bmItemList: {
-    color: '#b8b7ad',
-    padding: '0.8em'
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly'
   },
   bmItem: {
+    display: 'flex',
     color: '#E4FDFF',
   },
   bmOverlay: {
@@ -76,6 +79,12 @@ var styles = {
     width: '100px',
     height: '90px',
     transform: 'rotate(-1deg)'
+  },
+
+  link : {
+
+    outline: 'none',
+    textDecoration:'none',
   }
 }
 
@@ -96,13 +105,14 @@ const Home = () => {
 
   //convert date from db to an actual Date to compare them with the calendar values
   let appointmentsDays = allAppointments.map(appointments => appointments.day)
-
   appointmentsDays = appointmentsDays.map(date => new Date(date)).sort((a, b) => a - b)
+  
 
   const dateToday = useRecoilValue(localeDate)
 
 
   const onClickDayHandler = (e) => {
+    console.log(e)
     window.location.href = `/appointments?date=${e}`
   }
 
@@ -123,31 +133,28 @@ const Home = () => {
       <MenuHeader title="BuMa" icon=''></MenuHeader>
       <img src="/img/logoTransparent.png" style={styles.img} />
       <Menu styles={styles}>
-        <Link to='/customers'>
-          <a id="customers" className="menu-item">Customers</a>
-        </Link>
-        <Link to='/appointments'>
-          <a id="appointments" className="menu-item">Appointments</a>
+        <Link to='/customers' style={styles.link}>
+          <a id="customers" className="menu-item" >Customers</a>
         </Link>
         <Link to='/reports'>
           <a id="reports" className="menu-item">Accounting reports</a>
         </Link>
-        <Link to='/profile'>
+        <Link to='/profile' style={styles.link}>
           <a id="profile" className="menu-item">Profile</a>
         </Link>
-        <Link to='/settings'>
+        <Link to='/settings' style={styles.link}>
           <a id="settings" className="menu-item">Settings</a>
         </Link>
         <Link to='/aboutus'>
           <a id="about" className="menu-item">About</a>
         </Link>
-        <Link to='/logout'>
+        <Link to='/logout' style={styles.link}>
           <a id="logout" onClick={handleLogout} className="menu-item">Logout</a>
         </Link>
       </Menu>
       <div className="Calendar-container">
         <Calendar
-          onClickDay={(e) => onClickDayHandler(e.toLocaleDateString())}
+          onClickDay={(e) => onClickDayHandler(e.toISOString().split('T')[0])}
           value={dateToday}
           tileContent={({ activeStartDate, date, view }) => {
             //compare our date value with calendar values, and show highlighted days that have appointments

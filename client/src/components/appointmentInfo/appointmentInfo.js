@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
-import NoteFieldText from '../NoteFieldText';
 import { updateAppointment } from '../../actions/appointments';
-import {getCustomerData} from '../../actions/customers';
 import { Redirect } from 'react-router'
-import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
-import { useSetAppointments, useSetAppointment } from '../../store/appointments';
-import InputAdornment from '@material-ui/core/InputAdornment';
-//import AccountCircle from '@material-ui/icons/AccountCircle';
+import { useSetAppointment } from '../../store/appointments';
+
 
 function AppointmentInfo(props) {
   
@@ -19,8 +15,6 @@ function AppointmentInfo(props) {
   //initials setASppointment in order to update the state later
   const setAppointment = useSetAppointment()
  
-  //get customer data by id in order to display name
-  const getCustomer = getCustomerData(appointmentDetails.userid)
 
   //parse date 
   const getAppointmentDate = (dateData) =>{

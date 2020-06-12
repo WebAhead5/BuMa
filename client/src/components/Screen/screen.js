@@ -4,7 +4,6 @@ const styles = {
   container: {
     height: '100vh',
     backgroundColor : '#1F2B30',
-    zIndex: '0',
     width: '100%'
   },
 };

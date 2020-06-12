@@ -7,7 +7,7 @@ const DateClicked = (props) => {
 
     const dateClicked = useRecoilValue(localeDate)
     return (
-        <p style={props.style}>Date: {dateClicked? dateClicked : new Date().toLocaleDateString() }</p>
+        <p style={props.style}>{dateClicked? dateClicked.split(' 00:00:00')[0] : new Date().toLocaleDateString() }</p>
     )
 }
 

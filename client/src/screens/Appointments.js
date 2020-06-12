@@ -22,7 +22,8 @@ const style = {
         height: '50px',
         border: 'none',
         position: 'absolute',
-        right: '20px'
+        right: '20px',
+        bottom: '20px',
     }
 }
 

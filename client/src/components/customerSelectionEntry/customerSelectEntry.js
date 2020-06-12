@@ -42,7 +42,7 @@ const styles = {
 
 const CustomerSelectEntry = (props) => {
 
-    const [isChecked, setChecking] = useState(false)
+    const [isChecked, setChecking] = useState(props.checked)
 
 
     const handleCheckBoxChange = (customer) => {

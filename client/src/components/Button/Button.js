@@ -27,7 +27,7 @@ const Button = (props) => {
     //   style = _.omit(style, 'display');
     // }
     return (
-    <button type="button"  onClick={props.onClickButton} style={props.style}>{props.text} </button>
+    <button  className='btn btn-submit ma3 btn-lg grow' type="button"  onClick={props.onClickButton} style={props.style}>{props.text} </button>
     );
 }
 

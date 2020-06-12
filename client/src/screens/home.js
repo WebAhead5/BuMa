@@ -154,7 +154,7 @@ const Home = () => {
       </Menu>
       <div className="Calendar-container">
         <Calendar
-          onClickDay={(e) => onClickDayHandler(e)}
+          onClickDay={(e) => onClickDayHandler(e.toISOString().split('T')[0])}
           value={dateToday}
           tileContent={({ activeStartDate, date, view }) => {
             //compare our date value with calendar values, and show highlighted days that have appointments

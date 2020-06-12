@@ -1,5 +1,4 @@
-export const API_HOST = 'https://buma-business-manager.herokuapp.com/';
-//export const API_HOST = process.env.REACT_APP_API_URL || 'https://dev.kwikme.net/api/v3/';
+export const API_HOST = process.env.REACT_APP_API_URL || 'http://buma-business-manager.herokuapp.com/';
 export const ERROR_URL = '/mobile/#/error';
 export const TECH_APP_URL = 'http://web.kwik.me/techApp';
 export const REDIRECT_URL = 'http://127.0.0.1';

@@ -19,6 +19,19 @@ function AppointmentForm() {
   const selectedCustomersItems = useRecoilValue(selectedCustomers);
   const [selectedCustomersNames, setSelectedCustomersNames] = useState();
   const userValue = useRecoilValue(user)
+  const [newUserValue, setUserValue] = React.useState({})
+
+  useEffect(() => {
+    let userId = userValue.id
+    if (!userId) {
+      userId = JSON.parse(localStorage.getItem('loggeduserid'))
+    } else {
+      localStorage.setItem('loggeduserid', JSON.stringify(userId))
+    }
+    setUserValue(userId)
+  })
+
+
 
   const useStyles = makeStyles((theme) => ({
     textBoxes: {
@@ -26,23 +39,24 @@ function AppointmentForm() {
       backgroundColor: "#ffffff"
     },
 
-    timeBoxes :{
+    timeBoxes: {
       color: "#1A4452",
       width: "70%",
       backgroundColor: "#ffffff",
-      marginBottom:'10px',
+      marginBottom: '10px',
       borderRadius: '5px'
     },
-    timeform :{
+    timeform: {
       display: "flex",
       flexDirection: "column"
     },
-    label :{
+    label: {
       marginTop: '5px',
       marginLeft: '5px'
     }
 
   }));
+
 
   const classes = useStyles();
 
@@ -59,7 +73,7 @@ function AppointmentForm() {
 
 
   let appointmentDetails = {
-    userid: userValue.id,
+    userid: newUserValue,
     day: '2012-04-25',
     start_at: '08:00:00',
     end_at: '10:00:00',
@@ -111,7 +125,7 @@ function AppointmentForm() {
           <OpenAnotherComponentTextField
             click={handleSelectCustomersClick}
             placeHolder={selectedCustomersNames}
-            classNmae = {classes.textBoxes}
+            classNmae={classes.textBoxes}
           />
         </Link>
         <form noValidate className={classes.timeform}>
@@ -122,7 +136,7 @@ function AppointmentForm() {
             InputProps={{
               className: classes.textBoxes
             }}
-            className={ classes.timeBoxes}
+            className={classes.timeBoxes}
             onChange={handleChangeStartAt}
             defaultValue="10:30"
             InputLabelProps={{
@@ -157,7 +171,7 @@ function AppointmentForm() {
             }}
             className={classes.timeBoxes}
             onChange={handleChangeDay}
-            defaultValue="2017-05-24"
+            defaultValue={new Date().toISOString().split('T')[0]}
             InputLabelProps={{
               className: classes.label,
               shrink: true,
@@ -181,7 +195,7 @@ function AppointmentForm() {
         <Redirect to={'/selectcustomer'} />
       )}
       {isRedirectHome && (
-        <Redirect to={'/home'} />
+        <Redirect to={'/'} />
       )}
     </form>
   );

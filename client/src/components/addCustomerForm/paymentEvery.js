@@ -5,7 +5,7 @@ const paymentEvery = (props) => {
   
   return (
     <div>
-      <label style={{ color: 'white' }}>Payment Every </label>
+      <label style={{ color: 'white' }}>Payment </label>
       <select
         type="number"
         className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-60"

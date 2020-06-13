@@ -8,9 +8,9 @@ import { SetUserDetails } from '../../store/users';
 
 function ProfileForm(props) {
   const [isRedirect, setRedirect] = useState(false);
-  let userDetails = props.userDetails;
-  const setItems = SetUserDetails();
-  const id='3';
+  //let userDetails = props.userDetails;
+  const [userDetails, setUsersDetails] = useState(props.userDetails);
+  //const setItems = SetUserDetails();
 
 const style={
     table:{
@@ -21,24 +21,30 @@ const style={
         color:"white"
     },
     input:{
-        margin:"5px"
+        margin:"5px",
+        marginTop:'10px'
     },
     img:{
-        width:'150px',
+        width:'200px',
         height:'150px',
-        marginTop:'-60px',
+        marginTop:'-30px',
+        marginBottom:'15px',
         overFlow:'hidden'
     }
 }
  
+  
   const handleChange = (e) => {
-    userDetails = ({ ...userDetails, [e.target.id]: e.target.value });
+    //userDetails = ({ ...userDetails, [e.target.id]: e.target.value });
+    setUsersDetails({ ...userDetails, [e.target.id]: e.target.value });
+    console.log(userDetails);
   }
 
   const handleSubmit = (event) => {
     // edit state
-    setItems(userDetails)
-    // edit table
+    //setItems(userDetails)
+    //console.log(userDetails)
+    // edit table DB
     updateUser(userDetails.id , userDetails)
     setRedirect(true);
     event.preventDefault();
@@ -49,21 +55,29 @@ const style={
     <form onSubmit={handleSubmit} style={{ background: '#1F2B30' }}>
       <div className="tc pa4 vcenter">
       <table border="0" style={style.table}>
-        <tr ><td style={{textAlign:"center"}} colSpan="2">
+      <thead>
+        <tr ><th style={{textAlign:"center"}} colSpan="2">
             <div className="tc shadow-4 pa3 br3">
-            <img src={userDetails.business_logo} style={style.img}></img>
+            <img 
+            src='../img/business_logo1.png'
+            style={style.img}
+            alt="Profile Image"
+            ></img>
             <br></br>
             <h1 style={{marginTop:'-40px', color:'#0B8D98'}}>{userDetails.business_name}</h1>
             </div>
-        </td></tr>
-        <tr>
-            <td>
+        </th></tr>
+        </thead>
+        <tbody>
+        <tr >
+            <td >
             <TextField
             id="first_name"
             label="First name"
             type="text"
+            className="br2"
             onChange={handleChange}
-            style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
+            style={{width:"80%",height:"50px",background:"white" ,padding:'10px',margin:'10px'}}
             defaultValue={userDetails.first_name}
             InputLabelProps={{
               shrink: true,
@@ -75,6 +89,7 @@ const style={
             id="last_name"
             label="Last name"
             type="text"
+            className="br2"
             onChange={handleChange}
             style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.last_name}
@@ -89,6 +104,7 @@ const style={
             id="business_name"
             label="Business name"
             type="text"
+            className="br2"
             onChange={handleChange}
             style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.business_name}
@@ -102,6 +118,7 @@ const style={
             id="email"
             label="Email"
             type="email"
+            className="br2"
             onChange={handleChange}
             style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.email}
@@ -115,6 +132,7 @@ const style={
             id="crn"
             label="CRN"
             type="number"
+            className="br2"
             onChange={handleChange}
             style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.crn}
@@ -128,6 +146,7 @@ const style={
             id="phone"
             label="Phone"
             type="tel"
+            className="br2"
             onChange={handleChange}
             style={{width:"80%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.phone}
@@ -141,6 +160,7 @@ const style={
           <TextField
             id="business_address"
             label="Address"
+            className="br2"
             onChange={handleChange}
             style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
             defaultValue={userDetails.business_address}
@@ -149,19 +169,6 @@ const style={
             }}
           />
           </td></tr>
-          <tr ><td colSpan="2">
-        <TextField
-            id="business_logo"
-            label="Logo URL"
-            type="text"
-            onChange={handleChange}
-            style={{width:"90%",height:"50px",background:"white",padding:'10px',margin:'10px'}}
-            defaultValue={userDetails.business_logo}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-         </td></tr>
           <tr ><td style={{textAlign:"center"}} colSpan="2">
             <input
             type="submit"
@@ -170,6 +177,7 @@ const style={
             style={{ background: '#0B8D98', color: "white", width: "80%", marginTop:"40px"}}
             />
         </td></tr>
+        </tbody>
         </table>
       </div>
 

@@ -56,7 +56,7 @@ const CustomerEntry = (props) => {
   }
   return (
 
-    <Link to={`customerCard/${customerId}`}>
+    <Link to={`customercard/${customerId}`}>
       <ul style={customerActivityStatus ? styles.activeUser : styles.NotActiveUser}>
 
         <li style={styles.li}><Image src={customerActivityStatus ? customerActivitySrc : customerNoActivitySrc} /> </li>

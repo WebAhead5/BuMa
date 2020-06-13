@@ -22,8 +22,14 @@ const styles = {
     listStyleType: 'none',
     width: '95vw',
     borderRadius: '6px',
-    height: '5vh',
-    marginLeft : '10px'
+    height: '6vh',
+    marginLeft : '10px',
+
+  },
+
+  li : {
+
+
 
   },
   li:{
@@ -31,6 +37,8 @@ const styles = {
     height: '25px'
   }
   
+
+
 
 };
 

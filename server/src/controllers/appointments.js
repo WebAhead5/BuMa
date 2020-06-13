@@ -22,7 +22,7 @@ exports.getOneAppointment = (req, res) => {
     queries.getAppointmentById(req.params.id)
         .then(appointment =>
             appointment.length < 1 ? res.status(404).json({ message: 'No appointment found' }) :
-                res.status(200).json(appointment))
+            res.status(200).json(appointment))
         .catch(err => {
             console.error(err)
             return res.status(500).json({ error: err.code })
@@ -60,6 +60,7 @@ exports.deleteAppointment = (req, res) => {
 
 exports.updateAppointment = (req, res) => {
     const updatedAppointment = {
+        id: req.params.id,
         userid: req.body.userid,
         day: req.body.day,
         start_at: req.body.start_at,
@@ -67,7 +68,7 @@ exports.updateAppointment = (req, res) => {
         note: req.body.note
     }
     queries.editAppointment(updatedAppointment)
-        .then(() => res.status(200).json({ message: 'Appointment updated successfuly' }))
+        .then(() => res.status(200).json({ message: 'Appointment updated successfuly', code: 200 }))
         .catch(err => {
             console.error(err);
             return res.status(500).json({ error: err.code })

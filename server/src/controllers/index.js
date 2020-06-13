@@ -4,6 +4,7 @@ const customers = require('./customers')
 const appointments = require('./appointments')
 const reports = require('./reports')
 const users = require('./users')
+const payments = require('./payments')
 const paymentSettings = require('./paymentSettings')
 const middlewares = require('../middlewares');
 
@@ -50,5 +51,9 @@ router.put('/edit-payment-settings/:id' , middlewares.authCheck, paymentSettings
 
 
 
+router.get('/user/admin/payments', payments.getAllPayments)
+router.get('/user/admin/payment/:id', payments.getSinglePayment)
+router.post('/user/admin/add-payment/', payments.addSinglePayment)
+router.delete('/user/admin/delete-payment/:id', payments.deletePayment)
 
 module.exports = router;

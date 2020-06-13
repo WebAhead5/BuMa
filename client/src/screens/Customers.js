@@ -8,7 +8,7 @@ import { fetchCustomers } from '../actions/customers';
 import Button from '../components/Button';
 import CustomerList from '../components/CustomerList';
 import SearchField from '../components/searchField'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
 import { filterDisplay, customers, customersState } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
@@ -22,7 +22,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const styles = {
     btn: {
         backgroundColor: '#0B8D98',
-        color: 'white',
+        color: '#E4FDFF',
         width: '40vw',
         height: '10vh',
         marginBottom: '20px',
@@ -39,10 +39,10 @@ const styles = {
 }
 
 
-
-
 const Customers = (props) => {
+    let history = useHistory();
     const allCustomers = useRecoilValue(customers);
+    console.log(allCustomers)
     const filteredCustomers = useRecoilValue(filterDisplay)
 
     const setItems = useSetCustomers();
@@ -56,7 +56,10 @@ const Customers = (props) => {
     useEffect(() => {
         // Update the document title using the browser API
         fetchCustomers(setItems);
+
+        
     }, []);
+
 
 
     const searchFieldHandleChange = (e) => {

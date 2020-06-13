@@ -1,6 +1,4 @@
-/**
- * Created by farid on 03/07/17.
- */
+
 import React, { useEffect } from 'react';
 import ScreenContainer from '../components/Screen';
 import MenuHeader from '../components/MenuHeader';
@@ -14,9 +12,6 @@ import { filterDisplay, customers, customersState } from '../store/customers';
 import { useSetfilterDisplay, useSetCustomers } from "../store/customers";
 import TextBoxesPopup from '../components/TextBoxesPopup';
 import { makeStyles } from '@material-ui/core/styles';
-
-
-
 
 
 const styles = {

@@ -19,13 +19,13 @@ export const useSetfilterDisplay = () => {
 };
 
 
-
-export const useSetSelectedCustomers = () => {
-  const [items, setItems] = useRecoilState(selectedCustomers);
-  return (data) => {
-    setItems(data);
+  export const useSetSelectedCustomers = () => {
+    const [items, setItems] = useRecoilState(selectedCustomers);
+    return (data) => {
+        setItems(data);
+    };
   };
-};
+
 
 export const useAddCustomerToSelectedCustomers = () => {
   const [items, setItems] = useRecoilState(selectedCustomers);

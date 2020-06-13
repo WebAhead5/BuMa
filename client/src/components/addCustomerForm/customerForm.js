@@ -1,25 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import CustomerName from './customerName';
-import CustomerEmail from './customerEmail';
-import CustomerPhone from './customerPhone';
-import CustomerPrice from './customerPrice';
-import PaymentNumber from './paymentEvery';
-import PaymentPeriod from './paymentPer';
-import NoteFieldText from '../NoteFieldText';
 import { addCustomer } from '../../actions/customers';
 import { Redirect } from 'react-router';
+import { useRecoilValue } from 'recoil';
+import TextField from '@material-ui/core/TextField';
 import { user } from '../../store/users'
-import { useRecoilValue } from 'recoil'
 
-const styles = {
-
-
-  addContainer : {
-
-    display : 'flex',
-    justifyContent : 'center'
-  }
-}
 
 
 
@@ -40,7 +25,8 @@ function CustomerForm() {
     setUserValue(userId)
   })
 
-  const [customerDetails, setCustomerDetails] = useState({
+  //const [customerDetails, setCustomerDetails] = useState({
+  let customerDetails = {
     name: 'Name',
     email: 'Email',
     phone: 'Phone',
@@ -49,73 +35,137 @@ function CustomerForm() {
     activityStatus: 'true',
     notes: 'Note',
     balance: '0',
-    appointmentPrice: 'Price per appointment',
+    appointmentPrice: '',
     paymentEveryValue: '1',
     paymentEveryUnit: 'Week',
     balanceValidUntil: todaysDate
-  });
+  }
+  //);
+  //get customer details from recoil state
+  //const customerDetails = useRecoilValue(customers)
+
+  //initiat setCustomers in order to update the state
+  //const setCustomer = useSetCustomers();
 
 
   const handleChange = (e) => {
-    setCustomerDetails({ ...customerDetails, [e.target.id]: e.target.value });
+    console.log(customerDetails)
+    customerDetails = ({ ...customerDetails, [e.target.id]: e.target.value });
   }
 
   const handleSubmit = (event) => {
+     //update state
+     //setCustomer(customerDetails)
 
+    //add to database
     addCustomer(customerDetails)
-
+   
     setRedirect(true);
     event.preventDefault();
   }
 
   return (
 
-    <form onSubmit={handleSubmit} style={{ background: '#1F2B30' }}>
-      <div className="tl pa4 vcenter">
-        <CustomerName
-          stateId="name"
-          onChange={handleChange}
-          placeHolder={customerDetails.name}
-        />
-        <CustomerEmail
-          stateId="email"
-          onChange={handleChange}
-          placeHolder={customerDetails.email}
-        />
-        <CustomerPhone
-          stateId="phone"
-          onChange={handleChange}
-          placeHolder={customerDetails.phone}
-        />
-        <CustomerPrice
-          stateId="appointmentPrice"
-          onChange={handleChange}
-          placeHolder={customerDetails.appointmentPrice}
-        />
-        <div style={{display:'flex', flexWrap: 'nowarp', justifyContent:'space-evenly'}} className="shadow-5 ma3 w-80 tl">
-          <PaymentNumber
-            stateId="paymentEveryValue"
+    <form 
+    onSubmit={handleSubmit} 
+    style={{ background: '#1F2B30', marginTop:'30px' }}>
+      <div className="tc pa4 vcenter">
+      <TextField
+            id="name"
+            label="Customer's name:"
+            type="text"
+            color="primary"
+            className="br2 tc"
             onChange={handleChange}
-            placeHolder={customerDetails.paymentEveryValue}
+            style={{height:"50px", background: 'white', width:'90%', margin:'5px'}}
+            // defaultValue={customerDetails.name}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-          
-          <PaymentPeriod
-            stateId="paymentEveryUnit"
+        <TextField
+            id="email"
+            label="email :"
+            type="email"
+            color="primary"
+            className="br2 tc"
             onChange={handleChange}
-            placeHolder={customerDetails.paymentEveryUnit}
+            style={{height:"50px", background: 'white', width:'90%', margin:'5px'}}
+            // defaultValue={customerDetails.name}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
+          <TextField
+            id="phone"
+            label="phone :"
+            type="number"
+            color="primary"
+            className="br2 tc"
+            onChange={handleChange}
+            style={{height:"50px", background: 'white', width:'90%', margin:'5px'}}
+            // defaultValue={customerDetails.name}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        <TextField
+            id="appointmentPrice"
+            label="Price per appointment :"
+            type="number"
+            color="primary"
+            className="br2 tc"
+            onChange={handleChange}
+            style={{height:"50px", background: 'white', width:'90%', margin:'5px'}}
+            // defaultValue={customerDetails.name}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        
+        <div style={{display:'flex', flexWrap: 'nowarp', justifyContent:'center'}} className="shadow-5 ma3 w-80 tc">
+        <select
+        id="paymentEveryValue"
+        type="number"
+        className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-60"
+        onChange={handleChange}>
+        <option value="select payment" disabled selected>select payment</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <select
+        id="paymentEveryUnit"
+        type="text"
+        className="input-reset ba b--black-20 pa2 br3 mb2 ma1 w-60"
+        onChange={handleChange}>
+        <option value="select every" disabled selected>select every</option>
+        <option value="Appointment">Appointment</option>
+        <option value="Week">Week</option>
+        <option value="Month">Month</option>
+      </select>
+         
         </div>
-        <NoteFieldText
-          stateId="notes"
+        <TextField
+          id="notes"
+          label="Note"
+          multiline="true"
+          rows={8}
+          color="primary"
           onChange={handleChange}
-          placeHolder={customerDetails.notes}
+          className="br2 tc pa5"
+          style={{ background: 'white', padding:'5px', width:'90%', margin:'5px', height:'200px'}}
+          InputLabelProps={{
+              shrink: true,
+            }}
         />
-        <div style={styles.addContainer}>
+        <div>
         <input
           type="submit"
           value="Add"
-          className='btn btn-submit ma3 btn-lg grow'
-          style={{ background: '#0B8D98', color: "white", width: "100px" }}
+          className='btn btn-submit ma5 btn-lg grow'
+          style={{ background: '#0B8D98', color: "white", width: "200px"}}
         />
         </div>
 

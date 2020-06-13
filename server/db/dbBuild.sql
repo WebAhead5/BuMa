@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS appointments_customers;
 DROP TABLE IF EXISTS payment_settings;
 DROP TABLE IF EXISTS reports CASCADE;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS payments;
 
 
 CREATE TYPE payment_unit AS ENUM ('Week','Appointment','Month');
@@ -65,7 +66,6 @@ CREATE TABLE reports (
 
 
 
-
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
@@ -79,6 +79,23 @@ CREATE TABLE users(
   crn VARCHAR(20),
   business_address VARCHAR(100)
 );
+
+CREATE TABLE payments(
+    id SERIAL PRIMARY KEY,
+    customerid INT NOT NULL,
+    paymentdate DATE NOT NULL,
+    price DECIMAL,
+    vat VARCHAR(20) NOT NULL,
+    total DECIMAL 
+);
+
+INSERT INTO payments (customerid, paymentdate, price, vat, total)
+VALUES 
+(1, '2020-06-02', 50.5, '00012004',101),
+(1, '2020-06-02', 40, '00012004',200),
+(1, '2020-06-02', 30, '00012004',50),
+(1, '2020-06-02', 50, '00012004',100);
+
 
 
 INSERT INTO customers (name, email, phone, userid, paymentStatus, activityStatus,
@@ -124,10 +141,10 @@ VALUES
 
 INSERT INTO reports (userid,creatingdate,pdfile) VALUES 
 
- (1,'2012-04-25','pdflink/1st.pdf'),
- (1, '2012-04-26','pdflink/2nd.pdf'),
- (1, '2012-04-27','pdflink/3rd.pdf'),
- (1, '2012-04-28','pdflink/4th.pdf');
+ (1,'2012-04-25','/img/report.png'),
+ (1, '2012-04-26','/img/report.png'),
+ (1, '2012-04-27','/img/report.png'),
+ (1, '2012-04-28','/img/report.png');
 
 
 INSERT INTO users (first_name, last_name, email, username, password, phone, business_name,

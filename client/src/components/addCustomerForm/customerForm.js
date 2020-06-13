@@ -35,7 +35,7 @@ function CustomerForm() {
     name: 'Name',
     email: 'Email',
     phone: 'Phone',
-    userid: userValue.id,
+    userid: newUserValue.id,
     paymentStatus: 'false',
     activityStatus: 'true',
     notes: 'Note',

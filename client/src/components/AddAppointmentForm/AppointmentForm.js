@@ -76,7 +76,7 @@ function AppointmentForm() {
 
   let appointmentDetails = {
     userid: newUserValue,
-    day: '2012-04-25',
+    day: '2020-06-14',
     start_at: '08:00:00',
     end_at: '10:00:00',
     note: '1',
